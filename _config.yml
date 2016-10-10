@@ -3,7 +3,6 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-
 title: 致力于web前端开发,前端学习交流
 subtitle: 致力于web前端开发
 description: 这是一个神奇的网站--致力于web前端开发，我们在路上--西门垂询
@@ -70,10 +69,10 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
     type: git
-    repository: https://github.com/jackieli123723/jackieli123723.github.io.git
+    repository: https://github.com/jackieli123723/jackieli123723.github.io.git 
     branch: master
 
-  
+
   # Header
 menu:
     博客主页: /
