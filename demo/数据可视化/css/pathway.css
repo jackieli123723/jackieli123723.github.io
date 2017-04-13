@@ -1,0 +1,121 @@
+/* CSS Document */
+/*.pathway { position:absolute; left:50%; z-index:0;}*/
+
+.pathway > .content-pathway { position: relative; z-index:0;}
+.pathway > .content-pathway > div { 
+  position: absolute; 
+  /*top: 50%; */
+  top:0;
+  left: 50%; 
+  margin-left: -410px;
+  margin-top:-410px;
+  width: 820px; 
+  height: 820px; 
+  border-radius: 50%; 
+  border: 2px solid #2e7fba;/*椭圆轨道*/
+  -webkit-transform-style: preserve-3d; 
+  -webkit-transform: rotateX(60deg) rotateY(0deg);
+  transform-style: preserve-3d; 
+  transform: rotateX(60deg) rotateY(0deg);  z-index:0;
+  /*background:url(../images/pathway-out.png) no-repeat 20px 100px ;*/
+}
+
+.pathway > .content-pathway > div:nth-of-type(2) {
+  -webkit-transform: rotateX(66deg) rotateY(0deg);
+  transform: rotateX(66deg) rotateY(0deg);
+  height: 1500px;
+  width: 1320px;
+  left: 50%;
+  top: 0;
+  /*top:50%;*/
+  margin-top: -690px;
+  margin-left: -660px; z-index:0; 
+}
+
+.pathway > .content-pathway > div:nth-of-type(3) {
+  -webkit-transform: rotateX(70deg) rotateY(0deg);
+  transform: rotateX(70deg) rotateY(0deg);
+  height: 900px;
+  width: 600px;
+  left: 50%;
+  top: 0;
+  /*top: 50%;*/
+  margin-top: -470px;
+  margin-left: -300px; z-index:0; border:3px solid #2e7fba;  
+}
+
+
+/*滑动的白色亮点*/
+.pathway > .content-pathway > div:first-of-type > div {
+  width: 820px;
+  height: 820px;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -webkit-animation: trail_ 5s infinite linear;
+  transform-style: preserve-3d;
+  animation: trail_ 5s infinite linear; 
+}
+
+.pathway > .content-pathway > div:first-of-type > div:after {
+  content: ""; 
+  position: absolute; 
+  top: -5px; 
+  /*box-shadow: 0 0 12px #f00;*/
+  left: 50%; 
+  margin-left: -5px; 
+  width: 12px; 
+  height: 12px; 
+  border-radius: 50%;
+  background: #7ce3ff;
+  -webkit-animation: particle_ 10s infinite linear;
+  animation: particle_ 10s infinite linear;
+}
+
+.pathway > .content-pathway > div:nth-of-type(2) > div,
+.pathway > .content-pathway > div:nth-of-type(2) > div:after {
+  -webkit-animation-delay: -.5s;
+  animation-delay: -.5s;
+}
+
+.pathway > .content-pathway > div:nth-of-type(3)  > div,
+.pathway > .content-pathway > div:nth-of-type(3)  > div:after {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+
+@-webkit-keyframes trail_ { 
+    from {
+        -webkit-transform: rotateZ(0deg);
+    } to {
+        -webkit-transform: rotateZ(-360deg);
+    }
+}
+
+@keyframes trail_ { 
+    from {
+        transform: rotateZ(0deg);
+    } to {
+        transform: rotateZ(-360deg);
+    }
+}
+
+@-webkit-keyframes particle_ { 
+    from {
+        -webkit-transform: rotateX(90deg) rotateY(0deg); 
+        transform: rotateX(90deg) rotateY(0deg); 
+    } to {
+      -webkit-transform: rotateX(90deg) rotateY(-360deg);  
+        transform: rotateX(90deg) rotateY(-360deg); 
+    } 
+}
+
+
+@keyframes particle_ { 
+    from {
+        transform: rotateX(90deg) rotateY(0deg); 
+    } to { 
+        transform: rotateX(90deg) rotateY(-360deg); 
+    } 
+}
+

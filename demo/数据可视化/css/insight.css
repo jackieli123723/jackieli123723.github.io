@@ -1,0 +1,479 @@
+@charset "utf-8";
+/* CSS Document */
+html{
+    height: 100%;
+}
+body{
+    height: 100%; margin:0px;padding:0px; font-family:"Microsoft Yahei",Arial; font-size:12px; background:#21242e;
+    /*禁止iOS长按时不触发系统的菜单，禁止iOS&Android长按时下载图片*/
+    -webkit-touch-callout: none;
+    /*设置内嵌的元素在3D空间如何呈现：保留3d*/
+    -webkit-transform-style: preserve-3d;
+    /*(设置进行转换的元素背面在面对用户时是否可见：隐藏)*/
+    -webkit-backface-visibility: hidden;}
+div,form,img,ul,ol,li,dl,dt,dd,span,p,h1,h2,h3,h4,h5,h6 { margin:0px;padding:0px;border:none;vertical-align:top}
+ul,dl,ol{list-style-type:none; margin:0; padding:0;}
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+h1,h2,h3,h4,h5,h6 { margin:0; padding:0; font-weight:normal; display:block;}
+input,button,select,textarea{ outline:none;}
+textarea{ font-size:13px; resize:none;}
+a { text-decoration:none; transition:background-color .5s ease 0s,color .5s ease 0s;-webkit-transition:background-color .5s ease 0s,color .5s ease 0s}
+
+*,
+:before,
+:after {
+    /*去掉iOS android 系统中元素被触摸时产生的半透明灰色遮罩 边框*/
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar{width:7px;}
+::-webkit-scrollbar-thumb{-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;background:#586e80;}
+
+/*2015.5.4 zhaoxue 行为洞察*/
+.insight{width: 100%; height: 100%;  position: relative;}
+.insight_icon{background: url(../images/insight_icon.png)  no-repeat;}
+.insight_map{width: 100%; height: 100%; position: absolute; left: 0; top: 0; overflow: hidden;}
+.insight_right{width: 307px; height: 100%; float: right; background:rgba(62,80,94,0.95); z-index: 9; position: relative; color: #fff; overflow: hidden;}
+.insight_top{padding: 16px 13px 15px 13px; width: 281px; float: left;}
+.insight_top_tit{float: left; margin: 0 5px; position: relative;}
+.insight_top_tit p{color: #fff; padding: 0 10px; line-height: 28px; cursor: pointer;}
+.insight_bor{background: #586e80; border: 1px solid #586e80; border-radius: .3em;}
+.insight_top_tit p span{float: right; width: 12px; height: 4px; background-position: 0 0; margin-top: 12px;}
+.insight_top_tit p span.insight_on{ background-position: 0 -4px;}
+.insight_top_one{width: 119px;}
+.insight_top_two{width: 142px;}
+.insight_top_three{width: 271px;}
+.insight_top_tit ul{position: absolute; left: 0; top: 30.5px; width: 100%; padding: 5px 0; display: none; z-index: 88;}
+.insight_top_tit ul li{color:#b7c7d5; line-height: 28px; padding: 0 10px; cursor: pointer;}
+.insight_top_tit ul li:hover{color: #fff; background: #677d8f;}
+.insight_con{width:100%; float: left;position: relative;}
+.insight_con ul li{font-size: 14px; color: #fff; margin: 4px 0; padding-left: 20px; line-height: 36px; height: 36px;display: block; float: left; width: 255px;}
+.insight_con ul li:hover{background: #485c6c; float: left;}
+.insight_con ul li font{width: 110px; float: left; overflow: hidden; text-overflow:ellipsis; white-space: nowrap;}
+.insight_con ul li span{width: 115px; float: left; margin-left: 10px;}
+.insight_con ul li span em{border-radius: 4px; height:6px; text-indent: -999px; display: block; float: left; margin-top: 16px;}
+/*.insight_con ul li span em.insight_orange{background:#ee6b14;}
+.insight_con ul li span em.insight_yellow{background:#f6b407;}
+.insight_con ul li span em.insight_green{background:#16b48a;}
+.insight_con ul li span em.insight_other{background:#2fc7ff;}*/
+.insight_con ul li span em{background:#f0c800;}
+.insight_right hr{width: 1px; clear: both; background: #586e80; position: absolute;  right: 20px; top: 62px; border: 0 none;}
+.insight_bar{width: 15px; background: #3083db; padding: 30px 0; position: absolute;  right:309px; top: 50%; z-index: 10; text-indent: -9999px; margin-top:-35px; cursor: pointer;}
+.insight_bar:hover{background: #25347f;}
+.insight_bar span{width:12px; margin: 0 auto; height: 12px; background-position: 0 -8px; display: block; }
+.insight_bar span.insight_show{background-position: 0 -20px;}
+.insight_show{right: 0; position: absolute;}
+.insight_show span{background-position: 0 -20px;}
+.insight_return{width: 120px; height: 28px; line-height: 28px;  position: absolute; right: 330px; top: 22px; border-radius: 4px; background: rgba(100,121,138,1); color: #fff;}
+.insight_return span{width:17px; height: 11px; background-position: 0 -33px; float: left; margin: 8px;}
+.insight_return a{color: #fff;}
+.insight_rank{position: absolute; left: 18px; top: 202px;color:#fff;}
+.insight_rank .insight_rank_tit{ padding: 0 20px; line-height: 32px; background: #307fd5; cursor: pointer; float: left;}
+.insight_rank .insight_rank_con{background: #307fd5; padding: 0 20px; width: 260px; float: left; clear: both; margin-top: 1px; display: none;}
+.insight_rank .insight_rank_con h3{font-size: 16px; border-bottom: 1px solid #4593e6; line-height: 48px; }
+.insight_rank .insight_rank_con h3 .close{float: right; color: #84bfff; font-size: 26px; line-height: 36px; margin-right: -10px; cursor: pointer;}
+.insight_rank .insight_rank_con ul{width:114px; float:left; margin:20px 0; margin-right: 15px;}
+.insight_rank .insight_rank_con ul li{font-size: 14px; line-height: 30px;}
+.insight_rank .insight_rank_con ul.insight_rank_line{border-right: 1px solid #4593e6;}
+.insight_rank .insight_rank_con ul.insight_rank_none{margin-right:0; width: 130px;}
+
+
+/*2015.5.21 zhaoxue 新增样式*/
+.talk_data{background:rgba(32,38,64,0.9); border-left: 1px solid #000; border-right: 1px solid #000; color: #fff;color: #b7c0ee;}
+.talk_data .insight_top_tit p{color: #b7c0ee;}
+.talk_data .insight_top_tit p span{ background-position: 0 -44px;}
+.talk_data .insight_top_tit p span.insight_on{ background-position: 0 -48px;}
+.talk_data .insight_bor{background: #343e66; border: 1px solid #4d5793;}
+.talk_data .insight_top_tit ul li:hover{color: #b7c0ee; background: #45528e;}
+.talk_data .insight_con ul li{color: #acb7f4;}
+.talk_data .insight_con ul li:hover{background: #28305b;}
+.talk_data .insight_con{width:290px; float: left; overflow: auto; position: relative; top: 9px;}
+.talk_data .insight_con{border-top: 0 none;}
+.talk_data  hr{width: 1px; clear: both; background: #323d69; height: 100%; position: absolute;  right: 22px; top: 100px; border: 0 none;}
+.talk_data .insight_top_label{margin-bottom:10px; border-bottom: 1px solid}
+.talk_data .insight_top_label span{color: #acb7f4;}
+.talk_data .insight_top{padding-bottom: 8px;}
+
+.talk-return{z-index: 12;width: 105px; height: 28px; line-height: 28px; border: 1px solid #000; position: absolute; right: 330px; top: 22px; border-radius: 4px; background: rgba(32,38,64,0.8); color: #fff;}
+.talk-return a{color: #fff;}
+.talk-return:hover,.talk-return:active{ background: rgba(0,0,0,0.5);}
+
+
+.talk_data ::-webkit-scrollbar{width:10px;}
+.talk_data ::-webkit-scrollbar-thumb{border-radius:6px;background:-webkit-gradient(linear,0 50%,100% 50%,from(#5d6aac),to(#353b65)); background: -moz-linear-gradient(0deg,#5d6aac,#353b65);background: -webkit-linear-gradient(0deg,#5d6aac,#353b65);background: -o-linear-gradient(0deg,#5d6aac,#353b65); box-shadow: inset 0 1px 0 #777ea9;}
+
+.talk_no ::-webkit-srollbar{width: 0;}
+.talk_no ::-webkit-scrollbar-thumb{background:none;border-radius: 0;-webkit-border-radius: 0;-moz-border-radius: 0;box-shadow: inset 0 0 0 0;}
+
+/*2015.5.28 zhaoxue 新增*/
+.insight_bot{position:absolute; bottom: 0; line-height: 40px; background: #202640; text-align: right; padding: 0 20px; width: 267px; color: #bcc3ed;}
+.insight_bot a{color:#3586d7;}
+.insight_bot a:hover{ text-decoration: underline}
+.insight_list_tit{margin-left: -1px; position: relative; top: 7px;}
+.insight_list_tit ul li{border-top: 2px solid #202741; width:140px; float:left; text-align:center; line-height:43px;height:43px;border-bottom: 1px solid #000205; border-left:1px solid #000205; cursor:pointer;}
+.insight_list_tit ul li.on{border-top: 2px solid #2e85cc; border-bottom: 1px solid #202741;}
+
+/************Created by Ch******************/
+.insight_title{
+    height: 32px;
+    line-height: 32px;
+    background: #5364c1;
+    position: absolute;
+    padding: 0 10px;
+    color: #fff;
+    top: 20px;
+    left: 60px;
+}
+.BMap_stdMpPan{
+    display: none;
+}
+.BMap_stdMpZoom{
+    top:10px !important;
+}
+.layers{
+    background: #5567c7;
+    /*background: url(../images/dd.png) no-repeat -10px;*/
+    position: absolute;
+    width:270px;
+    color: #fff;
+    padding: 0 14px;
+    opacity: 0.95;
+}
+.layers em{
+    display: block;
+    height: 18px;
+    width: 28px;
+    border-left: 7px solid #5364c1;
+    border-bottom: 7px solid #5364c1;
+    top:20px;
+    left: -6px;
+    position: absolute;
+    transform:rotate(42deg);
+    -ms-transform:rotate(42deg); 	/* IE 9 */
+    -moz-transform:rotate(42deg); 	/* Firefox */
+    -webkit-transform:rotate(42deg); /* Safari 和 Chrome */
+    -o-transform:rotate(42deg); 	/* Opera */
+}
+.layersTitle{
+    height: 54px;
+    border-bottom: 1px solid #7482db;
+    line-height: 54px;
+}
+.layersTitle span.iconimg{
+    float: left;
+    width: 22px;
+    margin: 15px 15px 0 0;
+    display: block;
+    height: 28px;
+    overflow: hidden;
+}
+.layersTitle span.iconimg img{
+    width: 43px;
+}
+.layersTitle strong{
+    font-size: 18px;
+    width: 203px;
+    overflow: hidden;
+    display: block;
+    font-weight: normal;
+    float: left;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.layersTitle small{
+    display: block;
+    float: right;
+    width: 16px;
+    height: 16px;
+    background: url("../images/close.png");
+    text-indent: -9999px;
+    margin: 9px -5px;
+    cursor: pointer;
+}
+.layersTitle small:hover{
+    background: url("../images/close.png") #3a4a9d;
+}
+.layers dl{
+    height:120px;
+}
+.layers dl span{
+    display: block;
+    font-size: 12px;
+    line-height: 40px;
+}
+.layers dl b{
+    line-height: 40px;
+    font-size: 40px;
+    font-family: "Helvetica";
+    font-weight: normal;
+}
+.layers dt,.layers dd{
+    height: 94px;
+    width: 134px;
+    margin: 13px 0;
+    float: left;
+    text-align: center;
+}
+.layers dt{
+    border-right: 1px solid #7482db;
+}
+.layersBottom{
+    margin-bottom: 13px;
+}
+.layersBottom a{
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    background: #3a4a9d;
+    cursor: pointer;
+}
+.layersBottom a:active,.layersBottom a:hover{
+    background: #25347f;
+}
+.loading{
+    position: absolute;
+    height: 100px;
+    top: 40%;
+    display: none;
+    border-radius: 8px;
+    left: 43%;
+    text-align: center;
+    width: 200px;
+    margin: 0 auto;
+    background: #202640;
+    opacity: 0.95;
+}
+.loading p{
+    text-indent: 24px;
+    line-height: 32px;
+    color: #fff;
+    font-size: 12px;
+}
+
+
+
+
+#circleG{
+    width: 80px;
+    height: 20px;
+    margin: 27px auto 0 auto;
+}
+
+.circleG{
+    background-color:#FFFFFF;
+    float:left;
+    height:12px;
+    margin-left:10px;
+    width:12px;
+    -webkit-animation-name:bounce_circleG;
+    -webkit-border-radius:21px;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:linear;
+    -moz-animation-name:bounce_circleG;
+    -moz-border-radius:21px;
+    -moz-animation-duration:3s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-direction:linear;
+    opacity:0.3;
+    -o-animation-name:bounce_circleG;
+    border-radius:21px;
+    -o-animation-duration:3s;
+    -o-animation-iteration-count:infinite;
+    -o-animation-direction:linear;
+    -ms-animation-name:bounce_circleG;
+    -ms-animation-duration:3s;
+    -ms-animation-iteration-count:infinite;
+    -ms-animation-direction:linear;
+    opacity:0.3}
+
+#circleG_1{
+    -webkit-animation-delay:0.6000000000000001s;
+    -moz-animation-delay:0.6000000000000001s;
+    -o-animation-delay:0.6000000000000001s;
+    -ms-animation-delay:0.6000000000000001s;
+}
+
+#circleG_2{
+    -webkit-animation-delay:1.4000000000000001s;
+    -moz-animation-delay:1.4000000000000001s;
+    -o-animation-delay:1.4000000000000001s;
+    -ms-animation-delay:1.4000000000000001s;
+}
+
+#circleG_3{
+    -webkit-animation-delay:1.8s;
+    -moz-animation-delay:1.8s;
+    -o-animation-delay:1.8s;
+    -ms-animation-delay:1.8s;
+}
+
+@-webkit-keyframes bounce_circleG{
+    0%{
+        opacity:0.3}
+
+    50%{
+        opacity:1;
+        background-color:#fff}
+
+    100%{
+        opacity:0.3}
+
+}
+
+@-moz-keyframes bounce_circleG{
+    0%{
+        opacity:0.3}
+
+    50%{
+        opacity:1;
+        background-color:#fff}
+
+    100%{
+        opacity:0.3}
+
+}
+
+@-o-keyframes bounce_circleG{
+    0%{
+        opacity:0.3}
+
+    50%{
+        opacity:1;
+        background-color:#fff}
+
+    100%{
+        opacity:0.3}
+
+}
+
+@-ms-keyframes bounce_circleG{
+    0%{
+        opacity:0.3}
+
+    50%{
+        opacity:1;
+        background-color:#000000}
+
+    100%{
+        opacity:0.3}
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px){
+    .insight_bar{
+        width: 22px;
+    }
+    .insight_title{
+        height: 32px;
+        line-height: 32px;
+        background: #5364c1;
+        position: absolute;
+        padding: 0 10px;
+        color: #fff;
+        top: 12px;
+        left: 12px;
+    }
+    .talk-return{
+        width: 35px;
+        height: 28px;
+        text-indent: -99999px;
+    }
+    .loading{
+        position: absolute;
+        left:20%;
+    }
+}
+@media screen and (max-width: 320px){
+    .insight_right{
+        width: 287px;
+    }
+    .insight_top{
+        padding: 16px 8px 15px 8px;
+        width: 271px;
+        float: left;
+    }
+    .insight_top_two{
+        width:132px;
+    }
+    .talk_data .insight_con{
+        width:270px;
+    }
+    .insight_con ul li{
+        width:235px;
+    }
+    .insight_bot{
+        width:247px;
+    }
+    .insight_top_three{
+        width:261px;
+    }
+    .insight_bar{
+        position: absolute;
+        right:289px;
+        top: 50%;
+        z-index: 10;
+        text-indent: -9999px;
+    }
+    .insight_show{
+        right:0;
+        position: absolute;
+    }
+}
+
+#allScroll,#appScroll,#brandScroll {
+    position: absolute;
+    z-index: 1;
+    top: 55px;
+    bottom: 44px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+.scroller ul{
+    width:100%;
+}
+
+.insight_con.app#appScroll{
+    height: calc(100% - 151px);
+    position: absolute;
+    top:110px;
+}
+
+.insight_con.brand#brandScroll{
+    height: calc(100% - 151px);
+    position: absolute;
+    top:110px;
+}
+.mapLabel{
+    position: absolute;
+    left: -50%;
+}

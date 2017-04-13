@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">客服与分组</a></div>
+        <div class="agents__main___38Pft">
+            <section class="agents__overview___33ljS clearfix">
+                <div class="agents__summary___3jHyw">
+                    <div class="agents__title___25N2H"><span>团队数据</span></div>
+                    <div>
+                        <div class="agents__summary-item___1OCXl">
+                            <!-- react-text: 1628 -->已激活账号
+                            <!-- /react-text --><span class="agents__summary-item-count___3Cwi2">1</span></div>
+                        <div class="agents__summary-item___1OCXl">
+                            <!-- react-text: 1631 -->未激活账号
+                            <!-- /react-text --><span class="agents__summary-item-count___3Cwi2">0</span></div>
+                        <div class="agents__summary-item___1OCXl">
+                            <!-- react-text: 1634 -->分组
+                            <!-- /react-text --><span class="agents__summary-item-count___3Cwi2">1</span></div>
+                    </div>
+                </div>
+                <div id="agents__role___2iR44">
+                    <div class="agents__title___25N2H"><span>团队角色</span><a href="/setting/role"><i class="mq-icon-settings"></i><!-- react-text: 1641 -->修改角色设置<!-- /react-text --></a></div>
+                    <div class="agents__roles___2gjPS clearfix">
+                        <div>
+                            <div class="agents__role-group___3hYOm">
+                                <div class="agents__role___2iR44">
+                                    <!-- react-text: 1646 -->管理员
+                                    <!-- /react-text --><span class="agents__role-count___h3YM8">1</span></div>
+                                <div class="agents__role___2iR44">
+                                    <!-- react-text: 1649 -->普通客服
+                                    <!-- /react-text --><span class="agents__role-count___h3YM8">0</span></div>
+                                <!-- react-text: 1651 -->
+                                <!-- /react-text -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="agents__list-wrap___3h_ba">
+                <aside class="agents__aside___l8Mm0">
+                    <div class="agents__add-group___2PQ2b">新建分组</div>
+                    <nav><a class="agents__group___QcWED agents__active___1q2Cz">全部（1）</a><a class="agents__group___QcWED "><span class="agents__groupname___26SnY" title="默认分组">默认分组</span><span class="agents__groupname___26SnY"><!-- react-text: 1660 -->（<!-- /react-text --><!-- react-text: 1661 -->1<!-- /react-text --><!-- react-text: 1662 -->）<!-- /react-text --></span><span class="agents__groupedit___26xIa"><i class="feature15-icons icon-edit-thin"></i></span></a></nav>
+                </aside>
+                <div class="agents__list-right___2XUgF">
+                    <div class="agents__toolbar___3XmcL">
+                        <a href="/setting/agents/create-agent">
+                            <div class="pull-left agents__icon-text___3rSm0" style="cursor: pointer; height: 16px; line-height: 16px;"><i class="mq-icon-plus-sign" style="color: rgb(0, 160, 233); font-size: 15px; vertical-align: text-bottom; margin-right: 6px;"></i><span style="display: inline-block; color: rgb(0, 160, 233); font-size: 12px; vertical-align: middle;">添加客服帐号</span></div>
+                        </a>
+                        <a>
+                            <div class="pull-left agents__icon-text___3rSm0" style="cursor: pointer; height: 16px; line-height: 16px;"><i class="mq-icon-export" style="color: rgb(0, 160, 233); font-size: 15px; vertical-align: text-bottom; margin-right: 6px;"></i><span style="display: inline-block; color: rgb(0, 160, 233); font-size: 12px; vertical-align: middle;">导出客服列表</span></div>
+                        </a>
+                    </div>
+                    <table class="agents__list___3EUyx">
+                        <thead>
+                            <tr>
+                                <th width="10%">工号</th>
+                                <th width="20%">名字</th>
+                                <th width="20%">账号</th>
+                                <th width="10%">角色</th>
+                                <th width="15%">权限范围</th>
+                                <th width="15%">客服名片</th>
+                                <th width="10%">客服上限</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>-</td>
+                                <td>
+                                    <div class="agents__info___3s3OP"><img class="agents__agent-avatar___1KD5z" src="https://s3.cn-north-1.amazonaws.com.cn/static-files/default-avatar.jpg" alt="">
+                                        <div class="agents__realname___1O0IU">超级管理员</div>
+                                    </div>
+                                </td>
+                                <td>380863274@qq.com</td>
+                                <td>管理员</td>
+                                <td>全部</td>
+                                <td>超级管理员</td>
+                                <td>2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <noscript></noscript>
+                <noscript></noscript>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

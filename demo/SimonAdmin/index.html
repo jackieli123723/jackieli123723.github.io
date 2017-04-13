@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+          <div class="head__root___2xwfq"><a class="head__sub-title___1jatQ" href="javascript:;
+">设置</a></div>
+        <div class="main__setting___199Ya">
+            <div class="setting-index__main___1ziPL clearfix">
+                <div class="block__block___XXJ38">
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-asterisk fa-fw fa-lg"></i>
+                            <!-- react-text: 10315 -->通用
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="profile.html"><i class="mq-svg-icon-profile-color"></i><p>个人信息</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="layout.html"><i class="mq-svg-icon-interface-color"></i><p>界面设置</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="hot-key.html"><i class="mq-svg-icon-shortcut-color"></i><p>快捷键</p></a></div>
+                        </div>
+                    </div>
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-steam fa-fw fa-lg"></i>
+                            <!-- react-text: 10332 -->团队
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="team-setting.html"><i class="mq-svg-icon-team-color"></i><p>团队信息</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="agents.html"><i class="mq-svg-icon-agents-color"></i><p>客服与分组</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="role.html"><i class="mq-svg-icon-users-color"></i><p>角色设置</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="security.html"><i class="mq-svg-icon-security-color"></i><p>安全设置</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="id-query.html"><i class="mq-svg-icon-id-query-color"></i><p>ID 查询</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="payment.html"><i class="mq-svg-icon-pay-color"></i><p>企业付款</p></a></div>
+                        </div>
+                    </div>
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-signal fa-fw fa-lg"></i>
+                            <!-- react-text: 10361 -->接入
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/web-widget"><i class="mq-svg-icon-web-widget-color"></i><p>网页插件</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/chat-link"><i class="mq-svg-icon-chat-link-color"></i><p>聊天链接</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/sdk"><i class="mq-svg-icon-sdk-color"></i><p>SDK</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/wechat"><i class="mq-svg-icon-wechat-color"></i><p>微信</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/weibo"><i class="mq-svg-icon-weibo-color"></i><p>微博</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/jinshuju"><i class="mq-svg-icon-jinshuju-color"></i><p>金数据接入</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/callback"><i class="mq-svg-icon-call-back-color"></i><p>电话回呼</p></a></div>
+                        </div>
+                    </div>
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-user fa-fw fa-lg"></i>
+                            <!-- react-text: 10394 -->客服
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/quick-reply"><i class="mq-svg-icon-reply-color"></i><p>快捷回复</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/automatic-message"><i class="mq-svg-icon-message-color"></i><p>自动消息</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/agent-allocation"><i class="mq-svg-icon-allocation-color"></i><p>客服分配</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/invite"><i class="mq-svg-icon-invite-color"></i><p>对话邀请</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/chat-rule"><i class="mq-svg-icon-chat-rule-color"></i><p>对话规则</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/queue"><i class="mq-svg-icon-Sandglass-color"></i><p>排队</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/prechat-survey"><i class="mq-svg-icon-form-color"></i><p>询前表单</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/evaluation"><i class="mq-svg-icon-evaluation-color"></i><p>客服评价</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/tag"><i class="mq-svg-icon-tag-color"></i><p>标签</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/blacklist"><i class="mq-svg-icon-blacklist-color"></i><p>黑名单</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/visitor-visible"><i class="mq-svg-icon-permission-color"></i><p>访客地区隔离</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/engage"><i class="mq-svg-icon-engage-color"></i><p>名片管理</p></a></div>
+                        </div>
+                    </div>
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-server fa-fw fa-lg"></i>
+                            <!-- react-text: 10447 -->机器人
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/robot"><i class="mq-svg-icon-AlphaQia"></i><p>机器人设置</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/knowledge"><i class="mq-svg-icon-thesaurus-color"></i><p>知识库</p></a></div>
+                        </div>
+                    </div>
+                    <div class="setting-index__groupBox___S00za">
+                        <div class="setting-index__groupTitle___3bjQc"><i class="fa fa-sitemap fa-fw fa-lg"></i>
+                            <!-- react-text: 10460 -->工单
+                            <!-- /react-text -->
+                        </div>
+                        <div class="undefined clearfix">
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/ticket-setting"><i class="mq-svg-icon-ticket-color"></i><p>工单设置</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/ticket-category"><i class="mq-svg-icon-ticket-box"></i><p>工单分类</p></a></div>
+                            <div class="setting-index__groupItem___ik5cC pull-left"><a class="setting-index__description___2m71J" href="/setting/ticket-rule"><i class="mq-svg-icon-automated-ticket"></i><p>自动规则</p></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

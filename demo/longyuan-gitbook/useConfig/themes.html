@@ -1,0 +1,124 @@
+<h1 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h1><p>目前 GitBook 提供了三类文档： Book 文档、API文档、FAQ文档。我们常用的就是 Book 文档模式，如果我们需要使用 API 文档模式或者 FAQ 文档模式，只需引入文档对应的主题插件即可，下面我们介绍与这三类文档相关的主题插件。<br><!-- toc --></p>
+<h2 id="Book"><a href="#Book" class="headerlink" title="Book"></a>Book</h2><p>Book 是我们常用的模式，大部分插件也都是针对这个模式做的。下面介绍一下针对 Book 模式的两个主题。</p>
+<h3 id="theme-default"><a href="#theme-default" class="headerlink" title="theme-default"></a>theme-default</h3><p><code>theme-default</code> 是默认的 Book 主题。将 <code>showLevel</code> 设为 <code>true</code>， 就可以显示标题前面的数字索引，默认不显示。</p>
+<pre><code class="json">{
+    <span class="attr">"theme-default"</span>: {
+        <span class="attr">"showLevel"</span>: <span class="literal">true</span>
+    }
+}
+</code></pre>
+<p>在使用该主题的过程中，发现经常会在控制台报下面的错误，没有找到是哪里的原因，官方也一直没有修复。</p>
+<pre><code>theme.js:4 Uncaught TypeError: Cannot read property &apos;split&apos; of undefined
+</code></pre><p>后来在 <a href="https://github.com/maxkoryukov/theme-default/commit/811fcca17fcc84ad9ff3f940a4194dbffa62a31d">这里</a> 看到一个解决方法，需要修改本地的 GitBook Theme 模板。下面是具体步骤：</p>
+<ul>
+<li><p>进入 GitBook 默认主题所在的文件夹 <code>用户主目录</code> -&gt; <code>.gitbook</code> -&gt; <code>versions</code> -&gt; <code>3.2.2</code> -&gt; <code>node_modules</code> -&gt; <code>gitbook-plugin-theme-default</code> -&gt; <code>src</code> -&gt; <code>js</code> -&gt; <code>theme</code>，打开 <code>navigation.js</code>，找到 <code>getChapterHash</code> 函数</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">getChapterHash</span>(<span class="params">$chapter</span>) </span>{
+  <span class="keyword">var</span> $link = $chapter.children(<span class="string">'a'</span>),
+      hash = $link.attr(<span class="string">'href'</span>).split(<span class="string">'#'</span>)[<span class="number">1</span>];
+
+  <span class="keyword">if</span> (hash) hash = <span class="string">'#'</span>+hash;
+  <span class="keyword">return</span> (!!hash)? hash : <span class="string">''</span>;
+}
+</code></pre>
+</li>
+<li><p>将该函数修改为下面的形式:</p>
+<pre><code class="js"><span class="function"><span class="keyword">function</span> <span class="title">getChapterHash</span>(<span class="params">$chapter</span>) </span>{
+  <span class="keyword">var</span> $link = $chapter.children(<span class="string">'a'</span>),
+      hash,
+      href,
+      parts;
+
+  <span class="keyword">if</span> ($link.length) {
+      href = $link.attr(<span class="string">'href'</span>)
+      <span class="keyword">if</span> (href) {
+          parts = href.split(<span class="string">'#'</span>);
+          <span class="keyword">if</span> (parts.length&gt;<span class="number">1</span>) {
+              hash = parts[<span class="number">1</span>];
+          }
+      }
+  }
+
+  <span class="keyword">if</span> (hash) hash = <span class="string">'#'</span>+hash;
+  <span class="keyword">return</span> (!!hash)? hash : <span class="string">''</span>;
+}
+</code></pre>
+</li>
+<li>回到 <code>gitbook-plugin-theme-default</code> 文件夹，运行 <code>npm install</code> 重新编译文件。</li>
+</ul>
+<h3 id="theme-comscore"><a href="#theme-comscore" class="headerlink" title="theme-comscore"></a>theme-comscore</h3><p>为标题添加颜色，如下如所示</p>
+<p><img src="assets/images/comscore.png" alt=""></p>
+<p><a href="https://plugins.gitbook.com/plugin/theme-comscore">插件地址</a></p>
+<pre><code class="json">{
+<span class="attr">"plugins"</span>: [
+        <span class="string">"theme-comscore"</span>
+    ]
+}
+</code></pre>
+<h2 id="API-文档"><a href="#API-文档" class="headerlink" title="API 文档"></a>API 文档</h2><p>GitBook 同样可以编写 API 文档，只需要引入 <a href="https://plugins.gitbook.com/plugin/theme-api"><code>theme-api</code> 插件</a></p>
+<pre><code class="json">{
+    <span class="attr">"plugins"</span>: [<span class="string">"theme-api"</span>],
+    <span class="attr">"pluginsConfig"</span>: {
+        <span class="attr">"theme-api"</span>: {
+            <span class="attr">"theme"</span>: <span class="string">"dark"</span>
+        }
+    }
+}
+</code></pre>
+<p>引入之后会替换默认的样式。下面是 API 文档的样式截图和在线演示：</p>
+<p><img src="assets/images/api.png" alt=""></p>
+<p><a href="http://gitbook.jackieli.com/api/">在线演示</a> &nbsp;&nbsp; <a href="https://github.com/jackieli/gitbook-use/tree/v3-api">示例源码</a></p>
+<p>使用 GitBook 的 API 文档模式时也可以使用插件，但是因为大部分插件可能针对写书的模式，所以有可能会出现不兼容的现象。</p>
+<p>API文档的语法也很简单，因为主要是针对方法的，所以以方法为基本单位，通过下面的语法来定义一个方法<br>{% raw %}</p>
+<pre><code>{% method %}
+
+内容区
+
+{% endmethod %}
+</code></pre><p>在内容区里面，通过 <code>{% sample lang=&quot;lang&quot; %}</code>来定义一个针对特定语言的演示，通过 <code>{% common %}</code> 标识所有语言共同的部分。下面是一个完整的示例：</p>
+<pre lang="no-highlight"><code>{% method %}
+## 打印
+
+展示 JavaScript 和 Java 如何输出信息
+
+{% sample lang="js" %}
+这里演示 JavaScript 如何输出信息到控制台
+
+```js
+console.log('Hello World');
+```
+
+{% sample lang="java" %}
+这里演示 Java 如何输出信息到控制台
+
+```java
+System.out.println("Hello World");
+```
+
+{% common %}
+这里是 JavaScript 和 Java 共同的信息
+
+{% endmethod %}
+```
+</code></pre>
+
+<p>{% endraw %}</p>
+<h2 id="FAQ-文档"><a href="#FAQ-文档" class="headerlink" title="FAQ 文档"></a>FAQ 文档</h2><p><a href="https://plugins.gitbook.com/plugin/theme-faq"><code>theme-faq</code></a> 插件主要用来制作知识库或者帮助中心，GitBook 的 <a href="https://plugins.gitbook.com/plugin/theme-faq">帮助中心</a> 就是使用的该主题。为了支持中文搜索我们需要引入 <code>search-pro</code> 包。</p>
+<pre><code class="json">{
+    <span class="attr">"plugins"</span>: [
+        <span class="string">"theme-faq"</span>,
+        <span class="string">"-lunr"</span>,
+        <span class="string">"search-pro@^2.0.2"</span>
+    ]
+}
+</code></pre>
+<p>下面是该主题的截图以及在线示例：</p>
+<p><img src="assets/images/faq.png" alt=""></p>
+<p><a href="http://gitbook.jackieli.com/faq/">在线演示</a> &nbsp;&nbsp; <a href="https://github.com/jackieli/gitbook-use/tree/v3-faq">示例源码</a></p>
+<p>编写帮助中心很简单，在 <code>Summary</code> 里配置问题以及答案所在的文件，在对应文件中写入问题的答案即可，下面是一个示例<br><code>SUMMARY.md</code></p>
+<pre><code># Summary
+
+* [什么 is Git](Git.md)
+* [什么 is Github](Github.md)
+</code></pre><p><code>Git.md</code></p>
+<pre><code>Git 是一个分布式版本控制软件，最初由林纳斯·托瓦兹（Linus Torvalds）创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。应注意的是，这与GNU Interactive Tools[6]（一个类似Norton Commander界面的文件管理器）有所不同。
+</code></pre>

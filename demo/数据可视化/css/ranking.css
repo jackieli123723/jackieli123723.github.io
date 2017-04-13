@@ -1,0 +1,199 @@
+/* CSS Document */
+.filters { font-size: 14px; font-family: 微软雅黑, Arial, Verdana, Helvetica, sans-serif; width: 154px; height: 38px; background: #1069a8; border: 1px solid #0c5387; border-radius: 4px; padding: 6px 12px; color: white; }
+
+#ranking .top-content ul li a.ranking { border-bottom:4px solid #90c31f; }
+#rankingTH { position: relative; }
+#rankingTH a:hover { color: white; cursor: pointer; }
+#rankingTH ul { cursor: pointer; position: absolute; left: 0; right: 0; list-style: none; margin:0; padding:4px 0; top:32px; background:#fff; border:1px solid #dedede; border-radius:4px; z-index: 999; color: #333; }
+#rankingTH ul li:hover { background:#f5f5f5; }
+
+.export { float:right; width:60px; height: 32px; display:block; background:url(../images/export.png) no-repeat; text-indent:-99999px; cursor:pointer; }
+.export:hover { background-position:0 -32px;}
+
+.top { display:block; background:#0c5c96; background:rbga(0,60,116,.6)}
+.top-content { width:990px; margin:0 auto; padding-top:30px; display:block; zoom:1; overflow:hidden}
+.top-content span { float:left}
+.top-content ul { float:left; zoom:1; margin:0; padding-left:50px; height:50px}
+.top-content ul li { list-style:none; float:left; padding:6px 15px 0;}
+.top-content ul li a { width:100%; color:#fff; height:40px; display:block;  font-size:16px;}
+.top-content ul li a:hover { border-bottom:4px solid #90c31f; }
+
+.top-content .userLogout { float:right; padding-top:10px; font-size:14px; }
+.top-content .userLogout font { color:#fff; display:block; float:left; padding-right:5px; font-size:16px;}
+.top-content .userLogout a {color:#35adf7;}
+
+.choose-platform { width:990px; margin:0 auto;display:block; zoom:1; overflow:hidden}
+.choose-platform span { float:left; width:255px; border:1px solid #20aaff; border-radius:4px; overflow:hidden; cursor: pointer; }
+.choose-platform a { color:#fff;  padding:10px 24px; display:block; zoom:1; overflow:hidden; float:left; font-size:16px;}
+.choose-platform a.onChoose { background:#35adf7} 
+.choose-platform a img { margin-right:10px;}
+
+.condition { clear:both; display:block; overflow:hidden; width:946px; border:2px solid #20aaff; border-top:0; margin:0 auto 20px; color:#fff; padding:10px 20px;}
+.condition span { display:block; line-height:22px;}
+.condition em { font-size:24px; float:left; font-style:normal; padding-right:5px; }
+.condition font { float:left;}
+.condition strong { font-weight:normal; float:left}
+.condition ul { margin:0; padding:0; zoom:1}
+.condition ul li { list-style:none; clear:both; padding-left:60px; line-height:22px}
+
+/*.operate { clear:both; width:990px; margin:0 auto; display:block; zoom:1;}*/
+
+.operate .date { float:left; position:relative; margin-right:30px;}
+.operate .date .specificDate { cursor:pointer; color:#fff; background:#1069a8; border:1px solid #0c5387; border-radius:4px; font-size:14px; height:20px; padding:8px 12px; width:180px; display:block; }
+.operate .date .specificDate em { float:left; font-style:normal; padding-top:2px}
+
+.operate .date .specificDate img { float:right}
+ 
+.content-date { display:none; z-index:999999; background:#fff; border-radius:4px; border:1px solid #afbbc3; box-shadow:0 1px 1px #afbbc3; position:absolute; left:0; top:38px; width:194px; padding:5px; }
+.content-date > span { display:block; border-bottom:1px solid #d6dee3; padding:10px 0}
+.content-date span input { margin:0 5px 0 12px; font-size:14px;}
+
+.select-list { float:left; position:relative; margin:0 10px;}
+
+.select-title { cursor:pointer; color:#fff; background:#1069a8; border:1px solid #0c5387; border-radius:4px; font-size:14px; padding-left:22px; width:130px; display:block; height:36px; line-height:36px; }
+.select-title em { font-style:normal; float:left; max-width: 90px; height: 36px; overflow: hidden; }
+.select-title span { background:#0c5387; float:right; height:36px; text-align:center; width:38px}
+.select-title span img { margin-top:15px}
+
+.select-list ul { z-index:999999; background:#fff; width:142px; padding:0 5px; font-size:14px; }
+.select-list ul { max-height: 300px; overflow-y: auto; }
+.select-list li { list-style:none; border-bottom:1px solid #d6dee3; padding:8px 9px 8px 18px; font-size:12px;}
+.select-list li:hover { cursor:pointer}
+
+.select-list li:last-child, .select-list li.noBorder { border:0;}
+
+.select-list .showList  { z-index:999999; background:#fff; border-radius:4px; border:1px solid #afbbc3; box-shadow:0 1px 1px #afbbc3; position:absolute; left:0; top:38px; width:152px; padding:4px 0; font-size:14px; }
+
+.select-list .showList  span { display:block; position:relative; margin:0 3px}
+.select-list .showList  span .input-search { background:#fff; border:1px solid #afbbc3; width:122px; color:#b9babb; border-radius:2px; padding:0 4px 0 18px; height:20px; line-height:20px;}
+.select-list .showList  span em { position:absolute; left:2px; top:4px; display:block; }
+
+.select-list .showList  .chooseStyle { clear:both; display:block; zoom:1; overflow:hidden; font-weight:normal; border-bottom:1px solid #afbbc3; font-size:12px; padding:5px 3px; }
+.select-list .showList  .chooseStyle font { font-size:12px; float:left; padding-top:4px; margin-right:5px}
+.select-list .showList  .chooseStyle strong { float:right; font-weight:normal; display:block; border:1px solid #afbbc3}
+.select-list .showList  .chooseStyle a { float:left; padding:4px 0; text-align:center; width:36px; }
+.select-list .showList  .chooseStyle a.onChoose { background:#71889f; color:#fff;}
+
+.select-list ol { display:block; background:#fff; padding:0; margin:0; zoom:1;  font-size:12px; }
+.select-list ol li.gameTitle { display:block; zoom:1; overflow:hidden} 
+.select-list ul li font { float:left; font-size:12px;}
+.select-list ul li img { float:right; margin-top:4px}
+.select-list ol ol { clear:both; margin:0;padding:0 10px; border-bottom:1px solid #bbc2c7; scroll:none}
+.select-list ol ol li { margin:0; display:block; clear:both;}
+
+
+
+.searchPage { float:right; border-radius:2px; border:1px solid #0c5387; overflow:hidden; background:#0c5387}
+.searchPage input { width:110px; height:30px; float:left; font-size:14px; line-height:30px; padding:0 10px; color:#b9babb}
+.searchPage span { float:left; background:#0c5387; text-align:center; width:40px; }
+.searchPage span img { margin-top:8px;}
+
+.table_datas { width:950px; margin:10px auto 0; padding:5px 20px 30px 20px; background:#fff; clear:both; display:block; zoom:1; }
+.dataTop { clear:both; display:block; padding:20px 0;}
+.dataTop h3 { display:block; z-index:99; float:left; font-size:20px; color:#6f7e8a;  position:relative; cursor:pointer}
+.dataTop h3 img { margin-left:12px;}
+.dataTop h3 .topNoList { }
+.dataTop h3 ul { margin:0; padding:4px 0; zoom:1; position:absolute; left:0; top:32px; background:#fff; border:1px solid #dedede; border-radius:4px;}
+.dataTop h3 ul li { list-style:none; font-size:16px; display:block; height:34px; line-height:34px; font-weight:normal; min-width:220px; padding:0 10px;}
+.dataTop h3 ul li:hover { background:#f5f5f5} 
+.dataTop h3 span { position:absolute; top:25px; right:0; z-index:99999;}
+
+.menuGuide { float:left; font-size:12px; color:#71889f; padding:6px 0 0 30px;}
+.summarizing { float:left; padding-left: 50px;}
+.summarizing font { color:#474e54; font-size:12px;}
+.summarizing strong { color:#e58544; font-size:20px; cursor: pointer; }
+
+.contentTable { clear:both; display:block; zoom:1; overflow:hidden; border:1px solid #ebf0f4; border-bottom-left-radius:2px; border-bottom-right-radius:2px; overflow:hidden; box-shadow:0 1px 0 #e3e4e8}
+.contentTable tbody tr { cursor: pointer; }
+.tableDatas td.tdRanking { padding-left:40px}
+.tableDatas th { text-align:center; background:#71889f; color:#fff; height:30px; line-height:34px;}
+.tableDatas th img { margin-left:14px; cursor:pointer}
+.tableDatas td { line-height:30px; padding:10px 0; text-align:center;}
+.tableDatas tr.even td { background:#ebf0f4}
+.tableDatas td font { display:block; float:left; width:25px;}
+.tableDatas td font img { margin-top:9px; }
+.tableDatas td font.red { color:#d35454;}
+.tableDatas td font.green { color:#57b320;}
+
+.addMord { clear:both; display:block; text-align:center; background:#ebf0f4; margin-top:10px; box-shadow:0 1px 1px #e3e4e8; border-radius:2px;}
+.addMord a { display:block; color:#1a7bcf; padding:14px 0; }
+
+/*========================= trend css ===========================*/
+.menu-sec { width:990px; margin:0 auto 14px; zoom:1; overflow:hidden; border-bottom:2px solid #35adf7;}
+.menu-sec span { display:block; float:left; color:#fff; font-size:18px; padding:0;}
+.menu-sec span img { margin-right:14px;}
+.menu-sec ul { margin:3px 0 0 180px; float:left; padding:0; zoom:1; border:1px solid #35adf7; border-bottom:0; border-top-left-radius:4px; border-top-right-radius:4px; overflow:hidden;}
+.menu-sec ul li { float:left; list-style: none;}
+.menu-sec ul li a { display:block; padding:12px 32px; color:#fff; font-size:16px;}
+.menu-sec ul li a.onChoose { background:#35adf7; display:block;}
+
+.dataMap { clear:both; display:block; zoom:1; overflow:hidden; margin:20px 0;}
+
+/*========================= tag css =====================*/
+#con { margin:0 auto;}
+#tags {
+ margin-left:25px; padding:0; height:29px;
+}
+#tags LI { float: left; margin-right:1px; list-style:none;height:30px; border-top-left-radius:4px; border-top-right-radius:4px; overflow:hidden}
+#tags LI A { width:112px; background:#71889f; border:1px solid #71889f; border-bottom:0;  color:#fff; text-align:center; float: left; display:block;height:24px; padding-top:6px; text-decoration:none;
+} /*未选中*/
+#tags LI.emptyTag {
+	BACKGROUND: none transparent scroll repeat 0% 0%; WIDTH: 4px
+}
+#tags LI.selectTag { height:30px; background:#fff;
+}
+#tags LI.selectTag A { color:#465160; height:30px; background:none; border:1px solid #bfc5cd; border-bottom:0; border-top-left-radius:4px; border-top-right-radius:4px; } /*选中*/
+#tagContent { border:1px solid #bfc5cd;}
+.tagContent { clear:both;  height:250px; padding:0; width:380px; margin:0 auto }
+#tagContent DIV.selectTag { display: block; clear:both; 
+}
+
+.chooseDate { float:right; margin:15px 15px 10px 0; display:block; border:1px solid #71889f;}
+.chooseDate a { display:block; padding:4px 16px; float:left; border-right:1px solid #71889f;}
+.chooseDate a.noBorder { border:0;}
+.chooseDate a.onChoose { background:#71889f; color:#fff;}
+
+/*============================ applyManage CSS =================================*/
+
+.contentApplyManage { width:970px; margin:10px auto 0; padding:10px 10px 60px 10px; background:#fff; clear:both; display:block; zoom:1; overflow:hidden }
+
+.applyName { display:block; border:2px solid #d6dce0; border-radius:6px; overflow:hidden; padding-bottom:30px; font-size:14px;}
+.applyName h3 { display:block; zoom:1; overflow:hidden; background:#d6dce0; padding:5px 12px; font-weight:normal;}
+.applyName h3 font { float:left; display:block; padding:7px 8px 0 0;}
+.applyName h3 span { float:left; background:#f8f9f9; width:200px; height:30px; border-radius:2px; overflow:hidden; box-shadow:0 2px 0 #b8bec2 inset;}
+
+.applyName h3 span input { height:32px; line-height:32px; width:160px; padding-left:6px; float:left; background:none; border:none; color:#6d767a; font-size:14px; }
+.applyName h3 span img { float:left; margin:7px 0 0 6px;}
+.applyName h5 { display:block; clear:both; padding:10px 10px 6px 10px; font-size:14px; font-weight:normal;}
+.applyName ul { margin:0; padding:0; zoom:1;}
+.applyName ul li{ background:#eaedef; display:block; float:left; padding:8px 24px; position:relative; margin:5px 10px;}
+.applyName ul li span { display:none; position:absolute; right:-7px; top:-7px; cursor:pointer;}
+.applyName ul li:hover span { display:block;}
+.applyName ul strong { font-weight:normal; float:left;}
+.applyName ul strong a { float:left; padding:0 24px; width:100px; border:1px dashed #87929f; text-align:center; font-size:24px; margin:5px 10px;}
+
+.typeTag { clear:both; display:block; padding:20px 0;}
+.typeTag .left { float:left}
+.typeTag .right { float:right}
+.typeTagManage { width:48%; isplay:block; border:2px solid #d6dce0; border-radius:6px; overflow:hidden; padding-bottom:30px; font-size:14px;}
+.typeTagManage h3 {  display:block; zoom:1; overflow:hidden; background:#d6dce0; padding:10px 12px; font-weight:normal; }
+.typeTagManage ul { margin:0; padding:6px 0; zoom:1;}
+.typeTagManage ul li{ background:#eaedef; display:block; float:left; padding:8px 14px; position:relative; margin:5px 6px;}
+.typeTagManage ul li span { display:none; position:absolute; right:-7px; top:-7px; cursor:pointer;}
+.typeTagManage ul li:hover span { display:block;}
+.typeTagManage ul strong { font-weight:normal; float:left;}
+.typeTagManage ul strong a { float:left; padding:0 24px; width:30px; border:1px dashed #87929f; text-align:center; font-size:24px; margin:5px 10px;}
+
+
+
+/*======================= rankgrow css ================================*/
+.growMethod {clear:both;display:block; padding:10px 0; }
+.growMethod ol {margin:0; padding:0; zoom:1; float:left}
+.growMethod ol li{ list-style:none;  color:#fff; display:block; clear:both; padding:15px 0;}
+.growMethod ol li li { color:#333; padding: 8px 9px 8px 18px}
+.growMethod ol li strong {float:left; font-weight:normal; width:80px; text-align:right; font-size:14px; padding:8px 5px 0 0;}
+.growMethod ol li font { float:left;}
+.growMethod ol li label { float:left; padding:6px 10px; color:#fff; font-size:18px;}
+
+.inputNumber { float:left; width:120px; height:34px; line-height:34px; border-radius:4px; font-size:14px; padding:0 4px; border:1px solid #ccc; margin:0 10px;}
+.searchPageGrow { float:right; margin-top:110px;}

@@ -1,0 +1,11 @@
+/* CSS Document */
+
+.choose-platform { width:990px; margin:0 auto; padding-top:20px; display:block; zoom:1; border-bottom:2px solid #20aaff}
+
+.dataYuan, .platform { width:200px;}
+.dataYuan em, .platform em { width:160px;}
+
+.dataResult { clear:both; display:block; padding:20px; font-size:14px}
+.dataResult span { display:block; float:left; padding-right:20px;}
+.dataResult font { display:block; float:left; margin-left:30px;}
+.dataResult strong {display:block; float:left; padding-left:4px; color:#187ec1; font-size:16px}

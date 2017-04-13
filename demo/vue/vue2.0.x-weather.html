@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible" />
+    <title>vue.js（2.0.x） 天气预报---author:	Jackieli</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+    <style>
+    [v-cloak] {
+        display: none;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    span {
+        color: red;
+    }
+    
+    .navbar-form {
+        padding: 0;
+    }
+    
+    .container {
+        margin-top: 40px;
+    }
+	
+	.alert{
+	 margin-bottom:0;
+	}
+    </style>
+    <div id="app" v-cloak class="container">
+        <div class="alert alert-success" role="alert">vue.js（2.0.x） 天气预报---author:	Jackieli</div>
+        <div class="navbar-form ">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="城市全拼音enter输入" v-model='city' @keyup.enter='addNew'>
+            </div>
+            <button type="submit" class="btn btn-default" @click='addNew'>切换</button>
+        </div>
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">当前城市:<span>{{city}}</span></div>
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th v-for="col in gridColumns">
+                            {{ col }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="entry in gridData">
+                        <td>
+                            {{entry.dt | time}}
+                        </td>
+                        <td>
+                            {{entry.weather[0]["description"]}}
+                        </td>
+                        <td>
+                            {{entry.temp.min | hot }}
+                        </td>
+                        <td>
+                            {{entry.temp.max | hot }}
+                        </td>
+                        <td>
+                            {{entry.speed}} m/s
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+     <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script>
+    Vue.filter('time', function(value) {
+        var d = new Date(value * 1000);
+        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()
+    })
+
+    Vue.filter('hot', function(value) {
+        return Math.round(value - 273.15) + ' °C'
+    })
+
+    var demo = new Vue({
+        el: '#app',
+        data: {
+            city: "chengdu",
+            gridColumns: ["日期", "天气", "最低温度", "最高温度", "风速"],
+            gridData: []
+
+        },
+        mounted: function() {
+            this.getCustomers()
+        },
+        methods: {
+            getCustomers: function() {
+                   var vm = this
+                   var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + this.city + ',china&lang=zh_cn&&APPID=13000c581791f87070bf681c6e5df18e'
+			          vm.$http.get(apiUrl).then((response) => {
+                
+                      vm.$data.gridData = response.data.list
+                       
+
+                     //容易才坑的地方
+                     
+					  // vm.$set(this.gridData, res)  vm.$set('gridData', response.data.list) 都报错 in promise
+                 })
+            },
+            addNew: function() {
+                if (this.city === '') {
+                    window.alert('不能为空')
+                    return
+                }
+                this.getCustomers()
+            }
+        }
+    })
+	
+
+    </script>
+</body>
+
+</html>

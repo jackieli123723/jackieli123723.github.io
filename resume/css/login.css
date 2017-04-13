@@ -1,0 +1,393 @@
+@charset "UTF-8";
+.container-list {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+.container-list .search-box {
+  padding: 10px;
+  margin: 20px 0;
+}
+.container-list .timeline {
+  position: relative;
+  border-left: 1px solid black;
+}
+.container-list .timeline .date {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+  left: 15px;
+  margin: 15px 0;
+}
+.container-list .timeline .date:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  border: 1px solid black;
+  width: 14px;
+}
+.container-list .timeline .article {
+  position: relative;
+  left: 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+.container-list .timeline .article:hover {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.4);
+}
+.container-list .timeline .article a {
+  color: green;
+  text-decoration: none;
+}
+.container-list .timeline .article .article-date {
+  font-weight: 300;
+  font-size: 14px;
+}
+.container-list .timeline .article .dot {
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: green;
+  left: -25.5px;
+  top: calc(50% - 5px);
+}
+
+
+#nodata{
+color: rgba(255,255,255,.5);
+text-align:center;
+margin-top:30px;
+}
+
+#total{
+  color: #FB503B;
+  font-size:20px;
+  padding-left: 4px;
+  padding-right:4px;
+}
+
+.item-box i{
+ font-style:normal;
+
+}
+
+.item-box span{
+ 
+ color: #FB503B;
+ margin-left:4px;
+
+}
+
+.education-timeline{
+  color: rgba(255,255,255,.5);
+}
+
+.education-timeline p strong{
+  color: #FB503B;
+  opacity:.8;
+}
+
+.my-skills{
+  padding-top: 30px;
+  padding-bottom: 50px;
+  overflow: hidden;
+
+}
+
+.my-skills .skills , .my-skills .progress{
+  width:50%;
+  float:left;
+}
+.my-skills .skills h2{
+  margin:25px 0 20px 20px;
+   color:#FB503B;
+   opacity: 0.9;
+}
+.my-skills .skills p{
+  margin:0 0 10px 20px;
+  color:rgba(255,255,255,.5);
+}
+
+
+.my-skills .skills button{
+  background:none;
+  border:3px solid #DD4B39;
+  padding: 10px 30px;
+  color:#DD4B39;
+  margin-left: 40px;
+  margin-top: 10px;
+  outline:none;
+  transition: 0.5s
+  
+}
+
+
+.my-skills .skills button:hover{
+  width:200px;
+  border-radius:10px;
+  background-color:#DD4B39;
+  color:#EEE;
+  font-size:20px;
+  font-family:Tahoma;
+  
+
+}
+
+.my-skills .progress .tec{
+  margin-left:10%;
+}
+
+.my-skills .progress .tec h3{
+  color:#555;
+}
+.my-skills .progress .tec div{
+  background-color: #EEE;
+  height: 25px;
+  border-radius: 10px;
+}
+.my-skills .progress .tec div span{
+  background-color:#DD4B39;
+  height:25px;
+  display: block;
+  width: 80%;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: right;
+  color: #fff;
+  transition: 0.4s
+}
+
+.my-skills .progress .tec div span:hover{
+ background-color: #151a23;
+ width: 100%
+}
+
+.my-skills .progress .tec div span.one{
+  background-color: #DD4B39;
+  height: 25px;
+  display: block;
+  width: 70%;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: right;
+  color: #fff;
+  transition: 0.5s
+
+}
+
+
+.my-skills .progress .tec h3{
+  font-size:16px;
+  color: rgba(255,255,255,.5);
+}
+.my-skills .progress .tec div span.one:hover{
+  background: #67cecd;
+  background: -moz-linear-gradient(left, #67cecd 30%, #eaef91 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(30%, #67cecd), color-stop(100%, #eaef91));
+  background: -webkit-linear-gradient(left, #67cecd 30%, #eaef91 100%);
+  background: -o-linear-gradient(left, #67cecd 30%, #ffa894 100%);
+  background: -ms-linear-gradient(left, #67cecd 30%, #eaef91 100%);
+  background: linear-gradient(to right, #67cecd 30%, #eaef91 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67cecd', endColorstr='#eaef91',GradientType=1 );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -3px 4px rgba(142, 218, 218, 0.4);
+ width: 100%
+}
+.my-skills .progress .tec div span.two{
+  background-color: #DD4B39;
+  height: 25px;
+  display: block;
+  width: 50%;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: right;
+  color: #fff;
+  transition: 0.5s
+}
+.my-skills .progress .tec div span.two:hover{
+  background: #e83d89;
+  background: -moz-linear-gradient(left, #e83d89 30%, #ffa894 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(30%, #e83d89), color-stop(100%, #ffa894));
+  background: -webkit-linear-gradient(left, #e83d89 30%, #ffa894 100%);
+  background: -o-linear-gradient(left, #e83d89 30%, #ffa894 100%);
+  background: -ms-linear-gradient(left, #e83d89 30%, #ffa894 100%);
+  background: linear-gradient(to right, #e83d89 30%, #ffa894 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67cecd', endColorstr='#eaef91',GradientType=1 );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -3px 4px rgba(216, 26, 110, 0.4);
+ width: 100%
+}
+.my-skills .progress .tec div span.three{
+  background-color: #DD4B39;
+  height: 25px;
+  display: block;
+  width: 40%;
+  border-radius: 10px;
+  line-height: 25px;
+  text-align: right;
+  color: #fff;
+  transition: 0.5s
+
+}
+.my-skills .progress .tec div span.three:hover{
+ background-image: linear-gradient(45deg, hotpink, tomato);
+ width: 100%
+}
+
+.bgn {
+	overflow: hidden;
+background-color: rgba(255,255,255,.5);
+	box-shadow: 0 0 200px rgba(255,255,255,.5), 0 0 10px rgba(0, 0, 0, .1);
+	border-radius: 6px;
+}
+
+.login-tit{
+	font-weight:600;
+	padding: 30px 40px 0 40px;
+	font-size: 22px;
+	text-align: left;
+	color:#666;
+}
+.login-tit a{
+	color:#F95344;
+}
+
+
+.padding30{
+	padding: 30px 40px;
+}
+.l{
+	float: left;
+}
+.r{
+	float: right;	
+}
+.error{
+	color:rgb(252, 142, 142);
+	background:rgb(255, 242, 242);
+	padding: 10px;
+	border-radius:4px;
+	font-size:13px;
+	margin-bottom: 20px;
+	text-align:left;
+	display: none;
+}
+.error i{
+	font-size: 16px;
+	margin-right:5px;
+}
+.login-cont{
+	margin:auto;
+	margin-top:100px;
+    margin-bottom:100px;
+  max-width: 400px;
+  min-width: 320px;
+}
+
+.login-cont *{
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box
+
+}
+
+.login-form{
+	padding: 0px;
+	margin: 0px;
+}
+.login-cont-itm{
+    display: table;
+    margin-bottom: 20px;
+    position: relative;
+    height: 50px;
+}
+.login-cont-itm label i{
+	font-size: 18px;
+}
+.login-cont-itm label{
+    position: absolute;
+    left: 14px;
+    top: 10px;
+    height: 20px;
+    line-height:20px;
+    text-align:center;
+    width: 20px;
+    font-size: 28px;
+    z-index:2;
+    color: #cccccc;
+}
+.login-cont-itm input{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index:1;
+
+    font-size: 13px;
+}
+.input-text1{
+    width: 263px;
+    height: 32px;
+    line-height: 32px;
+    border:1px solid #ddd;
+    border-radius: 2px;
+    display: block;
+    padding: 6px 10px;
+    color:#222;
+    font-size:16px;
+    padding-left: 45px;
+    border-radius: 2px;
+    outline: none;
+
+	font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB",
+		"Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun,
+		sans-serif;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1);
+}
+
+.reg-c{
+    padding:20px 0;
+}
+.reg-c a{
+    color:#888;
+}
+.reg-c a:HOVER{
+
+	color:#F95344;
+}
+.regist-success{
+    font-size: 20px;
+    color: #28a3ef;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.email-link-cont{
+    font-size: 14px;
+    text-align: center;
+}
+
+.i_btn2 {
+  display: block;
+  height: 45px;
+  line-height: 45px;
+  margin-top: 15px;
+  border: 0;
+  background: #F95344;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow:inset 0 0 10px #f50, 0 0 5px rgba(0, 0, 0, .1);
+}
+.i_btn2:HOVER {
+	color:#fff;
+	background:#FB503B;
+}

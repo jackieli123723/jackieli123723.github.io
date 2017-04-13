@@ -1,0 +1,335 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml" lang="zh">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="致力于前端开发">
+    <meta name="author" content="380863274@qq.com--lilidong.cn">
+    <title> 李立冬个人简历 -by-vue.js</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="/cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+        <script src="/cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div id="preloader" class="loading-overlay">
+        <div id="loader">&nbsp;</div>
+    </div>
+    <div id="app" v-cloak>
+        <div id="wrap">
+            <div class="navbar navbar-default navbar-static-top is-active ">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".header-collapse">
+                            <span class="sr-only">折叠导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="">
+                            <img width="207" height="50" src="img/logo@2x.png">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse header-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <router-link to="/production">作品</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/skill">技能</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/work">工作</router-link>
+                            </li>
+                            <li>
+                                <router-link to="/education">教育</router-link>
+                            </li>
+                            <li class="visible-xs">
+                                <router-link to="/register">注册</router-link>
+                            </li>
+                            <li class="visible-xs">
+                                <router-link to="/login">登录</router-link>
+                            </li>
+                        </ul>
+                        <div class="navbar-right hidden-xs">
+                            <router-link to="/register" class="btn btn-primary">注册</router-link>
+                            <router-link to="/login" class="btn btn-primary">登录</router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-lines">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="container">
+                <router-view></router-view>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div class="text-muted row credit">
+                    <div class="col-md-5 about">
+                        Copyright (c) 2016 Copyright <a target="_blank" href="http://lilidong.cn">西门互联</a> All Rights Reserved.
+                        <a target="_blank" href="http://lilidong.cn"></a> by
+                        <!-- <a target="_blank" href="http://github.com/Jackieli">Jackieli</a>
+ -->
+                        <a target="_blank" href="http://lilidong.cn" class="link link--mallki">Jackieli<span data-letters="Jackieli"></span><span data-letters="Jackieli"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="particles" class="poster-bg"></div>
+    <template id="production">
+        <div>
+            <div class="row push-down">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row push-down">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-pills">
+                                <li class="active" @click="sortBy('eye')"><a href="javascript:;">最新</a></li>
+                                <li @click="sortBy('comment')"><a href="javascript:;">热门</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" name="q" class="search-box form-control" placeholder="项目名称检索" value="" v-model="searchQuery">
+                </div>
+            </div>
+            <div class="row trick-container">
+                <div v-for="(item, index) in filteredUsers" class="trick-card col-lg-4 col-md-6 col-sm-6 col-xs-12 fadeInUp animated">
+                    <div class="trick-card-inner js-goto-trick">
+                        <a class="trick-card-title" v-bind:href="item.href" target="_blank">
+                            {{item.productionNmae}}
+                        </a>
+                        <div class="trick-card-stats trick-card-by">by <a href="javascript:;">{{item.author}}</a></div>
+                        <div class="trick-card-stats clearfix">
+                            <div class="trick-card-timeago">发布于 {{item.day}}天前 </div>
+                            <div class="trick-card-stat-block"><span class="fa fa-eye"></span> {{item.eye}}</div>
+                            <div class="trick-card-stat-block text-center"><span class="fa fa-comment"></span>{{item.comment}}</div>
+                            <div class="trick-card-stat-block text-right"><span class="fa fa-heart"></span>{{item.heart}}</div>
+                        </div>
+                        <div class="trick-card-tags clearfix">
+                            <a v-for="tag in item.tags" href="javascript:;" class="tag" v-bind:title="tag">
+                                {{tag}}
+                              </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="pagination">
+                            <li class="disabled"><span>&laquo;</span></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="?page=2">2</a></li>
+                            <li><a href="?page=2" rel="next">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </template>
+    <template id="skill">
+        <div class="my-skills">
+            <div class="cont">
+                <div class="skills fadeInLeft animated">
+                    <h2> web前端技能</h2>
+                    <p> 1. 掌握了基本web前端开发技术：HTML、CSS、JavaScript、DOM、BOM、AJAX等，了解不同浏览器上的兼容情况、渲染原理和存在的Bug。</p>
+                    <p> 2. 掌握了网站性能优化、SEO和服务器端开发技术的基础知识。</p>
+                    <p> 3. 学会运用各种web前端开发与测试工具进行辅助开发。</p>
+                    <p> 4. 掌握技术层面的知识，还掌握理论层面的知识，包括代码的可维护性、组件的易用性、分层语义模板和浏览器分级支持等。</p>
+                    <a href="http://lilidong.cn" target="_blank">
+                        <button>联系</button>
+                    </a>
+                </div>
+                <div class="progress fadeInRight animated">
+                    <div class="tec">
+                        <h3>Html5/Css3</h3>
+                        <div>
+                            <span class="one">80% &nbsp;</span>
+                        </div>
+                        <h3>Javascript/Es6/Bable</h3>
+                        <div>
+                            <span class="one">75% &nbsp;</span>
+                        </div>
+                        <h3>Scss/Less/Stylus</h3>
+                        <div>
+                            <span class="one">85% &nbsp;</span>
+                        </div>
+                        <h3>Gulp/Grunt</h3>
+                        <div>
+                            <span class="one">45% &nbsp;</span>
+                        </div>
+                        <h3>PHP</h3>
+                        <div>
+                            <span class="two"> 55% &nbsp;</span>
+                        </div>
+                        <h3>Node</h3>
+                        <div>
+                            <span class="three">43% &nbsp;</span>
+                        </div>
+                        <h3>Mongodb/webpack/vue/react/Angular</h3>
+                        <div>
+                            <span class="three">43% &nbsp;</span>
+                        </div>
+                        <h3>Git</h3>
+                        <div>
+                            <span class="three">63% &nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="work">
+        <div>
+            <div class="row push-down">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                    <div class="row push-down">
+                        <div class="col-lg-12">
+                            <ul class="nav nav-pills">
+                                <p>找到<strong id="total">{{countAllArticles()}}</strong>条记录</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <input v-model='searchQuery' type="text" name="q" placeholder="工作经历关键字检索" value="" class="search-box form-control">
+                </div>
+            </div>
+            <section id="cd-timeline" class="cd-container" v-if='anyArticle()'>
+                <div class="cd-timeline-block animated" v-for='(dateWithArticles, date , index) in searchedArticles' v-bind:class="{ 'fadeInRight': ((index % 2) === 0 ? 0 :1 ) ,'fadeInLeft': ((index % 2) === 0 ? 1 :0 )  }">
+                    <div class="cd-timeline-img cd-picture" v-if='dateWithArticles.length > 0'>
+                        <img v-if="index + 1 == 1" src="img/ilong_logo.png" />
+                        <img v-if="index + 1 == 2" src="img/bly.jpg" />
+                        <img v-if="index + 1 == 3" src="img/dq.jpg" />
+                    </div>
+                    <div class="cd-timeline-content item-box" v-if='dateWithArticles.length > 0'>
+                        <h2 v-if="index + 1 == 1">成都龙渊网络科技有限公司</h2>
+                        <h2 v-if="index + 1 == 2">成都市比邻优信息技术有限公司</h2>
+                        <h2 v-if="index + 1 == 3">成都中科大旗软件有限公司</h2>
+                        <div v-for='article in dateWithArticles'>
+                            <p class="item-box">{{ article.published_at }} -- {{ article.title }}<i>({{article.slug}})</i><span>{{ article.teaser }}</span></p>
+                        </div>
+                        <a href="javascript:;" class="cd-read-more">展开全部</a>
+                        <span class="cd-date">{{ date }}</span>
+                    </div>
+                </div>
+            </section>
+            <p v-else id="nodata">没有找到符和条件的工作记录</p>
+        </div>
+    </template>
+    <template id="education">
+        <div class="row education">
+            <div class="nine columns main-col">
+                <div class="education-timeline">
+                    <ul>
+                        <li class="timeline-event">
+                            <label class="timeline-event-icon"></label>
+                            <div class="timeline-event-copy">
+                                <p class="timeline-event-thumbnail">2007/09-2010/09</p>
+                                <h3>宣汉南坝中学</h3>
+                                <p><strong>Grade A+</strong>
+                            </div>
+                        </li>
+                        <li class="timeline-event">
+                            <label class="timeline-event-icon"></label>
+                            <div class="timeline-event-copy">
+                                <p class="timeline-event-thumbnail">2010/09-2014/09</p>
+                                <h3>西南科技大学</h3>
+                                <h4>管理学学士学位</h4>
+                                <p><strong>Grade A</strong></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="register">
+        <div class="login-cont bgn">
+            <div class="login-tit">
+                <router-link to="/register">注册 西门互联</router-link>
+            </div>
+            <div class="padding30">
+                <div class="login-form" id="form">
+                    <div class="error"><i class="iconfont"></i><span class="errorinfo"></span></div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="text" name="nick" placeholder="昵称" class="input-text1">
+                    </div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="text" name="phone" placeholder="手机" class="input-text1">
+                    </div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="password" name="password" placeholder="密码" class="input-text1">
+                    </div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="password" name="repassword" placeholder="确认密码" class="input-text1">
+                    </div>
+                    <div><a href="javascript:;" id="subbtn" class="i_btn i_btn2">注册</a></div>
+                    <i class="sp10"></i>
+                    <div class="reg-c">
+                        <router-link to="/login" class="r">已注册？ 登录</router-link>
+                    </div>
+                    <i class="sp20"></i>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="login">
+        <div class="login-cont bgn">
+            <div class="login-tit">
+                <router-link to="/login">登录 西门互联</router-link>
+            </div>
+            <div class="padding30">
+                <div class="login-form" id="form">
+                    <div class="error"><i class="iconfont"></i><span class="errorinfo"></span></div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="text" name="nick" placeholder="昵称/邮箱" class="input-text1">
+                    </div>
+                    <div class="login-cont-itm">
+                        <label for="inputEmail" class="login-label"><i class="iconfont"></i></label>
+                        <input type="password" name="password" placeholder="密码" class="input-text1">
+                    </div>
+                    <div><a href="javascript:;" class="i_btn i_btn2" id="subBtn">立即登录</a></div>
+                    <i class="sp20"></i>
+                    <div class="reg-c">
+                        <router-link to="/register" class="r">注册账号</router-link>
+                    </div>
+                    <i class="sp20"></i>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/particles.min.js"></script>
+    <script src="js/vendor/jquery.nicescroll.js"></script>
+    <script src="js/vendor/main.js"></script>
+    <script src="js/vendor/vue2.0.3.js"></script>
+    <script src="js/vendor/vue-router2.0.0.js"></script>
+    <script src="js/vendor/vue-main.js"></script>
+</body>
+
+</html>

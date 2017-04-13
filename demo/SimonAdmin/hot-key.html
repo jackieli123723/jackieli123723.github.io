@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">快捷键</a></div>
+        <div class="setting__main___2osj-" style="padding-left: 20px; padding-top: 20px;">
+            <div class="block__block___XXJ38">
+                <div class="block__inner___1fFml">
+                    <h3 class="block__header___1XFwR"><!-- react-text: 13835 -->对话页<!-- /react-text --><!-- react-text: 13836 --><!-- /react-text --></h3>
+                    <p class="block__description___1mmCY">输入框激活后，输入模式</p>
+                </div>
+                <div class="block__content-wrap___X2vaE">
+                    <div class="block__content___1qobc">
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Enter</span><span class="hot-key__desc___ARFlC">发送消息</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Ctrl</span><span style="color: rgb(90, 105, 120); margin-left: 6px; margin-right: 6px;">+</span><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Enter</span><span class="hot-key__desc___ARFlC">发送消息</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Shift</span><span style="color: rgb(90, 105, 120); margin-left: 6px; margin-right: 6px;">+</span><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Enter</span><span class="hot-key__desc___ARFlC">文字换行</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Esc</span><span class="hot-key__desc___ARFlC">退出输入模式</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="block__block___XXJ38">
+                <div class="block__inner___1fFml">
+                    <h3 class="block__header___1XFwR"><!-- react-text: 13859 -->对话页<!-- /react-text --><!-- react-text: 13860 --><!-- /react-text --></h3>
+                    <p class="block__description___1mmCY">输入框未激活</p>
+                </div>
+                <div class="block__content-wrap___X2vaE">
+                    <div class="block__content___1qobc">
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">R</span><span class="hot-key__desc___ARFlC">激活输入框</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Shift</span><span style="color: rgb(90, 105, 120); margin-left: 6px; margin-right: 6px;">+</span><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">R</span><span class="hot-key__desc___ARFlC">激活输入框，并选择「内部消息」模式</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">T</span><span class="hot-key__desc___ARFlC">给当前顾客添加标签</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">N</span><span class="hot-key__desc___ARFlC">给当前顾客添加备注</span></div>
+                        <div class="hot-key__item___3ZIaR"><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">Shift</span><span style="color: rgb(90, 105, 120); margin-left: 6px; margin-right: 6px;">+</span><span style="display: inline-block; text-align: center; padding: 9px 12px; height: auto; opacity: 0.9; border-radius: 4px; background-color: rgb(255, 255, 255); box-shadow: rgba(52, 63, 75, 0.0980392) 0px 2px 4px 0px, rgb(233, 236, 238) 0px -2px 0px 0px inset, rgb(242, 244, 245) 0px -1px 0px 0px inset; margin-right: 0px; line-height: initial; color: rgb(150, 159, 170); min-width: 23px; border: 1px solid rgb(212, 218, 221);">X</span><span class="hot-key__desc___ARFlC">结束当前对话</span></div>
+                    </div>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

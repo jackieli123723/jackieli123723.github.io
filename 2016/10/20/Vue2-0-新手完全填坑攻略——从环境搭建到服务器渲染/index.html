@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染 | 致力于web前端开发,前端学习交流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Jinkey原创感谢 showonne、yubang 技术指导Demo 地址: http://demo.jinkey.io/vue2源码:https://github.com/Jinkeycode/vue2-example">
+<meta name="keywords" content="Vue,NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染">
+<meta property="og:url" content="https://jackieli123723.github.io/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/index.html">
+<meta property="og:site_name" content="致力于web前端开发,前端学习交流">
+<meta property="og:description" content="Jinkey原创感谢 showonne、yubang 技术指导Demo 地址: http://demo.jinkey.io/vue2源码:https://github.com/Jinkeycode/vue2-example">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-17-43.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-10-59-15.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-36-06.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-05-21.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-04-54-29.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-15-12.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-43-24.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-44-22.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-48-35.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-47-39.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-49-05.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-49-55.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-58-14.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-35-12.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-32-42.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-35-51.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-22-41-49.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-10-33.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-11-14.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-49-24.jpg">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-32-49.png">
+<meta property="og:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-10-00-51-43.png">
+<meta property="og:updated_time" content="2016-10-20T07:51:20.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染">
+<meta name="twitter:description" content="Jinkey原创感谢 showonne、yubang 技术指导Demo 地址: http://demo.jinkey.io/vue2源码:https://github.com/Jinkeycode/vue2-example">
+<meta name="twitter:image" content="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-17-43.png">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+
+	
+		<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+			<input type="text" id="st-search-input" class="st-search-input_my st-default-search-input" maxlength="30" placeholder="Search" />
+		</form>
+	
+
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/youngzhaojia/youngzhaojia.github.io/master/photo/avatar/young.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jackieli</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">致力于web前端开发</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">博客首页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/jackieli123723" title="github">github</a>
+					        
+								<a class="website" target="_blank" href="http://demo.lilidong.cn/" title="website">website</a>
+					        
+								<a class="resume" target="_blank" href="http://www.lilidong.cn/resume/index.html" title="resume">resume</a>
+					        
+								<a class="mail" target="_blank" href="mailto:380863274@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/IIFE/" style="font-size: 10px;">IIFE</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Vue/" style="font-size: 20px;">Vue</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/call-apply/" style="font-size: 10px;">call&&apply</a> <a href="/tags/dns/" style="font-size: 10px;">dns</a> <a href="/tags/echarts/" style="font-size: 10px;">echarts</a> <a href="/tags/gitbook/" style="font-size: 10px;">gitbook</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/i5ting-toc/" style="font-size: 10px;">i5ting_toc</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/localStorage/" style="font-size: 13.33px;">localStorage</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/md5加密传输/" style="font-size: 10px;">md5加密传输</a> <a href="/tags/node-js/" style="font-size: 13.33px;">node.js</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/npm/" style="font-size: 13.33px;">npm</a> <a href="/tags/props/" style="font-size: 10px;">props</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/vue-echart/" style="font-size: 13.33px;">vue-echart</a> <a href="/tags/vue-model/" style="font-size: 13.33px;">vue-model</a> <a href="/tags/vue-resource/" style="font-size: 10px;">vue-resource</a> <a href="/tags/vue-js/" style="font-size: 16.67px;">vue.js</a> <a href="/tags/vue全家桶/" style="font-size: 13.33px;">vue全家桶</a> <a href="/tags/web前端/" style="font-size: 10px;">web前端</a> <a href="/tags/web安全/" style="font-size: 10px;">web安全</a> <a href="/tags/www/" style="font-size: 10px;">www</a> <a href="/tags/yarn/" style="font-size: 10px;">yarn</a> <a href="/tags/人机验证/" style="font-size: 10px;">人机验证</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jackieli</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="nullhttps://raw.githubusercontent.com/youngzhaojia/youngzhaojia.github.io/master/photo/avatar/young.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jackieli</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">致力于web前端开发</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客首页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/jackieli123723" title="github">github</a>
+			        
+						<a class="website" target="_blank" href="http://demo.lilidong.cn/" title="website">website</a>
+			        
+						<a class="resume" target="_blank" href="http://www.lilidong.cn/resume/index.html" title="resume">resume</a>
+			        
+						<a class="mail" target="_blank" href="mailto:380863274@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/" class="article-date">
+  	<time datetime="2016-10-20T07:19:43.000Z" itemprop="datePublished">2016-10-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+         <!-- Table of Contents -->
+          <p class="show-toc-btn">
+              <span class="btn-bg"></span>
+              <span class="btn-text">文章导航</span>
+          </p>
+        
+        <div id="toc" class="toc-article">
+        <span class="toc-close" title="隐藏导航">×</span>
+        <!-- <strong class="toc-title">文章目录</strong> -->
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-Vue"><span class="toc-number">1.</span> <span class="toc-text">什么是 Vue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue2-0-推荐开发环境"><span class="toc-number">2.</span> <span class="toc-text">Vue2.0 推荐开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装环境"><span class="toc-number">3.</span> <span class="toc-text">安装环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装brew"><span class="toc-number">3.1.</span> <span class="toc-text">安装brew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-nodejs"><span class="toc-number">3.2.</span> <span class="toc-text">安装 nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取nodejs模块安装目录访问权限"><span class="toc-number">3.3.</span> <span class="toc-text">获取nodejs模块安装目录访问权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装淘宝镜像"><span class="toc-number">3.4.</span> <span class="toc-text">安装淘宝镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装webpack"><span class="toc-number">3.5.</span> <span class="toc-text">安装webpack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装vue脚手架"><span class="toc-number">3.6.</span> <span class="toc-text">安装vue脚手架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在硬盘上找一个文件夹放工程用的，在终端中进入该目录"><span class="toc-number">3.7.</span> <span class="toc-text">在硬盘上找一个文件夹放工程用的，在终端中进入该目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#根据模板创建项目"><span class="toc-number">3.8.</span> <span class="toc-text">根据模板创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cd-命令进入创建的工程目录"><span class="toc-number">3.9.</span> <span class="toc-text">cd 命令进入创建的工程目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装项目依赖"><span class="toc-number">4.</span> <span class="toc-text">安装项目依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-vue-路由模块vue-router和网络请求模块vue-resource"><span class="toc-number">4.1.</span> <span class="toc-text">安装 vue 路由模块vue-router和网络请求模块vue-resource</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动项目"><span class="toc-number">4.2.</span> <span class="toc-text">启动项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#填坑-以下坑可能由于-vue2-0-导致其他相关编译打包工具没更新导致的"><span class="toc-number">4.2.1.</span> <span class="toc-text">填坑(以下坑可能由于 vue2.0 导致其他相关编译打包工具没更新导致的)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解决办法概述"><span class="toc-number">4.2.2.</span> <span class="toc-text">解决办法概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终于可以启动项目了"><span class="toc-number">4.2.3.</span> <span class="toc-text">终于可以启动项目了</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始-Vue-之旅"><span class="toc-number">5.</span> <span class="toc-text">开始 Vue 之旅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打开-IDE"><span class="toc-number">5.1.</span> <span class="toc-text">打开 IDE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用官网文档学习基础"><span class="toc-number">5.2.</span> <span class="toc-text">使用官网文档学习基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来玩玩组件"><span class="toc-number">5.3.</span> <span class="toc-text">来玩玩组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用路由搭建单页应用"><span class="toc-number">5.4.</span> <span class="toc-text">使用路由搭建单页应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给页面加点动态数据"><span class="toc-number">5.5.</span> <span class="toc-text">给页面加点动态数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#来拯救如此难看的界面"><span class="toc-number">5.6.</span> <span class="toc-text">来拯救如此难看的界面</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译"><span class="toc-number">6.</span> <span class="toc-text">编译</span></a></li></ol>
+        </div>
+        
+
+        <blockquote>
+<p>Jinkey原创<br>感谢 <a href="https://github.com/showonne" target="_blank" rel="external">showonne</a>、<a href="https://github.com/yubang" target="_blank" rel="external">yubang</a> 技术指导<br><strong>Demo 地址:</strong><br> <a href="http://demo.jinkey.io/vue2" target="_blank" rel="external">http://demo.jinkey.io/vue2</a><br><strong>源码:</strong><br><a href="https://github.com/Jinkeycode/vue2-example" target="_blank" rel="external">https://github.com/Jinkeycode/vue2-example</a><br><a id="more"></a></p>
+<h2 id="什么是-Vue"><a href="#什么是-Vue" class="headerlink" title="什么是 Vue"></a>什么是 Vue</h2><p>Vue 是一个前端框架，特点是</p>
+</blockquote>
+<p><strong>数据绑定</strong></p>
+<blockquote>
+<p>比如你改变一个输入框 Input 标签的值，会<strong>自动同步</strong>更新到页面上其他绑定该输入框的组件的值<br>￼<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-17-43.png" alt="数据绑定"></p>
+</blockquote>
+<p><strong>组件化</strong></p>
+<blockquote>
+<p>页面上小到一个按钮都可以是一个单独的文件.vue，这些小组件直接可以像乐高积木一样通过互相引用而组装起来</p>
+</blockquote>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-10-59-15.jpg" alt="组件化"><br>￼</p>
+<h2 id="Vue2-0-推荐开发环境"><a href="#Vue2-0-推荐开发环境" class="headerlink" title="Vue2.0 推荐开发环境"></a>Vue2.0 推荐开发环境</h2><p>￼<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-36-06.png" alt="开发环境解释"></p>
+<p>Homebrew 1.0.6(Mac)、Node.js 6.7.0、npm 3.10.3、webpack 1.13.2、vue-cli 2.4.0、Atom 1.10.2</p>
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p>打开终端运行以下命令</p>
+<h3 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a>安装brew</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</div></pre></td></tr></table></figure>
+<h3 id="安装-nodejs"><a href="#安装-nodejs" class="headerlink" title="安装 nodejs"></a>安装 nodejs</h3><blockquote>
+<p>brew install nodejs</p>
+</blockquote>
+<p>用 npm install npm@3.10.3 更新 npm 版本报错:</p>
+<blockquote>
+<p>(node:42) fs: re-evaluating native module sources is not supported.</p>
+</blockquote>
+<p>解决办法:</p>
+<p>在官网下载6.70的安装包再安装一次(刚刚相当于帮你配置好环境变量，现在再安装一次升级到最新的 npm)</p>
+<blockquote>
+<ul>
+<li>好像以前官网的安装包不会自动配置环境变量的，由于我电脑上之前安装过 nodejs 所以环境变量已经配置好了，不知道现在的安装包会不会自动配置环境变量。</li>
+</ul>
+</blockquote>
+<p>Windows 下直接下载安装包即可</p>
+<h3 id="获取nodejs模块安装目录访问权限"><a href="#获取nodejs模块安装目录访问权限" class="headerlink" title="获取nodejs模块安装目录访问权限"></a>获取nodejs模块安装目录访问权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod -R 777 /usr/local/lib/node_modules/</div></pre></td></tr></table></figure>
+<h3 id="安装淘宝镜像"><a href="#安装淘宝镜像" class="headerlink" title="安装淘宝镜像"></a>安装淘宝镜像</h3><blockquote>
+<p>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
+</blockquote>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><blockquote>
+<p>cnpm install webpack -g</p>
+</blockquote>
+<h3 id="安装vue脚手架"><a href="#安装vue脚手架" class="headerlink" title="安装vue脚手架"></a>安装vue脚手架</h3><blockquote>
+<p>npm install vue-cli -g</p>
+</blockquote>
+<h3 id="在硬盘上找一个文件夹放工程用的，在终端中进入该目录"><a href="#在硬盘上找一个文件夹放工程用的，在终端中进入该目录" class="headerlink" title="在硬盘上找一个文件夹放工程用的，在终端中进入该目录"></a>在硬盘上找一个文件夹放工程用的，在终端中进入该目录</h3><p>Mac</p>
+<blockquote>
+<p>cd 目录路径</p>
+</blockquote>
+<h3 id="根据模板创建项目"><a href="#根据模板创建项目" class="headerlink" title="根据模板创建项目"></a>根据模板创建项目</h3><blockquote>
+<p>vue init webpack-simple 工程名字&lt;工程名字不能用中文&gt;</p>
+</blockquote>
+<p>或者创建 vue1.0 的项目</p>
+<blockquote>
+<p>vue init webpack-simple#1.0 工程名字&lt;工程名字不能用中文&gt;</p>
+</blockquote>
+<p>会有一些初始化的设置，如下输入:</p>
+<p><code>Target directory exists. Continue? (Y/n)</code>直接回车默认(然后会下载 vue2.0模板，这里可能需要连代理)<br><code>Project name (vue-test)</code>直接回车默认<br><code>Project description (A Vue.js project)</code>  直接回车默认<br><code>Author</code> 写你自己的名字</p>
+<h3 id="cd-命令进入创建的工程目录"><a href="#cd-命令进入创建的工程目录" class="headerlink" title="cd 命令进入创建的工程目录"></a>cd 命令进入创建的工程目录</h3><p>工程目录如图所示:</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-05-21.jpg" alt=""></p>
+<h2 id="安装项目依赖"><a href="#安装项目依赖" class="headerlink" title="安装项目依赖"></a>安装项目依赖</h2><p>一定要从官方仓库安装，npm 服务器在国外所以这一步安装速度会很慢。</p>
+<blockquote>
+<p>npm install</p>
+</blockquote>
+<p><strong>不要从国内镜像cnpm安装</strong>(会导致后面缺了很多依赖库)</p>
+<blockquote>
+<p>cnpm install</p>
+</blockquote>
+<h3 id="安装-vue-路由模块vue-router和网络请求模块vue-resource"><a href="#安装-vue-路由模块vue-router和网络请求模块vue-resource" class="headerlink" title="安装 vue 路由模块vue-router和网络请求模块vue-resource"></a>安装 vue 路由模块<code>vue-router</code>和网络请求模块<code>vue-resource</code></h3><blockquote>
+<p>cnpm install vue-router vue-resource –save</p>
+</blockquote>
+<h3 id="启动项目"><a href="#启动项目" class="headerlink" title="启动项目"></a>启动项目</h3><blockquote>
+<p>npm run dev</p>
+</blockquote>
+<h4 id="填坑-以下坑可能由于-vue2-0-导致其他相关编译打包工具没更新导致的"><a href="#填坑-以下坑可能由于-vue2-0-导致其他相关编译打包工具没更新导致的" class="headerlink" title="填坑(以下坑可能由于 vue2.0 导致其他相关编译打包工具没更新导致的)"></a><strong>填坑(以下坑可能由于 vue2.0 导致其他相关编译打包工具没更新导致的)</strong></h4><blockquote>
+<p><strong>【重点】后来发现这些坑是由于 npm 不是最新的版本3.10.2， 用 npm 3.9.5就会出现以下坑</strong><br>解决办法: 请运行以下命令<br><strong>npm update -g</strong></p>
+</blockquote>
+<p>报错</p>
+<blockquote>
+<p>Error: Cannot find module ‘opn’<br>Error: Cannot find module ‘webpack-dev-middleware’<br>Error: Cannot find module ‘express’<br>Error: Cannot find module ‘compression’<br>Error: Cannot find module ‘sockjs’<br>Error: Cannot find module ‘spdy’<br>Error: Cannot find module ‘http-proxy-middleware’<br>Error: Cannot find module ‘serve-index’</p>
+</blockquote>
+<p>如果你用的是老版本的 vue-cli 还可能报其他错误，需要更新一下 vue-cli </p>
+<blockquote>
+<p>npm update vue-cli</p>
+</blockquote>
+<p>然后可以查看一下当前全局 vue-cli 的版本</p>
+<blockquote>
+<p>npm view vue-cli</p>
+</blockquote>
+<p>安装一下这个依赖到工程开发环境</p>
+<blockquote>
+<p>cnpm install opn –save-dev<br>cnpm install webpack-dev-middleware –save-dev<br>cnpm install express –save-dev<br>cnpm install compression –save-dev<br>cnpm install sockjs –save-dev<br>cnpm install spdy –save-dev<br>cnpm install http-proxy-middleware –save-dev<br>cnpm install serve-index –save-dev<br>cnpm install connect-history-api-fallback –save-dev</p>
+</blockquote>
+<p>再启动项目，报错</p>
+<blockquote>
+<p>ERROR in ./src/main.js<br>Module build failed: Error: Cannot find module ‘babel-runtime/helpers/typeof’<br>at Function.Module._resolveFilename (module.js:440:15)<br>at Function.Module._load (module.js:388:25)<br>at Module.require (module.js:468:17)<br>at require (internal/module.js:20:19)<br>at Object.<anonymous> (/Volumes/MacStorage/Coding/Web/vue-test/node_modules/.6.17.0@babel-core/lib/transformation/file/index.js:6:16)<br>at Module._compile (module.js:541:32)<br>at Object.Module._extensions..js (module.js:550:10)<br>at Module.load (module.js:458:32)<br>at tryModuleLoad (module.js:417:12)<br>at Function.Module._load (module.js:409:3)<br>@ multi main<br>ERROR in ./~/.2.1.0-beta.8@webpack-dev-server/client/socket.js<br>Module not found: Error: Can’t resolve ‘sockjs-client’ in ‘/Volumes/MacStorage/Coding/Web/vue-test/node_modules/.2.1.0-beta.8@webpack-dev-server/client’<br>@ ./~/.2.1.0-beta.8@webpack-dev-server/client/socket.js 1:13-37<br>@ ./~/.2.1.0-beta.8@webpack-dev-server/client?<a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a><br>@ multi main</anonymous></p>
+</blockquote>
+<p>安装一下 babel-runtime</p>
+<blockquote>
+<p>cnpm install babel-helpers –save-dev</p>
+</blockquote>
+<p>启动项目，再次报错</p>
+<blockquote>
+<p>Module build failed: Error: Cannot find module ‘babel-helpers’<br>Module build failed: Error: Cannot find module ‘babel-traverse’<br>Module build failed: Error: Cannot find module ‘json5’<br>Module build failed: Error: Cannot find module ‘babel-generator’<br>Module build failed: Error: Cannot find module ‘detect-indent’<br>Module build failed: Error: Cannot find module ‘jsesc’</p>
+</blockquote>
+<p>找不到依赖那就再安装一下</p>
+<blockquote>
+<p>cnpm install babel-helpers –save-dev<br>cnpm install babel-traverse –save-dev<br>cnpm install json5 –save-dev<br>.<strong>..不写了，请把全部把旧的环境全部清除，更新到最新版本</strong></p>
+</blockquote>
+<h4 id="解决办法概述"><a href="#解决办法概述" class="headerlink" title="解决办法概述"></a>解决办法概述</h4><p>遇到</p>
+<blockquote>
+<p>Module build failed: Error: Cannot find module ‘模块名’</p>
+</blockquote>
+<p>那就安装</p>
+<blockquote>
+<p>cnpm install 模块名 –save-dev(关于环境的，表现为npm run dev 启动不了)<br>cnpm install 模块名 –save(关于项目的，比如main.js，表现为npm run dev 成功之后控制台报错)<br>比如escape-string-regexp、strip-ansi、has-ansi、is-finite、emojis-list</p>
+</blockquote>
+<h4 id="终于可以启动项目了"><a href="#终于可以启动项目了" class="headerlink" title="终于可以启动项目了"></a>终于可以启动项目了</h4><p>输入完命令会自动启动浏览器，如果默认打开 IE 不行</p>
+<blockquote>
+<p>npm run dev</p>
+</blockquote>
+<p>自动启动浏览器就会看到这 帅帅的界面了。<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-04-54-29.png" alt=""></p>
+<h2 id="开始-Vue-之旅"><a href="#开始-Vue-之旅" class="headerlink" title="开始 Vue 之旅"></a>开始 Vue 之旅</h2><h3 id="打开-IDE"><a href="#打开-IDE" class="headerlink" title="打开 IDE"></a>打开 IDE</h3><p>推荐 Atom 打开项目，需要安装 Vue 语法高亮的插件</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-15-12.jpg" alt=""></p>
+<h3 id="使用官网文档学习基础"><a href="#使用官网文档学习基础" class="headerlink" title="使用官网文档学习基础"></a>使用官网文档学习基础</h3><p>我们来看官网的一个例子，(中文文档请自行上网搜索)</p>
+<p>￼<img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-43-24.jpg" alt=""></p>
+<p>打开 工程目录下的 App.vue</p>
+<p>template 写 html，script写 js，style写样式</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-44-22.jpg" alt=""></p>
+<p>为了方便叙述，我们把官网例子写在同一个组件内</p>
+<p>这里有两个坑:</p>
+<p><strong>第一</strong>。一个组件下只能有一个并列的 div，可以这么写，所以复制官网示例的时候只要复制 div 里面的内容就好。</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-48-35.jpg" alt=""></p>
+<p>但是不能这样写:</p>
+<p>￼<img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-47-39.jpg" alt=""></p>
+<p><strong>第二</strong>。数据要写在 return 里面而不是像文档那样子写</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-49-05.jpg" alt=""></p>
+<p>错误的写法:</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-49-55.jpg" alt=""></p>
+<p>这样子可以自己啃完官网文档组件之前的部分了。</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-11-58-14.png" alt=""></p>
+<h3 id="来玩玩组件"><a href="#来玩玩组件" class="headerlink" title="来玩玩组件"></a>来玩玩组件</h3><p>前面讲得基本上都是各种常用组件的数据绑定，下面还得说说的是 Vue 的组件的使用。</p>
+<p>在工程目录<code>/src</code>下创建<code>component</code>文件夹，并在<code>component</code>文件夹下创建一个 <code>firstcomponent.vue</code>并写仿照 App.vue 的格式和前面学到的知识写一个组件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"firstcomponent"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>I am a title.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span> written by &#123;&#123; author &#125;&#125; <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">export default &#123;</div><div class="line">data () &#123;</div><div class="line">return &#123;</div><div class="line">author: "微信公众号 jinkey-love"</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>duang… 不能按官网文档那样子叫我做就做，我得先试试再告诉你，我做完效果是这样子的，希望观众做完也是这样子。(迷之微笑 )</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-35-12.jpg" alt=""></p>
+<p>然后在 App.vue 使用组件 ( 因为在 <code>index.html</code> 里面定义了<div id="app"></div>所以就以这个组件作为主入口，方便 )</p>
+<p><strong>第一步，引入</strong>。在<code>&lt;script&gt;&lt;/script&gt;</code>标签内的第一行写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> firstcomponent <span class="keyword">from</span> <span class="string">'./component/firstcomponent.vue'</span></div></pre></td></tr></table></figure>
+<p><strong>第二步，注册</strong>。在<code>&lt;script&gt;&lt;/script&gt;</code>标签内的 data 代码块后面加上 components: { firstcomponent }。<strong>记得中间加英文逗号!!!</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">data () &#123;</div><div class="line"><span class="keyword">return</span> &#123;</div><div class="line"><span class="attr">msg</span>: <span class="string">'Hello Vue!'</span></div><div class="line">&#125;</div><div class="line">&#125;,</div><div class="line"><span class="attr">components</span>: &#123; firstcomponent &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>第三步，使用</strong>。</p>
+<p>在<code>&lt;template&gt;&lt;/template&gt;</code>内加上<firstcomponent></firstcomponent></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">firstcomponent</span>&gt;</span><span class="tag">&lt;/<span class="name">firstcomponent</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>完成后的代码：</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-32-42.jpg" alt=""></p>
+<p>这时候看看浏览器上的 <code>http://localhost:8080/</code> 页面(之前打开过就会自动刷新)，如果你没看到效果是因为你没有对 <code>App.vue</code> 和 <code>firstcomponent.vue</code> 进行保存操作，保存后页面会自动刷新。<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-06-12-35-51.png" alt=""></p>
+<h3 id="使用路由搭建单页应用"><a href="#使用路由搭建单页应用" class="headerlink" title="使用路由搭建单页应用"></a>使用路由搭建单页应用</h3><p>之前已经通过命令安装了vue-router</p>
+<blockquote>
+<p>cnpm install vue-router –save</p>
+</blockquote>
+<p>在<code>webpack.config.js</code>加入别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line"><span class="attr">alias</span>: &#123;<span class="attr">vue</span>: <span class="string">'vue/dist/vue.js'</span>&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为什么要加 alias 配置项？其作用可以在文档中有相应的描述:<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-22-41-49.jpg" alt=""></p>
+<p>修改完之后的<code>webpack.config.js</code>是这样子的:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="attr">entry</span>: <span class="string">'./src/main.js'</span>,</div><div class="line"><span class="attr">output</span>: &#123;</div><div class="line"><span class="attr">path</span>: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line"><span class="attr">publicPath</span>: <span class="string">'/dist/'</span>,</div><div class="line"><span class="attr">filename</span>: <span class="string">'build.js'</span></div><div class="line">&#125;,</div><div class="line"><span class="attr">resolveLoader</span>: &#123;</div><div class="line"><span class="attr">root</span>: path.join(__dirname, <span class="string">'node_modules'</span>),</div><div class="line">&#125;,</div><div class="line"><span class="attr">module</span>: &#123;</div><div class="line"><span class="attr">loaders</span>: [</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.vue$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'vue'</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.js$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'babel'</span>,</div><div class="line"><span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.(png|jpg|gif|svg)$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'file'</span>,</div><div class="line"><span class="attr">query</span>: &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">'[name].[ext]?[hash]'</span></div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">]</div><div class="line">&#125;,</div><div class="line"><span class="attr">resolve</span>: &#123;</div><div class="line"><span class="attr">alias</span>: &#123;<span class="attr">vue</span>: <span class="string">'vue/dist/vue.js'</span>&#125;</div><div class="line">&#125;,</div><div class="line"><span class="attr">devServer</span>: &#123;</div><div class="line"><span class="attr">historyApiFallback</span>: <span class="literal">true</span>,</div><div class="line"><span class="attr">noInfo</span>: <span class="literal">true</span></div><div class="line">&#125;,</div><div class="line"><span class="attr">devtool</span>: <span class="string">'#eval-source-map'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line"><span class="built_in">module</span>.exports.devtool = <span class="string">'#source-map'</span></div><div class="line"><span class="comment">// http://vue-loader.vuejs.org/en/workflow/production.html</span></div><div class="line"><span class="built_in">module</span>.exports.plugins = (<span class="built_in">module</span>.exports.plugins || []).concat([</div><div class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line"><span class="string">'process.env'</span>: &#123;</div><div class="line"><span class="attr">NODE_ENV</span>: <span class="string">'"production"'</span></div><div class="line">&#125;</div><div class="line">&#125;),</div><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line"><span class="attr">compress</span>: &#123;</div><div class="line"><span class="attr">warnings</span>: <span class="literal">false</span></div><div class="line">&#125;</div><div class="line">&#125;)</div><div class="line">])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再按之前的方法写一个组件 secondcomponent.vue</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"secondcomponent"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>I am another page<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span> written by &#123;&#123; author &#125;&#125; <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 感谢 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/showonne"</span>&gt;</span>showonne<span class="tag">&lt;/<span class="name">a</span>&gt;</span>大神的技术指导<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">data() &#123;</div><div class="line"><span class="keyword">return</span> &#123;</div><div class="line"><span class="attr">author</span>: <span class="string">"微信公众号 jinkey-love"</span>,</div><div class="line"><span class="attr">articles</span>: [],</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这时候修改 main.js，引入并注册 <code>vue-router</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">"vue-router"</span>;</div><div class="line">Vue.use(VueRouter);</div></pre></td></tr></table></figure>
+<p>并且配置路由规则和 app 启动配置项加上 router，旧版的 router.map 方法在 <code>vue-router 2.0</code> 已经不能用了。修改后的<code>main.js</code>如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></div><div class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">"vue-router"</span>;</div><div class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">'vue-resource'</span></div><div class="line"></div><div class="line"><span class="comment">//开启debug模式</span></div><div class="line">Vue.config.debug = <span class="literal">true</span>;</div><div class="line"></div><div class="line">Vue.use(VueRouter);</div><div class="line">Vue.use(VueResource);</div><div class="line"></div><div class="line"><span class="comment">// 定义组件, 也可以像教程之前教的方法从别的文件引入</span></div><div class="line"><span class="keyword">const</span> First = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;&lt;h2&gt;我是第 1 个子页面&lt;/h2&gt;&lt;/div&gt;'</span> &#125;</div><div class="line"><span class="keyword">import</span> secondcomponent <span class="keyword">from</span> <span class="string">'./component/secondcomponent.vue'</span></div><div class="line"></div><div class="line"><span class="comment">// 创建一个路由器实例</span></div><div class="line"><span class="comment">// 并且配置路由规则</span></div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line"><span class="attr">mode</span>: <span class="string">'history'</span>,</div><div class="line"><span class="attr">base</span>: __dirname,</div><div class="line"><span class="attr">routes</span>: [</div><div class="line">&#123;</div><div class="line"><span class="attr">path</span>: <span class="string">'/first'</span>,</div><div class="line"><span class="attr">component</span>: First</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">path</span>: <span class="string">'/second'</span>,</div><div class="line"><span class="attr">component</span>: secondcomponent</div><div class="line">&#125;</div><div class="line">]</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// 现在我们可以启动应用了！</span></div><div class="line"><span class="comment">// 路由器会创建一个 App 实例，并且挂载到选择符 #app 匹配的元素上。</span></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</div><div class="line"><span class="attr">router</span>: router,</div><div class="line"><span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</div><div class="line">&#125;).$mount(<span class="string">'#app'</span>)</div></pre></td></tr></table></figure>
+<p>这样子改完再打开浏览器看看。<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-10-33.png" alt=""></p>
+<p>点击那两个链接试试，会发现<code>&lt;router-view class=&quot;view&quot;&gt;&lt;/router-view&gt;</code>的内容已经展示出来，同时注意<strong>浏览器地址已经变更</strong>。<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-11-14.png" alt=""></p>
+<p>另外，也可以把 App.vue 的内容写在 main.js 也是可以的不过不建议这么做<br><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-49-24.jpg" alt=""></p>
+<p>如果你使用 vue1.0和0.7版本的 vue-router，请参照下面这个教程, 他整个系列都不错的，当然仅限于 vue1.0 :</p>
+<blockquote>
+<p><a href="http://guowenfh.github.io/2016/03/28/vue-webpack-06-router/" target="_blank" rel="external">http://guowenfh.github.io/2016/03/28/vue-webpack-06-router/</a></p>
+</blockquote>
+<h3 id="给页面加点动态数据"><a href="#给页面加点动态数据" class="headerlink" title="给页面加点动态数据"></a>给页面加点动态数据</h3><p>这时候的页面都是静态的(数据在写程序的时候已经固定了不能修改)，而每个应用基本上都会请求外部数据以动态改变页面内容。对应有一个库叫 <code>vue-resource</code> 帮我们解决这个问题。</p>
+<p>使用命令行安装</p>
+<blockquote>
+<p>cnpm install vue-resource –save</p>
+</blockquote>
+<p>在 main.js 引入并注册 <code>vue-resource</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">'vue-resource'</span></div><div class="line">Vue.use(VueResource);</div></pre></td></tr></table></figure>
+<p>我们在 secondcomponent.vue 上来动态加载数据</p>
+<p>添加一个列表:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"article in articles"</span>&gt;</span></div><div class="line">&#123;&#123;article.title&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在 data 里面加入数组 articles 并赋值为[]<br>然后在 data 后面加入加入钩子函数 <code>mounted</code>(详细请参照官方文档关于 vue 生命周期的解析)，<strong>data 和 mount 中间记得记得加逗号</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">mounted: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">this</span>.$http.jsonp(<span class="string">'https://api.douban.com/v2/movie/top250?count=10'</span>, &#123;&#125;, &#123;</div><div class="line"><span class="attr">headers</span>: &#123;</div><div class="line"></div><div class="line">&#125;,</div><div class="line"><span class="attr">emulateJSON</span>: <span class="literal">true</span></div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line"><span class="comment">// 这里是处理正确的回调</span></div><div class="line"></div><div class="line"><span class="keyword">this</span>.articles = response.data.subjects</div><div class="line"><span class="comment">// this.articles = response.data["subjects"] 也可以</span></div><div class="line"></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line"><span class="comment">// 这里是处理错误的回调</span></div><div class="line"><span class="built_in">console</span>.log(response)</div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里使用的是豆瓣的公开 GET 接口，如果接口是跨域的 POST 请求，则需要在服务器端配置:</p>
+<blockquote>
+<p>Access-Control-Allow-Origin: *</p>
+</blockquote>
+<p>这时候运行看看。等一会接口返回数据，咦，数据加载出来了，棒棒哒 !</p>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-09-23-32-49.png" alt=""></p>
+<p>更多 <code>vue-router</code> 的使用方法可以看</p>
+<blockquote>
+<p><strong>vue-router 0.7</strong><br><a href="http://m.doc00.com/doc/1001004eg" target="_blank" rel="external">http://m.doc00.com/doc/1001004eg</a><br><strong>vue-router 2.0</strong><br><a href="http://router.vuejs.org/zh-cn/index.html" target="_blank" rel="external">http://router.vuejs.org/zh-cn/index.html</a></p>
+</blockquote>
+<h3 id="来拯救如此难看的界面"><a href="#来拯救如此难看的界面" class="headerlink" title="来拯救如此难看的界面"></a>来拯救如此难看的界面</h3><p>组件、双向绑定、路由、数据请求等基本特性都能用了，写到这里一个单页应用基本上成型了。但是，这几面也太 TM 难看了吧。自己写 UI 框架太费劲？那就上网找一个吧。<br>本来想给大家介绍 Vux 的，因为他用的是微信的 WeUI 设计规范，对于开发微信小程序或者微信内的网页非常和谐，但由于写这篇文章的时候 Vux 还不支持 vue2.0，只能用别的框架了。<br>命令行安装 ElementUI (此处某公司的人应该发红包了…)</p>
+<blockquote>
+<p>cnpm install element-ui@next -S</p>
+</blockquote>
+<p>然后在 main.js 引入并注册</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Element <span class="keyword">from</span> <span class="string">'element-ui'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-default/index.css'</span></div><div class="line">Vue.use(Element)</div></pre></td></tr></table></figure>
+<p>保存，这时候程序报错</p>
+<blockquote>
+<p>Uncaught Error: Module parse failed: /Users/**/Desktop/vue2/node_modules/.1.0.0-rc.5@element-ui/lib/theme-default/index.css Unexpected character ‘@’ (1:0)<br>You may need an appropriate loader to handle this file type.</p>
+</blockquote>
+<p>官网文档又有坑了，安装教程也不跟我们说这一步，当我们都是高手了…<br>报错是由于我们引入了<code>index.css</code>这个 CSS 文件，但是 webpack 打包的时候无法识别并转换成 js，所以就需要配置才能读取 css 和字体文件，运行命令安装下面三个东西(如果之前安装过就不需要了)</p>
+<blockquote>
+<p>cnpm install style-loader –save-dev<br>cnpm install css-loader –save-dev<br>cnpm install file-loader –save-dev</p>
+</blockquote>
+<p>在 <code>webpack.config.js</code> 中的 loaders 数组加入以下配置，<strong>记得该加逗号的地方加逗号!</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.css$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">"style!css"</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.(eot|woff|woff2|ttf)([\\\\\\\\?]?.*)$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">"file"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改完的 <code>webpack.config.js</code> 如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"><span class="attr">entry</span>: <span class="string">'./src/main.js'</span>,</div><div class="line"><span class="attr">output</span>: &#123;</div><div class="line"><span class="attr">path</span>: path.resolve(__dirname, <span class="string">'./dist'</span>),</div><div class="line"><span class="attr">publicPath</span>: <span class="string">'/dist/'</span>,</div><div class="line"><span class="attr">filename</span>: <span class="string">'build.js'</span></div><div class="line">&#125;,</div><div class="line"><span class="attr">resolveLoader</span>: &#123;</div><div class="line"><span class="attr">root</span>: path.join(__dirname, <span class="string">'node_modules'</span>),</div><div class="line">&#125;,</div><div class="line"><span class="attr">module</span>: &#123;</div><div class="line"><span class="attr">loaders</span>: [</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.vue$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'vue'</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.js$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'babel'</span>,</div><div class="line"><span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.css$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">"style!css"</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.(eot|woff|woff2|ttf)([\\\\\\\\?]?.*)$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">"file"</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="attr">test</span>: <span class="regexp">/\\\\\\\\.(png|jpg|gif|svg)$/</span>,</div><div class="line"><span class="attr">loader</span>: <span class="string">'file'</span>,</div><div class="line"><span class="attr">query</span>: &#123;</div><div class="line"><span class="attr">name</span>: <span class="string">'[name].[ext]?[hash]'</span></div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">]</div><div class="line">&#125;,</div><div class="line"><span class="attr">resolve</span>: &#123;</div><div class="line"><span class="attr">alias</span>: &#123;<span class="attr">vue</span>: <span class="string">'vue/dist/vue.js'</span>&#125;</div><div class="line">&#125;,</div><div class="line"><span class="attr">devServer</span>: &#123;</div><div class="line"><span class="attr">historyApiFallback</span>: <span class="literal">true</span>,</div><div class="line"><span class="attr">noInfo</span>: <span class="literal">true</span></div><div class="line">&#125;,</div><div class="line"><span class="attr">devtool</span>: <span class="string">'#eval-source-map'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">'production'</span>) &#123;</div><div class="line"><span class="built_in">module</span>.exports.devtool = <span class="string">'#source-map'</span></div><div class="line"><span class="comment">// http://vue-loader.vuejs.org/en/workflow/production.html</span></div><div class="line"><span class="built_in">module</span>.exports.plugins = (<span class="built_in">module</span>.exports.plugins || []).concat([</div><div class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</div><div class="line"><span class="string">'process.env'</span>: &#123;</div><div class="line"><span class="attr">NODE_ENV</span>: <span class="string">'"production"'</span></div><div class="line">&#125;</div><div class="line">&#125;),</div><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line"><span class="attr">compress</span>: &#123;</div><div class="line"><span class="attr">warnings</span>: <span class="literal">false</span></div><div class="line">&#125;</div><div class="line">&#125;)</div><div class="line">])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>给豆瓣的电影列表套个衣服(样式) :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-card</span> <span class="attr">class</span>=<span class="string">"box-card"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"header"</span> <span class="attr">class</span>=<span class="string">"clearfix"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">"line-height: 36px; color: #20A0FF"</span>&gt;</span>豆瓣电影排行榜<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"article in articles"</span> <span class="attr">class</span>=<span class="string">"text item"</span>&gt;</span></div><div class="line">&#123;&#123;article.title&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>打开浏览器,输入网址:</p>
+<blockquote>
+<p><a href="http://localhost:8080/second" target="_blank" rel="external">http://localhost:8080/second</a></p>
+</blockquote>
+<p><img src="http://o8lot23ep.bkt.clouddn.com/_image/2016-10-10-00-51-43.png" alt=""></p>
+<p>￼<br>列表比之前漂亮多了，你还可以参照 ElementUI 的文档使用更多组件样式</p>
+<blockquote>
+<p><a href="http://element.eleme.io/#/component/layout" target="_blank" rel="external">http://element.eleme.io/#/component/layout</a></p>
+</blockquote>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><blockquote>
+<p>npm run build</p>
+</blockquote>
+<p>又报错了…orz</p>
+<blockquote>
+<p>ERROR in build.js from UglifyJs<br>SyntaxError: Unexpected token punc «(», expected punc «:» [build.js:32001,6]<br>把node_modules/.bin/cross-env里的<br>require(‘../dist’)(process.argv.slice(2));</p>
+</blockquote>
+<p>后来发现直接运行 webpack 命令就可以打包了</p>
+<blockquote>
+<p>webpack –color –progress</p>
+</blockquote>
+<p>接着把 index.html 和整个 dist 目录丢到服务器就可以了。</p>
+<hr>
+<p><strong>版权声明：</strong> 本文章采用 知识共享署名 2.5 中国大陆许可协议 进行许可，欢迎转载，但转载请注明来自<a href="http://lilidong.cn" target="_blank" rel="external">李立冬博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.lilidong.cn/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/" target="_blank" rel="external">http://www.lilidong.cn/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/09/自定义函数实现alert,console等底层函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          自定义函数实现alert,console等底层函数在，主要运用js的指针改变来实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/24/yarn/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">下一代包管理工具yarn（npm&amp;&amp;yarn）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+
+  
+    <! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏"></a>
+        <span class="donate_txt">
+           ↑<br>
+       有你的支持,我将奉献更多的干货！
+        </span>
+        <br>
+      </div>  
+  <div id="donate_guide" class="donate_bar center hidden" >
+    <!-- 支付宝打赏图案 -->
+    <img src="/images/zhifubao.png" alt="支付宝打赏"> 
+    <!-- 微信打赏图案 -->
+    <img src="/images/weixin.png" alt="微信打赏">  
+    </div>
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function(){
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+  </script>
+</div>
+<! -- 添加捐赠图标 -->
+  
+
+</article>
+
+
+
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <span class="jiathis_txt">分享到：</span>
+  <a class="jiathis_button_tools_1"></a>
+  <a class="jiathis_button_tools_2"></a>
+  <a class="jiathis_button_tools_3"></a>
+  <a class="jiathis_button_tools_4"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染" data-title="Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染" data-url="https://jackieli123723.github.io/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+<Style>
+#ds-reset, #ds-related-reads {
+    font-weight: normal;
+    font-size: 13px;
+    font-size-adjust: none;
+    color: #333;
+    line-height: 1;
+    text-align: left;
+
+}
+
+.jiathis_style{
+	margin:30px;
+}
+
+.jiathis_style  .button, .jiathis_style .jiathis_txt{
+	margin-bottom:10px;
+}
+
+#ds-reset .ds-avatar img,#ds-recent-visitors .ds-avatar img{     width:54px;     height:54px;     /*设置图像的长和宽，这里要根据自己的评论框情况更改*/    border-radius:27px;     /*设置图像圆角效果,在这里我直接设置了超过width/2的像素，即为圆形了*/    -webkit-border-radius:27px;     /*圆角效果：兼容webkit浏览器*/    -moz-border-radius:27px;     box-shadow:inset 0 -1px 0 #3333sf;     /*设置图像阴影效果*/    -webkit-box-shadow:inset 0 -1px 0 #3333sf;     -webkit-transition:0.4s;     -webkit-transition:-webkit-transform 0.4s ease-out;     transition:transform 0.4s ease-out;     /*变化时间设置为0.4秒(变化动作即为下面的图像旋转360读）*/    -moz-transition:-moz-transform 0.4s ease-out; }
+ #ds-reset .ds-avatar img:hover {     /*设置鼠标悬浮在头像时的CSS样式*/    box-shadow:0 0 10px #fff;     rgba(255,255,255,.6),inset 0 0 20px rgba(255,255,255,1);     -webkit-box-shadow:0 0 10px #fff;     rgba(255,255,255,.6),inset 0 0 20px rgba(255,255,255,1);     transform:rotateZ(360deg);     /*图像旋转360度*/    -webkit-transform:rotateZ(360deg);     -moz-transform:rotateZ(360deg); }
+
+
+#ds-thread #ds-reset .ds-textarea-wrapper textarea {background:url(http://ww4.sinaimg.cn/small/649a4735gw1et7gnhy5fej20zk0m8q3q.jpg) right no-repeat;}
+
+#ds-recent-visitors .ds-avatar {float:left}
+
+
+#ds-thread #ds-reset .ds-powered-by{
+display:none;
+}
+/*隐藏多说底部版权*/
+#ds-recent-visitors .ds-avatar img{  grayscale(100%);-webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+   filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");  
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;}
+
+#ds-recent-visitors .ds-avatar img:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+
+
+#ds-reset .ds-avatar{
+	box-shadow:none;
+	background-color:transparent;
+}
+
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current {border:0px;color:#848568;text-shadow:none}
+
+#ds-thread #ds-reset .ds-highlight {font-family:Arial, Helvetica, sans-serif;font-size:14px;font-weight:bold;color:#698376 !important;}
+
+#ds-thread #ds-reset ul.ds-comments-tabs li.ds-tab a.ds-current:hover {color:#696a52;background:#d4d6ba}
+
+#ds-thread #ds-reset a.ds-highlight:hover {color:#696a52 !important;}
+
+
+#ds-thread {padding-left:30px;}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset #ds-hot-posts {overflow:visible}
+
+#ds-thread #ds-reset .ds-post-self {padding:10px 0 10px 10px;}
+
+#ds-thread #ds-reset li.ds-post,#ds-thread #ds-reset .ds-post-self {border:0 !important;}
+
+#ds-reset .ds-avatar, #ds-thread #ds-reset ul.ds-children .ds-avatar {position:absolute;top:26px;left:-14px;padding:5px;width:36px;height:36px;box-shadow:-1px 0 1px rgba(0,0,0,.15) inset;border-radius:46px; background:#E5E6D0;}
+
+#ds-thread #ds-reset ul.ds-children .ds-avatar {left:-23px;}
+
+#ds-thread .ds-avatar a {display:inline-block;padding:1px; width:32px;height:32px;border:1px solid #b9baa6;border-radius:50%; background-color:#fff !important}
+
+#ds-thread .ds-avatar a:hover {border-color:#de5a4e}
+
+#ds-thread .ds-avatar > img {margin:2px 0 0 2px}
+
+#ds-thread #ds-reset .ds-replybox {box-shadow:none;}
+
+#ds-thread #ds-reset ul.ds-children .ds-replybox.ds-inline-replybox a.ds-avatar,
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar {left: 0;top: 0; padding: 0;width: 32px !important;height: 32px !important; background: none;box-shadow: none; }
+
+#ds-reset .ds-replybox.ds-inline-replybox a.ds-avatar img {width: 32px !important;height: 32px !important; border-radius:50%;}
+
+#ds-reset .ds-replybox a.ds-avatar,
+#ds-reset .ds-replybox .ds-avatar img { padding:0;width:38px !important;height:38px !important;}
+
+#ds-reset .ds-avatar img {width:32px !important;height:32px !important;border-radius:32px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.22);
+    -webkit-transition:.4s all ease-in-out;-moz-transition:.4s all ease-in-out;-o-transition:.4s all ease-in-out;-ms-transition:.4s all ease-in-out;transition:.4s all ease-in-out;
+}
+
+.ds-post-self:hover .ds-avatar img {-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}
+
+
+#ds-thread #ds-reset .ds-comment-body {background: #FFFFFF;padding:15px 15px 12px 32px;border-radius:5px; box-shadow:0 1px 2px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.75) inset;}
+
+
+#ds-thread #ds-reset .ds-comment-body p{color:#787968}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name {font-weight:bold;color:#696A52 !important;}
+
+#ds-thread #ds-reset .ds-comments a.ds-user-name:hover {color:#D32 !important;}
+
+
+#ds-thread #ds-reset #ds-hot-posts {border:0}
+
+#ds-reset #ds-hot-posts .ds-gradient-bg {background:none;}
+
+
+#ds-reset #ds-bubble #ds-ctx .ds-ctx-entry {padding:0;}
+
+#ds-reset #ds-bubble .ds-avatar, #ds-reset #ds-bubble #ds-ctx-bubble .ds-avatar a {position:static;padding:0;border:0; background:none;box-shadow:none;}
+
+#ds-reset #ds-bubble .ds-avatar img, #ds-reset #ds-bubble #ds-ctx-bubble .ds-avatar a {width:45px !important;height:45px !important;}
+
+#ds-reset #ds-bubble .ds-user-name{padding-left:13px;}
+
+
+#ds-reset .ds-comment-body #ds-ctx {border-left:1px solid #b9baa6;background-color:#e8e8dc !important}
+
+#ds-reset #ds-ctx {margin-right:-15px}
+
+#ds-reset #ds-ctx .ds-ctx-entry {position:relative;padding:10px 30px 10px 10px;}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-avatar {top:6px;left:5px;background:none;box-shadow:none;}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-body {margin-left:46px;}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-content {color:#787968}
+
+#ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {color:#696A52;font-weight:bold}
+
+
+#ds-thread #ds-reset .ds-powered-by{
+    display:none;
+}
+/*隐藏多说底部版权*/
+#ds-thread  {padding:32px;}
+
+</style>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jackieli
+    	</div>
+      	<div class="footer-right">
+      	    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv" style="
+                color: #006b98;"></span>次</span>
+      	</div>
+        <script type="text/javascript">
+(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+_st('install','yFNLu7csagE1NiKNMGxY','2.0.0');
+</script>
+
+
+
+
+<style>
+.st-ui-search-input,.st-default-search-input {
+    display: inline-block;
+    width: 190px;
+    height: 16px;
+    padding: 7px 11px 7px 28px;
+    border: 1px solid #bbb;
+    border: 1px solid rgba(0,0,0,0.25);
+    font-weight: 400;
+    color: #3A444F;
+    font-size: 14px;
+    line-height: 16px;
+    box-sizing: content-box;
+    background: #fff 8px 8px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
+    background-clip: padding-box;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+     position:fixed;
+    left:38px;
+    top:60px;
+    border-radius:16px;
+}
+
+.st-ui-search-input:focus,.st-default-search-input:focus {
+    outline: none;
+    border-color: #3A444F;
+    border-color: rgba(0,0,0,0.5)
+}
+
+.st-ui-search-input::-ms-clear,.st-default-search-input::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0
+}
+</style>
+
+    </div>
+  </div>
+
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<div style="display: none;" id="rocket-to-top">
+<div style="opacity:0;display: block;" class="level-2"></div>
+<div class="level-3"></div>
+</div>
+
+
+<style>
+#rocket-to-top div {
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 149px;
+}
+#rocket-to-top .level-2 {
+    background: url(http://odg9m8tq2.bkt.clouddn.com/rocket_button_up.png) no-repeat scroll -149px 0 transparent;
+    display: none;
+    height: 250px;
+    opacity: 0;
+    z-index: 1;
+}
+#rocket-to-top .level-3 {
+    background: none repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 150px;
+    z-index: 2;
+}
+
+#rocket-to-top {
+    background: url(http://odg9m8tq2.bkt.clouddn.com/rocket_button_up.png) no-repeat scroll 0 0 transparent;
+    cursor: default;
+    display: block;
+    height: 250px;
+    margin: -125px 0 0;
+    overflow: hidden;
+    padding: 0;
+    position: fixed;
+    right: 0;
+
+  
+    top: 96%;
+    width: 149px;
+    z-index: 11;
+}
+</style>
+<script src="/js/totop.js"></script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4f7622dea6564c8ffd1817b40e46b790";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  </div>
+</body>
+</html>

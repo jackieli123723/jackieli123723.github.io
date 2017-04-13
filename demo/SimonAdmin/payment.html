@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">付费设置</a></div>
+        <div class="main__setting___199Ya">
+            <div class="main__main___1giGr clearfix" style="width: 900px;">
+                <div class="main__block___Pg6NL">
+                    <div>
+                        <div class="payment__sTitle___1eWT-">当前状态</div>
+                        <div class="payment__statusDetail___7ulN4 clearfix">
+                            <div class="payment__statusEdition___3l0si">体验版</div>
+                            <div class="payment__statusAgents___3DHXH">
+                                <!-- react-text: 88 -->坐席数
+                                <!-- /react-text -->
+                                <!-- react-text: 89 -->: 1
+                                <!-- /react-text -->
+                                <!-- react-text: 90 -->个
+                                <!-- /react-text -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__block___Pg6NL">
+                    <div class="payment__guideBox___2bAy5">
+                        <h3 class="payment__freeTitle___3vEfc">专业版试用</h3>
+                        <p class="payment__noteText___3njD2">专业版提供更强大、贴心的专属服务，欢迎立即试用体验</p>
+                        <p class="payment__noteText___3njD2">你可以在试用过程中随时付款，我们会将试用期的剩余天数额外累加到你的专业版时长中</p>
+                        <div class="payment__updateBtn___CDrZK"><a class="btn btn-blue-fill">立即开通</a></div>
+                    </div>
+                    <div class="payment__funWrap___1haTa clearfix">
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined persistence"></div>
+                            <div>
+                                <h3>永久保存</h3>
+                                <p class="payment__noteText___3njD2">专业版用户与顾客的聊天记录永久保存</p>
+                                <p class="payment__noteText___3njD2">方便与顾客随时随地随意联系交流</p>
+                            </div>
+                        </div>
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined exclusiveCS"></div>
+                            <div>
+                                <h3>专属客服</h3>
+                                <p class="payment__noteText___3njD2">美洽为每位专业版用户安排一名专业客服</p>
+                                <p class="payment__noteText___3njD2">提供一对一的贴心服务</p>
+                            </div>
+                        </div>
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined report"></div>
+                            <div>
+                                <h3>高级报表</h3>
+                                <p class="payment__noteText___3njD2">专业版用户可以在线查看和导出对话和统计</p>
+                                <p class="payment__noteText___3njD2">数据，方便精细化各项数据分析</p>
+                            </div>
+                        </div>
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined faster"></div>
+                            <div>
+                                <h3>更快更稳</h3>
+                                <p class="payment__noteText___3njD2">专业版拥有更强劲的处理系统和高速带宽运</p>
+                                <p class="payment__noteText___3njD2">行效率比普通版快 200%</p>
+                            </div>
+                        </div>
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined customDialog"></div>
+                            <div>
+                                <h3>高级对话框自定义</h3>
+                                <p class="payment__noteText___3njD2">美洽为每位专业版用户提供更高级的对话框</p>
+                                <p class="payment__noteText___3njD2">自定义功能</p>
+                            </div>
+                        </div>
+                        <div class="payment__funBox___2OAWD">
+                            <div class="undefined undefined api"></div>
+                            <div>
+                                <h3>高级 API</h3>
+                                <p class="payment__noteText___3njD2">美洽为每位专业版用户提供更高级的 API 模</p>
+                                <p class="payment__noteText___3njD2">块调用功能</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,628 @@
+<!-- index.html -->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>VueJs Components Tutorial - coligo.io</title>
+</head>
+
+<body>
+
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.2)
+}
+
+:-moz-placeholder {
+    color: rgba(255, 255, 255, 0.2)
+}
+
+::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.2)
+}
+
+:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.2)
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    border: 0 none;
+}
+
+a,
+input,
+textarea {
+    outline: none;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.fr {
+    float: left;
+}
+
+.fr {
+    float: right
+}
+
+body {
+    background-color: #16a085;
+    font-family: "Lato", sans-serif;
+    height: 2000px;
+    color: white
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    height: 30px;
+}
+
+#add-input {
+    margin: 0 auto;
+    display: block
+}
+
+.item-status {
+    display: inline;
+    background: red;
+    color: white;
+    padding: 2px;
+    font-size: 12px;
+}
+
+.item-status.done {
+    background: green;
+    color: #fff;
+}
+
+.item-delete {
+    display: inline;
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+    position: absolute;
+    top: 8px;
+    right: 4px;
+}
+
+.item-label {
+    display: inline;
+    color: #444;
+    font-size: 20px;
+}
+
+.line-through {
+    text-decoration: line-through;
+    color: green;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.reminders {
+    list-style-type: none;
+    max-width: 500px;
+    margin: 30px auto
+}
+
+input[type='text'] {
+    width: 430px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 300;
+    color: white;
+    padding: 5px 10px;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    background-color: rgba(0, 0, 0, .15);
+}
+
+.reminders {
+    list-style-type: none;
+    max-width: 430px;
+    margin: 30px auto
+}
+
+.reminders li {
+    font-weight: 400;
+    /*box-shadow: 0 7px 0 -4px rgba(0, 0, 0, 0.2);*/
+    color: #444;
+    text-align: left;
+    min-height: 50px;
+    line-height: 30px;
+    font-size: 20px;
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    position: relative;
+    word-wrap: break-word;
+    -webkit-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease
+}
+
+.reminders li.removed-item {
+    -webkit-animation: removed-item-animation .8s cubic-bezier(.65, -0.02, .72, .29);
+    -o-animation: removed-item-animation .8s cubic-bezier(.65, -0.02, .72, .29);
+    animation: removed-item-animation .8s cubic-bezier(.65, -0.02, .72, .29)
+}
+
+@keyframes removed-item-animation {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0)
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: translateX(50px);
+        -ms-transform: translateX(50px);
+        -o-transform: translateX(50px);
+        transform: translateX(50px)
+    }
+    80% {
+        opacity: 1;
+        -webkit-transform: translateX(-800px);
+        -ms-transform: translateX(-800px);
+        -o-transform: translateX(-800px);
+        transform: translateX(-800px)
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateX(-800px);
+        -ms-transform: translateX(-800px);
+        -o-transform: translateX(-800px);
+        transform: translateX(-800px)
+    }
+}
+
+.reminders li:focus {
+    outline: none;
+}
+
+.reminders li.isFinshed {
+    text-decoration: line-through;
+    color: green;
+}
+
+.reminder-container h1 {
+    text-align: center;
+    margin: 50px auto 20px;
+}
+
+.reminder-container h3 {
+    font-weight: normal;
+    padding-left: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.box {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.checkbox-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 2px;
+    border: 1px solid #16a085;
+}
+
+.checkbox-icon:after {
+    content: '';
+}
+
+.box.checked .checkbox-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 2px;
+    border: 1px solid #16a085;
+}
+
+.box.checked .checkbox-icon:after {
+    content: '';
+    display: block;
+    width: 9px;
+    height: 5px;
+    border-bottom: 2px solid #16a085;
+    border-left: 2px solid #16a085;
+    margin: 3px 0 0 3px;
+    -webkit-transform: rotate(-45deg) skew(0deg, -12deg);
+    -moz-transform: rotate(-45deg) skew(0deg, -12deg);
+    -ms-transform: rotate(-45deg) skew(0deg, -12deg);
+    -o-transform: rotate(-45deg) skew(0deg, -12deg);
+    transform: rotate(-45deg) skew(0deg, -12deg)
+}
+
+.events {
+    width: 430px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+}
+
+.hope {
+    color: red;
+}
+
+.done {
+    color: green;
+}
+
+.total {
+    color: #fff;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+}
+
+.dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 44;
+}
+
+.del-confirm-box {
+    z-index: 45;
+    width: 309px;
+    height: 139px;
+    background: #fff;
+    border-radius: 4px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -155px;
+    margin-top: -70px;
+}
+
+.del-confirm-box .del-confirm-text {
+    margin-top: 30px;
+    position: relative;
+    height: 40px;
+    line-height: 1.4;
+    padding-left: 50px;
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+.del-confirm-box .del-confirm-text img {
+    float: left;
+    margin-top: 4px;
+    margin-right: 16px;
+}
+
+.del-confirm-box .del-confirm-text span {
+    display: block;
+}
+
+.del-confirm-box .del-confirm-text span.forver {
+    color: #999;
+}
+
+.del-confirm-box .del-confirm-btn {
+    margin: 15px auto 0;
+    text-align: center;
+}
+
+.del-confirm-box .del-confirm-btn span {
+    width: 60px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #fafafa;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    cursor: pointer;
+}
+
+.del-confirm-box .del-confirm-sure {
+    margin-right: 10px;
+    background: #f75b49;
+}
+
+.del-confirm-box .del-confirm-cancel {
+    background: #1a9af3;
+}
+
+.slide-transition {
+    transition: all .3s ease;
+    transform: translate3d(0, 0, 0);
+}
+
+.slide-enter,
+.slide-leave {
+    transform: translate3d(0, -100%, 0);
+}
+
+.notification {
+    width: 100%;
+    line-height: 2;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background: rgb(33, 231, 182);
+}
+
+.content {
+    padding: .75rem 2rem
+}
+
+.bt {
+    position: relative;
+    width: 430px;
+    margin: 0 auto 10px;
+    height: 40px;
+}
+
+.bt .checkbox-icon {
+    border-color: #fff;
+}
+
+.bt .box.checked .checkbox-icon:after {
+    border-color: #fff;
+}
+
+.bt .box.checked .checkbox-icon {
+    border-color: #fff;
+}
+
+.all {
+    line-height: 40px;
+    padding-left: 40px;
+}
+
+.clear-all {
+    background-color: rgba(0, 0, 0, .25);
+    font: 300 18px "Lato", "Arial", sans-serif;
+    border: 0;
+    padding: 10px 20px;
+    color: white;
+    float: right;
+    cursor: pointer;
+}
+
+
+</style>
+
+
+
+<div id="app" class="reminder-container" v-cloak>
+
+    <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTk2QkI4RkE3NjE2MTFFNUE4NEU4RkIxNjQ5MTYyRDgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTk2QkI4Rjk3NjE2MTFFNUE4NEU4RkIxNjQ5MTYyRDgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjU2QTEyNzk3NjkyMTFFMzkxODk4RDkwQkY4Q0U0NzYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjU2QTEyN0E3NjkyMTFFMzkxODk4RDkwQkY4Q0U0NzYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5WHowqAAAXNElEQVR42uxda4xd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">
+     <hello></hello>
+	 
+    <h1 v-text="title"></h1>
+	 <br/>
+    <input id='add-input' type="text" v-model='newItem' @keyup.enter='addNew' placeholder='enter输入'/>
+    <ul class="reminders">
+        <li v-for='item in items'>
+            <h3 @mouseenter='itemEnter(item)' @mouseleave='itemLeave(item)'>
+              <!-- <input type='checkbox' @click='itemCheck(item)'> -->
+              <div class="box"  v-bind:class="{ 'checked': item.checked }" @click="chooseCheck(item)">
+                <i class="checkbox-icon"></i>
+              </div>
+              <p class='item-label' v-bind:class="{ 'line-through': item.checked }">{{ $index + 1 }}.{{ item.label }} </p>
+              <p class='item-status done' v-if='item.checked'>已完成</p>
+              <p class="item-status " v-else>未完成</p>
+              <p class='item-delete' v-if='item.showDelete' @click='openDialog()'>&#215;</p>
+            </h3>
+            <div class="dialog" v-if="show" @click='close()'>
+              <div class="del-confirm-box">
+                <div class="del-confirm-text">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAYAAAABtRhCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ZGIxNTRiMi1hOGIwLTE2NGEtYWVmZi0wNmExNzEyNGNmMzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0I5Mjg1MjQzOUMwMTFFNjhDNERBODFGMjdDNUIwODEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0I5Mjg1MjMzOUMwMTFFNjhDNERBODFGMjdDNUIwODEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmJkMmMxNWYzLTY5MmItYzk0Ni04MmQ3LTViNjQ1N2I3ODc0MiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1ZGIxNTRiMi1hOGIwLTE2NGEtYWVmZi0wNmExNzEyNGNmMzgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4kuRKiAAABMUlEQVR42mJkbH/PgAOwAXE3EMcCsSADcQBk2GIgLgXiX9gUsODR3AXEeQykAUGonh9AXI5NARMezbFQ2gaIGYnEtlA9KbgMZcQTpP9hakj0JV59TNC46gfit1DF/5E0MaCJEYOx6XsKtYMNFIftQFzAQFsgBbXjH8iH8WTEFakYFrfxoDgkN64YyIlbJgY6A5CFz8lMHOQkphdM0Dzzgg6eA6XUZFAq3QbEkhTkO2LzpcyAxSEucAgp/A9RII6zaEMP0v9UZMPNHVRBOmrhqIWjFo5aOEQtxNfyPopU8B6lQBxnbfERiPmgTbrnVPKQBNSsL0DMix6ke6D0HKhCSgGohp8LZe/C5kMNID4OxAJUjrYPQGwJxDfQfQgSsADidUD8mQoWfYaaZQGzDAQAAgwAUmZ2hxyY8d4AAAAASUVORK5CYII=">
+                  <span>你确定要删除吗?</span>
+                  <span class="forver">此条信息将会被永久删除</span>
+                </div>
+                <div class="del-confirm-btn">
+                  <span class="del-confirm-sure" @click='deleteClick(item)'>删除</span>
+                  <span class="del-confirm-cancel" @click='close()'>取消</span>
+                </div>
+              </div>
+            </div>
+        </li>
+    </ul>
+    <div class="mask" v-if="show" @click='close()'></div>
+   <div class="notification" v-if="delflag" transition="slide">
+    <div class="content">
+      删除成功
+    </div>
+    </div>
+   <div class="bt">
+    <div class="box"  v-bind:class="{ 'checked': changecheck }" @click='change()' >
+              <i class="checkbox-icon"></i>
+           </div>
+     <span class="all">{{!changecheck ? "全选" : "反选" }}</span>
+       <span @click="allDel()" class="clear-all">清空</span>
+  </div>
+    <div class="events clearfix">
+       <span class="fl">待办事项<strong class="hope">{{items.length - doneResult() }}</strong></span>
+       <span class="fl">完成事项<strong class="done">{{doneResult()}}</strong></span>
+       <span class="fr">总共事项<strong class="total">{{items.length}}</strong></span>
+   </div>
+
+  </div>
+
+
+
+
+    <script src="js/vue.js"></script>
+	<script>
+	var KEY = "workPlan1";
+	var Store = {
+		fetch: function() {
+				return JSON.parse(localStorage.getItem(KEY) || '[]');//返回一个js对象
+			},
+		//将传入的data对象存下
+		save: function(data) {
+			localStorage.setItem(KEY, JSON.stringify(data));
+		}
+	};
+	</script>
+    <script>
+	var vm=new Vue({
+	 el:'#app',
+	 data: {
+            items: Store.fetch(),
+            newItem: '',
+            title: '添加自己的工作计划(vue.js)',
+            show: false,
+            delflag: false,
+            changecheck: false
+    },
+    watch: {
+		 'items': {
+		  handler: function (val, oldVal) { 
+		   Store.save(val)
+		  },
+		  deep: true
+		}
+    },
+	 computed: {
+            allChecked: {
+                get: function(){
+                    return this.checkedCount == this.items.length;
+                },
+                set: function(value){
+                    this.items.forEach(function(item){
+                        item.checked = value
+                    })
+                    return value;
+                }
+            },
+            checkedCount: {
+                get: function(){
+                    var i = 0;
+                    this.items.forEach(function(item){
+                        if(item.checked == true) i++;
+                    })
+                    return i;
+                }
+            }
+        },
+    methods: {
+            addNew: function() {
+                if (this.newItem === '') {
+                    window.alert('不能为空')
+                    return
+                }
+                this.items.push({
+                    label: this.newItem,
+                    checked: false,
+                    showDelete: false
+                })
+                this.newItem = ''
+            },
+            itemEnter: function(item) {
+                item.showDelete = true
+            },
+            itemLeave: function(item) {
+                item.showDelete = false
+            },
+            deleteClick: function(item) {
+                this.show = false
+                this.items.$remove(item)
+            },
+            chooseCheck: function(item) {
+                item.checked = !item.checked
+            },
+            doneResult: function() {
+                var doneResult = 0
+                this.items.forEach((item) => item['checked'] ? doneResult++ : 0)
+                return doneResult
+            },
+            close: function() {
+                this.show = false
+            },
+            openDialog: function() {
+                this.show = true
+            },
+            allDel: function() {
+                if (window.confirm('确定要清空数据吗？')) {
+                    this.items = []
+                }
+            },
+            change: function() {
+                if (!this.changecheck) {
+                     this.changecheck = true;
+					 this.items.forEach(function(item){
+                        item.checked = true
+                    })
+                } else {
+                    this.changecheck = false
+					 this.items.forEach(function(item){
+                        item.checked = false
+                    })
+                }
+            }
+    }
+
+	})
+	</script>
+</body>
+
+</html>

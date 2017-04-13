@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">ID 查询</a></div>
+        <div class="setting__setting___1g0ss">
+            <div class="setting__main___2osj-">
+                <div class="main__block___Pg6NL" style="padding-bottom: 20px;">
+                    <div class="main__blockInner___1JKM4">
+                        <h3>ID 查询</h3>
+                        <p class="main__sub___eGucX">你可以在这里查询你需要的企业 ID、客服组 ID、客服 ID</p>
+                    </div>
+                    <div class="main__blockInner___1JKM4 id-query__entBox___3ap2c"><span class="id-query__idTitle___AeQXg"><!-- react-text: 1254 -->企业 ID<!-- /react-text --><!-- react-text: 1255 --> : <!-- /react-text --></span><span class="id-query__idText___nPObI">45740</span></div>
+                    <div class="main__blockInner___1JKM4 clearfix">
+                        <div class="clearfix">
+                            <div class="id-query__selectBox___1bR-C">
+                                <div class="id-query__select___vU02L id-query__unselect___3csfp">客服组 ID</div>
+                                <div class="feature15-icons icon-select id-query__selectIcon___rsJgd id-query__unselect___3csfp"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main__blockInner___1JKM4 clearfix">
+                        <div class="clearfix">
+                            <div class="id-query__selectBox___1bR-C">
+                                <div class="id-query__select___vU02L id-query__unselect___3csfp">客服 ID</div>
+                                <div class="feature15-icons icon-select id-query__selectIcon___rsJgd id-query__unselect___3csfp"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

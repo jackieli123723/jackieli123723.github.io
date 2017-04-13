@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">角色设置</a></div>
+        <div class="role__main___1L2vs">
+            <div class="role__wrap___2KMvy">
+                <aside class="role__side___2RldG">
+                    <div class="role__add-role___bI1G2">新建角色</div>
+                    <nav class="role__roles-list___1Lue8">
+                        <a class="role__role___2EeYn active">
+                            <!-- react-text: 304 -->管理员
+                            <!-- /react-text --><i class="mq-icon-edit-line" title="编辑角色名称" style="right: 28px;"></i><i class="mq-icon-delete-line" title="删除角色组" style="margin-left: 5px;"></i></a>
+                        <a class="role__role___2EeYn ">
+                            <!-- react-text: 308 -->普通客服
+                            <!-- /react-text --><i class="mq-icon-edit-line" title="编辑角色名称" style="right: 28px;"></i><i class="mq-icon-delete-line" title="删除角色组" style="margin-left: 5px;"></i></a>
+                        <!-- react-text: 311 -->
+                        <!-- /react-text -->
+                    </nav>
+                </aside>
+                <div class="role__role_configs_right___Mntj_">
+                    <div class="role__role-configs___wdlIW">
+                        <div>
+                            <nav>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 324 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 325 -->访客与对话
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 327 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 328 -->历史对话
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 330 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 331 -->顾客名片系统
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 333 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 334 -->数据报表
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 336 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 337 -->企业信息与付费
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 339 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 340 -->在线客服功能设置
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 342 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 343 -->工单
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 345 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 346 -->客服机器人
+                                    <!-- /react-text -->
+                                </a>
+                                <a class="role__config___2K2f_ ">
+                                    <!-- react-text: 348 -->
+                                    <!-- /react-text -->
+                                    <!-- react-text: 349 -->接入设置
+                                    <!-- /react-text -->
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="role__right___b9TNz">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

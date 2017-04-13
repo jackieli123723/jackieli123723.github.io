@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+
+<html>
+<head> 
+<title>西门互联-lilidong.cn</title> 
+<meta charset="UTF-8">
+<meta name="KEYWORDS" content="demo" /> 
+<meta name="DESCRIPTION" content="demo" /> 
+<meta content="width=device-width, closureial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />	
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<script  src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script> 
+<style>
+*{margin:0;padding:0;}
+
+:-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.2)
+}
+
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2)
+}
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.2)
+}
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.2)
+}
+
+
+body{font-family:"Microsoft YaHei";font-size:14px;color:#838383;background:#fff;}
+ol,ul,li{list-style:none;}
+img{border:0 none;}
+a,input,textarea{outline:none;}
+.clearfix{*zoom:1;}
+.clearfix:after{clear:both;content:'';display:block;height:0;visibility:hidden;}
+.fl{float:left;}
+.fr{float:right}
+ul li{
+height:40px;
+line-height:40px;
+width:300px;
+color:#ccc;
+border:1px solid;
+margin:10px auto;
+
+}
+
+ul li.active{
+height:40px;
+line-height:40px;
+width:300px;
+color:red;
+border:1px solid red;
+}
+</style>
+</head> 
+<body>
+
+	<ul class="list" id="list">
+		<li data-value="360" class="active">360</li>
+		<li data-value="qq">qq</li>
+		<li data-value="ly">ly</li>
+		<li data-value="xiaomi">xiaomi</li>
+		<li data-value="huawei">huawei</li>
+	</ul>
+
+	
+<script>
+
+
+
+	/*$(".list li").click(function() {
+		var $this = $(this);
+		$(this).toggleClass("active")
+	  
+	})*/
+	
+  window.onload=function(){
+  
+    /* 都弹出5 闭包问题 正确的是弹出0,1,2,3,4 */
+  	/*function closure() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) {     
+			 aLis[i].onclick = function() {     
+			 alert(i);     
+		}     
+	  }     
+	}
+    closure()
+	*/
+	
+	/* 方法1 将变量 i 保存给在每个对象（li）上 */
+	/*function closure1() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+             aLis[i].i=i;		
+			 aLis[i].onclick = function() {     
+			 alert(this.i);     
+		}     
+	  }     
+	}
+    closure1()
+	*/
+	
+	/* 方法2 setAttribute  getAttribute*/
+	/* function closure2() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+             aLis[i].setAttribute("index",i);		
+			 aLis[i].onclick = function() {     
+				alert(this.getAttribute("index"));     
+		    }     
+	  }     
+	}
+    closure2()
+	*/
+	
+	/* 方法3 return function IIFE 传参*/
+    /*function closure3() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            aLis[i].onclick=(function(x){
+				return function(){
+					alert(x)
+				}
+			})(i)
+		}          
+	}
+    closure3()
+    */
+	
+	/* 方法4 将变量 i 保存在匿名函数自身 */
+    /* function closure4() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            (aLis[i].onclick = function() {     
+				alert(arguments.callee.i);     
+			}).i = i;  
+		}          
+	}
+    closure4()
+	*/
+	/* 方法5 加一层闭包，i以局部变量形式传递给内存函数 */
+    /* function closure5() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            (function () {     
+			  var temp = i;//调用时局部变量     
+			  aLis[i].onclick = function() {       
+				alert(temp);       
+			  }     
+			})();   
+		}          
+	}
+    closure5()
+    */
+	
+	
+
+	/* 方法6  用Function实现，实际上每产生一个函数实例就会产生一个闭包*/
+    /* function closure6() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+           aLis[i].onclick = new Function("alert(" + i + ");");//new一次就产生一个函数实例    
+		}          
+	}
+    closure6()
+	  */
+	/* 方法7  用Function实现 不new*/
+    /* function closure7() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+           aLis[i].onclick = Function('alert('+i+')')       
+		}          
+	}
+    closure7()
+	*/
+	/* 方法8  bind*/
+    /* function closure8() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            aLis[i].addEventListener('click',function(i){
+				alert(i)
+			}.bind(this,i))     
+		}          
+	}
+    closure8()
+	*/
+	/* 方法9  函数调用*/
+	
+	/*function say(index){
+	  return function(){
+	    alert(index)
+	  }
+	}
+     function closure9() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            aLis[i].onclick = say(i) 
+		}          
+	}
+    closure9()
+	*/
+	/* 方法10  函数调用和bind配合*/
+	
+	// 兼容ie8 不支持bind
+	 /*  if (!Function.prototype.bind) { 
+		Function.prototype.bind = function (oThis) { 
+		if (typeof this !== "function") { 
+		// closest thing possible to the ECMAScript 5 internal IsCallable function 
+		throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable"); 
+		} 
+		var aArgs = Array.prototype.slice.call(arguments, 1), 
+		fToBind = this, 
+		fNOP = function () {}, 
+		fBound = function () { 
+		return fToBind.apply(this instanceof fNOP && oThis 
+		? this 
+		: oThis, 
+		aArgs.concat(Array.prototype.slice.call(arguments))); 
+		}; 
+		fNOP.prototype = this.prototype; 
+		fBound.prototype = new fNOP(); 
+		return fBound; 
+		}; 
+		} 
+     function say(index){
+	   alert(index)
+	 }
+     function closure10() {     
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+            aLis[i].onclick = say.bind(aLis[i],i)
+		}          
+	}
+	
+	closure10();
+    */
+	
+	/* 方法11  事件委托*/
+	 /*  var addEvent = function(element,type,callback){
+			if(element.addEventListener){
+				element.addEventListener(type,callback,false);
+			}else if(element.attachEvent){
+				element.attachEvent('on' + type,callback)
+			}
+			
+		} 
+	 */	
+	  /* function closure11() {  
+	    var oListDom = document.getElementById("list");	   
+		var aLis = oListDom.getElementsByTagName("li");  
+	    /* way1 */
+		
+		/*
+		
+		oListDom.addEventListener("click",function(e){
+		  var e = e || window.event;
+		  var target = e.target || e.srcElemnt;
+		   for( var i=0; i<aLis.length; i++ ) { 
+             if(aLis[i]==target){
+			 alert(i)
+			 }
+		   } 
+		})
+		
+		*/
+		
+		/* way2 兼容处理 */
+		
+		  /* 	addEvent(oListDom,"click",function(e){
+		  var e = e || window.event;
+		  var target = e.target || e.srcElement;
+		   for( var i=0; i<aLis.length; i++ ) { 
+             if(aLis[i]==target){
+			 alert(i)
+			 }
+		   } 
+		})
+
+	}
+	
+	closure11()
+	
+	*/
+	
+	/* 方法12  es6*/
+	    function closure12() {  
+        "use strict";		
+		var aLis = document.getElementsByTagName("li");     
+		for( var i=0; i<aLis.length; i++ ) { 
+		    let j = i;//创建一个块级变量
+            aLis[i].onclick = function(){
+			  alert(j)
+			}
+		}          
+	}
+    closure12()
+	
+	
+	
+    
+  }
+	
+
+	
+
+</script>
+
+
+
+
+</body>
+</html>

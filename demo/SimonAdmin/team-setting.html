@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue2+vueRouter+vueResource+echart3</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- TOPBAR NAVIGATION -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" />
+        </div>
+        <div class="search">
+            <i class="fa fa-fw fa-2x fa-search"></i>
+            <input type="search" placeholder="搜索..." />
+        </div>
+        <div class="settings clearfix">
+            <div class="account-wrapper">
+                <div class="account">
+                    <a href="#" id="my-account-link">我的账户</a>
+                </div>
+                <div class="account-dropdown">
+                    <ul>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-cogs"></i>设置</a></li>
+                        <li class="sub-account"><a href="#"><i class="fa fa-fw fa-power-off"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="notifications">
+                <i class="fa fa-lg fa-fw fa-bell"></i>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar">
+        <div class="user-heading">
+            <div class="user-name">
+                <img src="images/person.jpg" alt="Avatar" class="img-circle" />
+                <h4>Jackieli</h4>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul class="side-menu">
+                <li class="menu-item active"><a href="#"><i class="fa fa-tachometer fa-fw fa-lg" aria-hidden="true"></i> 控制面板</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-home fa-fw fa-lg" aria-hidden="true"></i> 实战项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i> 个人项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-money fa-fw fa-lg" aria-hidden="true"></i> 练习项目</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-list fa-fw fa-lg" aria-hidden="true"></i> 框架学习</a></li>
+                <li class="menu-item"><a href="#"><i class="fa fa-group fa-fw fa-lg" aria-hidden="true"></i> 用户信息</a></li>
+            </ul>
+            <div class="logout">
+                <a href="javascript:;" class="logout-button"><i class="fa fa-fw fa-lg fa-power-off"></i> 退出</a>
+            </div>
+        </nav>
+    </div>
+    <div class="content-main" id="contentMain">
+        <div class="head__root___2xwfq"><a title="设置" href="javascript:history.back(-1); "><i class="fa fa-fw fa-lg fa-angle-left"></i></a><a class="head__sub-title___1jatQ" href="javascript:;
+">团队设置</a></div>
+        <div class="setting__main___2osj-" style="padding-left: 20px; padding-top: 20px;">
+            <div class="block__block___XXJ38">
+                <div class="block__content-wrap___X2vaE">
+                    <div class="block__content___1qobc">
+                        <h3><!-- react-text: 1394 -->团队信息<!-- /react-text --><span class="team-setting__createtime___1utC6">2016年12月16日 注册</span><a href="#" class="team-setting__modifyBtn___1VZo6">修改</a></h3>
+                        <p><span class="team-setting__formLabel___1LrgO">团队/公司全称：</span><span class="value">bilinyou</span></p>
+                        <p><span class="team-setting__formLabel___1LrgO">团队/公司简称：</span><span class="value"></span></p>
+                        <p><span class="team-setting__formLabel___1LrgO">所在行业：</span><span class="value"></span></p>
+                        <p><span class="team-setting__formLabel___1LrgO">所在地区：</span><span class="value">四川 </span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="block__block___XXJ38">
+                <div class="block__content-wrap___X2vaE">
+                    <div class="block__content___1qobc">
+                        <h3><!-- react-text: 1413 -->团队客服名片<!-- /react-text --><a href="/setting/team-setting-profile"><span class="team-setting__modifyBtn___1VZo6">修改</span></a></h3>
+                        <p class="main__sub___eGucX">企业开启「无消息访客过滤」时团队客服名片将会展示给访客。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block__block___XXJ38">
+                <div class="block__content-wrap___X2vaE">
+                    <div class="block__content___1qobc">
+                        <h3>超级管理员</h3>
+                        <p class="main__sub___eGucX">只有超级管理员才可以修改本设置和付费页面的设置。</p>
+                        <p><span class="super-user-name">超级管理员</span><a href="#" class="team-setting__modifyBtn___1VZo6">修改</a></p>
+                    </div>
+                </div>
+                <div class="main__blockInner___1JKM4">
+                    <h3><!-- react-text: 1427 -->团队联系人<!-- /react-text --><a href="#" class="team-setting__modifyBtn___1VZo6">修改</a></h3>
+                    <p class="main__sub___eGucX">仅用于紧急情况联系，放心，我们不会随便骚扰用户。</p>
+                    <p><span class="team-setting__formLabel___1LrgO">姓名：</span><span class="value"></span></p>
+                    <p><span class="team-setting__formLabel___1LrgO">电话：</span><span class="value">13678237425</span></p>
+                    <p><span class="team-setting__formLabel___1LrgO">邮箱：</span><span class="value"></span></p>
+                    <p><span class="team-setting__formLabel___1LrgO">邮寄地址：</span><span class="value"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class=" hide" id="loginBtn" data-toggle="modal" data-target="#myModal">
+    </button>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">登录提示</h4>
+                </div>
+                <div class="modal-body">
+                    你还没有登录哦！！！
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default go-login" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary go-login">登录</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

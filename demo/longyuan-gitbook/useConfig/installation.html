@@ -1,0 +1,15 @@
+<h1 id="GitBook安装"><a href="#GitBook安装" class="headerlink" title="GitBook安装"></a>GitBook安装</h1><p>下面介绍在本地如何安装 GitBook，如果不需要本地调试 &amp; 不需要获得生成的 html 文件，可以直接使用 <a href="https://www.gitbook.com/">官网</a> 提供的服务。<br><!-- toc --></p>
+<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>NodeJS(v4.0.0及以上)</li>
+</ul>
+<h2 id="通过NPM安装"><a href="#通过NPM安装" class="headerlink" title="通过NPM安装"></a>通过NPM安装</h2><p>运行下面的命令进行安装</p>
+<pre><code class="bash">npm install gitbook-cli -g
+</code></pre>
+<p>其中<code>gitbook-cli</code>是gitbook的一个命令行工具, 通过它可以在电脑上安装和管理gitbook的多个版本.</p>
+<h2 id="编辑书籍"><a href="#编辑书籍" class="headerlink" title="编辑书籍"></a>编辑书籍</h2><p>gitbook 官方已经提供了一个本地的<a href="https://www.gitbook.com/editor/osx">编辑器</a>, 使用它可以方便的编写书籍(不需要手动的写SUMMARY.md), 并且支持windows、mac、linux 三种平台, 所以强烈建议使用编辑器编写书籍.</p>
+<h2 id="预览书籍"><a href="#预览书籍" class="headerlink" title="预览书籍"></a>预览书籍</h2><p>使用下列命令会运行一个服务器, 通过<code>http://localhost:4000/</code>可以预览书籍</p>
+<pre><code class="bash">gitbook serve
+</code></pre>
+<p>运行该命令后会在书籍的文件夹中生成一个 <code>_book</code> 文件夹, 里面的内容即为生成的 html 文件.<br>我们可以使用下面命令来生成网页而不开启服务器</p>
+<pre><code class="bash">gitbook build
+</code></pre>

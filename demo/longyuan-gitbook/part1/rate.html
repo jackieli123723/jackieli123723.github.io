@@ -1,0 +1,102 @@
+<p><strong>1.流失率</strong></p>
+<h1 id="流失率"><a href="#流失率" class="headerlink" title="流失率"></a>流失率</h1><blockquote>
+<p>流失率包括6个部分：活跃用户流失率、新增用户流失率、付费用户流失率、活跃设备流失率、新增设备流失率、付费设备流失率。所有流失率数据都通过一个接口获取，通过请求参数type字段来区分。</p>
+</blockquote>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><blockquote>
+<p><a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">http:// 192.168.10.111:8080/app/userAnalysis/selectRetentionStatistics .do?</a></p>
+</blockquote>
+<h2 id="支持格式"><a href="#支持格式" class="headerlink" title="支持格式"></a>支持格式</h2><blockquote>
+<p>JSON</p>
+</blockquote>
+<h2 id="HTTP请求方式"><a href="#HTTP请求方式" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h2><blockquote>
+<p>POST</p>
+</blockquote>
+<h2 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h2><blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">必选</th>
+<th style="text-align:left">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">appId</td>
+<td style="text-align:left">ture</td>
+<td style="text-align:left">String(32)</td>
+<td>游戏Id</td>
+</tr>
+<tr>
+<td style="text-align:left">platform</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>平台</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>类型字段：1-新增用户留存 2-活跃用户留存 3-付费用户留存4-新增设备留存5-活跃设备留存6-付费设备留存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="返回字段"><a href="#返回字段" class="headerlink" title="返回字段"></a>返回字段</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">返回字段</th>
+<th style="text-align:left">示例</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">dt</td>
+<td style="text-align:left">2017-02-16</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">num</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">数量：如果type = 1,则表示当日新增用户数量，如果type=1,则表示活跃用户数量,以此类推</td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum1Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">1日留存</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="接口示例"><a href="#接口示例" class="headerlink" title="接口示例"></a>接口示例</h2><blockquote>
+<p>地址：<a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">ttp://test.dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do?type=1&amp;page=0&amp;pageSize=10&amp;appId=289ee05803487e57&amp;platform=1&amp;startDate=&amp;endDate=</a></p>
+<pre><code class="javascript">{
+    {
+    <span class="string">"channelMap"</span>: {
+        <span class="string">"longyuan5"</span>: <span class="string">"longyuan5"</span>,
+        <span class="string">"jinritt"</span>: <span class="string">"jinritt"</span>,
+        <span class="string">"uctt"</span>: <span class="string">"uctt"</span>
+       .......
+    },
+    <span class="string">"total"</span>: <span class="number">130</span>,
+    <span class="string">"code"</span>: <span class="number">0</span>,
+    <span class="string">"data"</span>: [
+        {
+            <span class="string">"dt"</span>: <span class="number">1489161600000</span>,
+            <span class="string">"retentionNum5Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum30Day"</span>: <span class="number">0</span>,
+            <span class="string">"num"</span>: <span class="number">37733</span>,
+            <span class="string">"retentionNum15Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum2Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum7Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum1Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum6Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum3Day"</span>: <span class="number">0</span>,
+            <span class="string">"retentionNum4Day"</span>: <span class="number">0</span>
+        }
+    ]
+}
+}
+</code></pre>
+</blockquote>

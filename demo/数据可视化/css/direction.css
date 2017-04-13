@@ -1,0 +1,89 @@
+/* CSS Document */
+
+#ranking .top-content ul li a.ranking { border-bottom:4px solid #90c31f; }
+
+.top { display:block; background:#0c5c96; background:rbga(0,60,116,.6)}
+.top-content { width:990px; margin:0 auto; padding-top:30px; display:block; zoom:1; overflow:hidden}
+.top-content span { float:left}
+.top-content ul { float:left; zoom:1; margin:0; padding-left:50px; height:50px}
+.top-content ul li { list-style:none; float:left; padding:6px 15px 0;}
+.top-content ul li a { width:100%; color:#fff; height:40px; display:block;  font-size:16px;}
+.top-content ul li a:hover { border-bottom:4px solid #90c31f; }
+
+.top-content .userLogout { float:right; padding-top:10px; font-size:14px; }
+.top-content .userLogout font { color:#fff; display:block; float:left; padding-right:5px; font-size:16px;}
+.top-content .userLogout a {color:#35adf7;}
+
+.choose-platform { width:990px; margin:0 auto; padding-top:20px; display:block; zoom:1; overflow:hidden; border-bottom:2px solid #20aaff}
+.choose-platform span {  height:51px; border:1px solid #20aaff; border-top-left-radius:4px; border-top-right-radius:4px; border-bottom:0; overflow:hidden;}
+.choose-platform span.left { float:left}
+.choose-platform span.right { float:right}
+.choose-platform a { color:#fff;  padding:0 24px; height:51px; line-height:51px; display:block; zoom:1; overflow:hidden; float:left; font-size:16px;}
+.choose-platform a.onChoose { background:#35adf7} 
+.choose-platform a img { margin-right:10px;}
+
+
+.table_datas { width:950px; margin:20px auto 0; padding:5px 20px 0 20px; background:#fff; clear:both; display:block; zoom:1; }
+.table_datas h4 { font-size:16px; display:block; padding:10px 0; border-bottom:2px solid #d6dce0}
+.operate_create { clear:both; display:block; padding:10px 0; overflow:hidden}
+.operate_create span { float:left; font-size:16px; padding:9px 10px 0 0;}
+.operate_create a { float:left; display:block; border-radius:4px; background:#71889f; color:#fff; padding:4px 20px;}
+.operate_create a em { font-style:normal; float:left; font-size:24px;}
+.operate_create a font { float:left; padding:6px 0 0 10px;}
+
+.contents { clear:both; display:block; padding:8px 0; }
+
+.contentSelect { float:left; width:380px;}
+.select01 { position:relative; float:left; width:150px; margin-right:10px; background:url(../images/button_choose_time_left.png) no-repeat; height:35px; overflow:hidden;}
+.contentSelect .select01 span { position:absolute; right:0; top:0;}
+.contentSelect .select01 select { height:33px; line-height:33px; position:absolute; padding-left:10px; z-index:9999; width:220px; padding-top:12px; background:none; border:none;}
+
+.select02 { position:relative; float:left; width:150px; margin-right:10px; background:url(../images/button_choose_time_left.png) no-repeat; height:35px; overflow:hidden;}
+.contentSelect .select02 span { position:absolute; right:0; top:0;}
+.contentSelect .select02 select { height:33px; line-height:33px; position:absolute; padding-left:10px; z-index:9999; width:170px; padding-top:10px; background:none; border:none;}
+
+.select03 { position:relative; float:left; width:100px; margin-right:10px; background:url(../images/button_choose_time_left.png) no-repeat; height:35px; overflow:hidden;}
+.contentSelect .select03 span { position:absolute; right:0; top:0;}
+.contentSelect .select03 select { height:33px; line-height:33px; position:absolute; padding-left:10px; z-index:9999; width:170px; padding-top:10px; background:none; border:none;}
+
+.contentSelect select option { padding:10px;}
+
+.tasts { float:left; width:570px;}
+.tasts ul { margin:0; padding:0; zoom:1; zoom:1;}
+.tasts ul li { cursor:pointer; list-style:none; float:left; background:#eaedef; border-radius:4px; margin-right:12px; position:relative; display:block; height:33px; padding:0 18px; line-height:33px; margin-bottom:15px;} 
+.tasts ul li em { position:absolute; right:-5px; top:-5px; display:none;}
+.tasts ul li:hover em { display:block;}
+
+.tasts ul li.operateAdd { background:none; border:1px dashed #87929f; font-size:26px; height:31px; line-height:30px; padding:0 25px; position:relative;}
+.tasts ul li.operateAdd div {display:block;width: 100%;height: 100%}
+.tasts ul li.operateAdd ol { display:none; position:absolute; background:#fff; border:1px solid #ccc; top:32px; left:0;  padding:10px 0; width:200px; z-index:9999; border-radius:4px; z-index:9999999;}
+.tasts ul li.operateAdd ol li { list-style:none; clear:both; font-size:12px; height:24px; width:170px; line-height:24px; margin:0; padding-left:10px; border-radius:0; display:block; clear:both; background:none; border:none;}
+.tasts ul li.operateAdd ol li:hover{ background:#f9f9f9}
+
+.tasts ul li.operateAdd ol span { margin:0 0 5px 10px; display:block; overflow:hidden}
+.tasts ul li.operateAdd ol span .inputSearch { border:1px solid #dfe1e3; float:left; width:145px; height:22px; line-height:22px; padding:0 25px 0 5px; margin-right:7px; background:url(../images/icon_search.png) no-repeat 155px 4px;}
+
+.tasts ul li.delete { display:none}
+.tasts ul li.delete img{ margin:7px 10px 0 8px}
+.tasts:hover li.delete { display:block;} 
+
+.addMord { clear:both; display:block; overflow:hidden; text-align:center; background:#ebf0f4; margin:16px 20px 15px; box-shadow:0 1px 1px #e3e4e8; border-radius:2px;}
+.addMord a { display:block; color:#1a7bcf; padding:14px 0; }
+
+.andOr { clear:both; display:block; padding:8px 0 16px; border-bottom:2px solid #d6dce0}
+.taskName { clear:both; display:block; padding:20px 0; overflow:hidden}
+.taskName input { float:left; border:1px solid #b4bdc6; width:260px; border-radius:4px; box-shadow:0 1px 1px #dde3e6 inset; height:32px; line-height:32px; padding:0 4px; font-size:14px; color:#6f7981; margin-right:10px;}
+.taskName a { background:#69a936; border-radius:4px; color:#fff; height:34px; line-height:34px; padding:0 20px; display:block; float:left; font-size:14px;}
+
+.allTask { width:990px; margin:0 auto; padding:20px 0; background:#fff; box-shadow:0 2px 6px #ccc inset;}
+.allTask h4 { display:block; font-size:14px; padding:0 20px 20px;}
+
+.tableTask { width:948px; margin:0 20px 6px; border:1px solid #ebf0f4; box-shadow:0 2px 2px #ccc;}
+.tableTask th { background:#71889f; color:#fff; text-align:center; height:34px; line-height:34px;}
+.tableTask td { padding:10px; line-height:24px; text-align:center}
+.tableTask td a {margin:0 10px;}
+.tableTask td a:hover.again { color:#1870de}
+.tableTask td a:hover.del { color:#ff3f04}
+.tableTask tr.even { background:#ebf0f4}
+.tableTask td.green { color:#387911} 
+

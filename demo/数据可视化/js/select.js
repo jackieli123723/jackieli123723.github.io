@@ -1,0 +1,26 @@
+$(document).ready(function(){
+$(".specificDate").click(function(){
+    $(".content-date").slideToggle("slow");
+  });
+$(".world").click(function(){
+    $(".chooseWorld").slideToggle("slow");
+  });
+$(".allStyle").click(function(){
+    $(".styleList").slideToggle("slow");
+  });
+$(".allLabel").click(function(){
+    $(".labelList").slideToggle("slow");
+  });
+$(".gameTitle").click(function(){
+    $(".gameList").slideToggle("slow");
+  });
+$(".dataTop h3").click(function(){
+    $(".topNoList").slideToggle("slow");
+  });  
+$(".platform").click(function(){
+    $(".choosePlatform").slideToggle("slow");
+  });
+$(".dataYuan").click(function(){
+    $(".chooseDataYuan").slideToggle("slow");
+  }); 
+});

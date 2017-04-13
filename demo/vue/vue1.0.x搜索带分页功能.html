@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible" />
+    <title>分页搜索--西门互联</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/2.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <style>
+    [v-cloak] {
+        display: none;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+	
+	span{
+	
+	color:Red
+	
+	}
+	.pagination ul > li > a.active{
+			background:#019ce4;
+			color:#fff;
+			    border-color: #019ce4;
+			}
+
+    </style>
+    <div id="app" v-cloak >
+	<br/>
+    <div class="container-fluid">
+	
+			<div class="row-fluid">
+				<div class="span6">
+					<form class="form-search">
+						<input class="input-medium search-query" placeholder="新闻标题检索" v-model="search" type="text" />
+					</form>
+				</div>
+				<div class="span6">
+					<div class="btn-group">
+						<button class="btn" type="button" @click="sort=-sort"><em class="icon-align-left"></em></button>
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="accordion" id="accordion-483788" v-for="new in filteredTitles|limitBy 3 page|filterBy search|orderBy 'pubDate' sort">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-483788" href="#accordion-element-676201">{{new.title}}</a>
+							</div>
+							<div id="accordion-element-676201" class="accordion-body in collapse">
+								<div class="accordion-inner">
+									{{new.desc}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="span12" v-show="!hasData()">
+					
+						<p>暂无数据....</p>
+					
+				</div>
+			</div>
+
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="pagination">
+						<ul>
+							<li>
+								<a @click="pre()">上一页</a>
+							</li>
+					
+							  <li v-for="i in showBunNum">
+								 <a v-if="currentPage === i+1" class="active">{{ i+1 }}</a>
+								 <a v-else  @click="pagination(i+1)">{{ i+1 }}</a>
+							  </li>
+  
+							
+							<li>
+								<a @click="next()">下一页</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+				<p>总查到有<span>{{countDataNews()}}</span>条记录</p>
+			<div>
+				computed计算对象的obj---{{filteredTitles}}
+		    </div>
+			<div>
+				totalPage---{{totalPage}}
+		    </div>
+		
+		</div>
+    </div>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+
+
+    var demo = new Vue({
+        el: '#app',
+        data: {
+	
+				news: [],
+				page: 0,
+				search: '',
+				sort: -1,
+				currentPage:1,
+				perPage:3,
+				totalPage:''
+			},
+			computed: {
+				/*filteredNews:function() {
+				var res = 0;
+				 this.news.filter(function(item){
+					  if(item.title.indexOf(this.search) > -1){
+					  res++
+					  }else{
+					  res--
+					  };
+					});
+					
+					return res;
+				} */
+
+		       filteredTitles: function() {
+					var self = this
+					return self.news.filter(function(item) {
+						return item.title.indexOf(self.search) !== -1 
+					})
+				},
+				showBunNum:function(){
+				return Math.ceil(this.filteredTitles.length/this.perPage)
+				}
+				
+			},
+			methods: {
+			    hasData() {
+					return this.countDataNews()>0 ? true : false;
+				},
+				countDataNews() {
+				var self = this
+					var count = 0;
+					for (var i=0;i<self.filteredTitles.length;i++) {
+						count++
+					}
+					return count;
+				},
+				getNews: function() {
+					var self = this;
+					$.ajax({
+						type: "get",
+						url: "json/news.json",
+						async: true,
+						data: {
+							page: 1,
+							channelId: '5572a109b3cdc86cf39001db',
+							channelName: '国内最新',
+						},
+						success: function(data) {
+							self.news = data.showapi_res_body.pagebean.contentlist;
+							self.totalPage = data.showapi_res_body.pagebean.allNum
+							//console.log(self.news);
+						}
+					});
+				},
+				pagination: function(page) {
+					this.page = 3 * (page - 1);
+					this.currentPage = page
+		
+				},
+				pre: function() {
+					if(this.page == 0) {
+						this.page = 0
+						this.currentPage =1
+					} else {
+						this.page -= 3
+						this.currentPage -=1
+					}
+					
+				},
+				next: function() {
+				
+					if(this.page + 3 > this.news.length) {
+						this.currentPage = Math.ceil(this.totalPage/this.perPage)
+						return false
+				
+					} 
+					
+					this.page += 3
+					this.currentPage +=1
+					
+		
+				}
+			},
+			ready: function() {
+				this.getNews();
+			}
+    })
+	
+
+    </script>
+</body>
+
+</html>

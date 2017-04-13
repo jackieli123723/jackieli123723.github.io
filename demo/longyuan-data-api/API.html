@@ -1,0 +1,349 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:API</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<p>龙渊数据统计平台-游戏统计系统接口设计（作者：李立冬 龙渊数据平台web前端工程师）</p>
+<hr>
+<p><strong>1.留存</strong></p>
+<h1 id="-">留存</h1>
+<blockquote>
+<p>留存包括6个部分：活跃用户留存、新增用户留存、付费用户留存、活跃设备留存、新增设备留存、付费设备留存。所有留存数据都通过一个接口获取，通过请求参数type字段来区分。</p>
+</blockquote>
+<h2 id="url">URL</h2>
+<blockquote>
+<p><a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">http:// 192.168.10.111:8080/app/userAnalysis/selectRetentionStatistics .do?</a></p>
+</blockquote>
+<h2 id="-">支持格式</h2>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h2 id="http-">HTTP请求方式</h2>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h2 id="-">请求参数</h2>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">必选</th>
+<th style="text-align:left">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">appId</td>
+<td style="text-align:left">ture</td>
+<td style="text-align:left">String(32)</td>
+<td>游戏Id</td>
+</tr>
+<tr>
+<td style="text-align:left">platform</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>平台</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>类型字段：1-新增用户留存 2-活跃用户留存 3-付费用户留存4-新增设备留存5-活跃设备留存6-付费设备留存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">返回字段</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">返回字段</th>
+<th style="text-align:left">示例</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">dt</td>
+<td style="text-align:left">2017-02-16</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">num</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">数量：如果type = 1,则表示当日新增用户数量，如果type=1,则表示活跃用户数量,以此类推</td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum1Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">1日留存</td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum2Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">2日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum3Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">3日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum4Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">4日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum5Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">5日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum6Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">6日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum7Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">7日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum15Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">15日留存   </td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum30Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">30日留存</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="-">接口示例</h2>
+<blockquote>
+<p>地址：<a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">ttp://test.dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do?type=1&amp;page=0&amp;pageSize=10&amp;appId=289ee05803487e57&amp;platform=1&amp;startDate=&amp;endDate=</a></p>
+<pre><code class="lang-javascript">{
+    {
+    &quot;channelMap&quot;: {
+        &quot;longyuan5&quot;: &quot;longyuan5&quot;,
+        &quot;jinritt&quot;: &quot;jinritt&quot;,
+        &quot;uctt&quot;: &quot;uctt&quot;
+       .......
+    },
+    &quot;total&quot;: 130,
+    &quot;code&quot;: 0,
+    &quot;data&quot;: [
+        {
+            &quot;dt&quot;: 1489161600000,
+            &quot;retentionNum5Day&quot;: 0,
+            &quot;retentionNum30Day&quot;: 0,
+            &quot;num&quot;: 37733,
+            &quot;retentionNum15Day&quot;: 0,
+            &quot;retentionNum2Day&quot;: 0,
+            &quot;retentionNum7Day&quot;: 0,
+            &quot;retentionNum1Day&quot;: 0,
+            &quot;retentionNum6Day&quot;: 0,
+            &quot;retentionNum3Day&quot;: 0,
+            &quot;retentionNum4Day&quot;: 0
+        }
+    ]
+}
+}
+</code></pre>
+</blockquote>
+<p><strong>1.流失率</strong></p>
+<h1 id="-">流失率</h1>
+<blockquote>
+<p>流失率包括6个部分：活跃用户流失率、新增用户流失率、付费用户流失率、活跃设备流失率、新增设备流失率、付费设备流失率。所有流失率数据都通过一个接口获取，通过请求参数type字段来区分。</p>
+</blockquote>
+<h2 id="url">URL</h2>
+<blockquote>
+<p><a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">http:// 192.168.10.111:8080/app/userAnalysis/selectRetentionStatistics .do?</a></p>
+</blockquote>
+<h2 id="-">支持格式</h2>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<h2 id="http-">HTTP请求方式</h2>
+<blockquote>
+<p>POST</p>
+</blockquote>
+<h2 id="-">请求参数</h2>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">必选</th>
+<th style="text-align:left">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">appId</td>
+<td style="text-align:left">ture</td>
+<td style="text-align:left">String(32)</td>
+<td>游戏Id</td>
+</tr>
+<tr>
+<td style="text-align:left">platform</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>平台</td>
+</tr>
+<tr>
+<td style="text-align:left">type</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">String(32)</td>
+<td>类型字段：1-新增用户留存 2-活跃用户留存 3-付费用户留存4-新增设备留存5-活跃设备留存6-付费设备留存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">返回字段</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">返回字段</th>
+<th style="text-align:left">示例</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">dt</td>
+<td style="text-align:left">2017-02-16</td>
+<td style="text-align:left">日期</td>
+</tr>
+<tr>
+<td style="text-align:left">num</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">数量：如果type = 1,则表示当日新增用户数量，如果type=1,则表示活跃用户数量,以此类推</td>
+</tr>
+<tr>
+<td style="text-align:left">retentionNum1Day</td>
+<td style="text-align:left">0.2335233</td>
+<td style="text-align:left">1日留存</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="-">接口示例</h2>
+<blockquote>
+<p>地址：<a href="http://dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do">ttp://test.dataviewer.ilongyuan.com.cn/app/userAnalysis/selectRetentionStatistics.do?type=1&amp;page=0&amp;pageSize=10&amp;appId=289ee05803487e57&amp;platform=1&amp;startDate=&amp;endDate=</a></p>
+<pre><code class="lang-javascript">{
+    {
+    &quot;channelMap&quot;: {
+        &quot;longyuan5&quot;: &quot;longyuan5&quot;,
+        &quot;jinritt&quot;: &quot;jinritt&quot;,
+        &quot;uctt&quot;: &quot;uctt&quot;
+       .......
+    },
+    &quot;total&quot;: 130,
+    &quot;code&quot;: 0,
+    &quot;data&quot;: [
+        {
+            &quot;dt&quot;: 1489161600000,
+            &quot;retentionNum5Day&quot;: 0,
+            &quot;retentionNum30Day&quot;: 0,
+            &quot;num&quot;: 37733,
+            &quot;retentionNum15Day&quot;: 0,
+            &quot;retentionNum2Day&quot;: 0,
+            &quot;retentionNum7Day&quot;: 0,
+            &quot;retentionNum1Day&quot;: 0,
+            &quot;retentionNum6Day&quot;: 0,
+            &quot;retentionNum3Day&quot;: 0,
+            &quot;retentionNum4Day&quot;: 0
+        }
+    ]
+}
+}
+</code></pre>
+</blockquote>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
