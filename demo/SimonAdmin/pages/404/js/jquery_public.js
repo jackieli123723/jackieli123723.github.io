@@ -19,14 +19,14 @@ function moveHero(){
         img = new Image();
         img.className = "fly_man";
         img.src = "images/fly_man.png";
-        /*��������ͼ���Ŀ���*/
+        /*�������ͼ��Ŀ���*/
         img.width = Math.random()*130+30;
         _flyBox.append(img);
         $(img).each(function () {
-            /*��������ͼ���Ķ���ִ��ʱ��*/
+            /*�������ͼ��Ķ���ִ��ʱ��*/
             var num = Math.random()*15000+15000;
             var num1 = parseInt(Math.random()*10+25);
-            /*��������ͼƬ��x������*/
+            /*�������ͼƬ��x������*/
             var _width = Math.random()*WIDTH+200-50;
             $(this).css({"left":_width,"top":"-260px","z-index":num1});
             $(this).stop().animate({"top":HEIGHT+800},num);
@@ -34,7 +34,7 @@ function moveHero(){
     }
     setTimeout(moveHero,1000);
 }
-/*����������Ļ�߶ȵ�ͼ���ķ���*/
+/*���������Ļ�߶ȵ�ͼ��ķ���*/
 function clearImg(){
     clearTimeout();
     /*��ȡbody�Ŀ�����.cloudBox */
