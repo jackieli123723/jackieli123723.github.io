@@ -10,7 +10,8 @@
 ## 西门互联ssr版本博客
 [查看](https://textnuxt.lilidong.cn)
 
-
+## 小程序扫码
+![e43d551e603e9073432b61f9d514a86](https://user-images.githubusercontent.com/10346511/62260243-de7c3000-b443-11e9-96b9-36541ca45283.jpg)
 
 ## 作品列表持续更新
 
