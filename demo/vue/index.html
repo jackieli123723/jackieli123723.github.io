@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <title>vuejs-localStorage实现工作计划to-do-list</title>
 </head>
@@ -114,8 +114,8 @@ text-decoration:line-through;
 </style>
 <div id="demo" class="reminder-container" v-cloak>
     <h1 v-text="title"></h1>
-	<br/>
-	<input type="text" v-model="newItem"  v-on:keyup.enter="newAdd" placeholder="enter输入" />
+	<br>
+	<input type="text" v-model="newItem" v-on:keyup.enter="newAdd" placeholder="enter输入">
     <ul class="reminders">
       <li v-for="item in items" v-bind:class="{isFinshed:item.isFinshed}" v-on:click="toggleFinshed(item)">
         {{ item.label }} <span class="fr">{{item.isFinshed ? "完成" : "未完成" }}</span>

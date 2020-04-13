@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>node.js 部署网站代码的正确方式 | 致力于web前端开发,前端学习交流</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文以前面vue1-0-x-仿照饿了么改写mvvm方式的基础上增加node.js 代码服务端自动部署方案,git仓库代码演示">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu_union_verify" content="1ae10e07065aae065a83e970ed7158f2">
+    <title>node.js 部署网站代码的正确方式 | 致力于web前端开发,前端学习交流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="本文以前面vue1-0-x-仿照饿了么改写mvvm方式的基础上增加node.js 代码服务端自动部署方案,git仓库代码演示">
 <meta name="keywords" content="vue,node.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node.js 部署网站代码的正确方式">
 <meta property="og:url" content="https://jackieli123723.github.io/2017/01/13/node-js-部署网站代码的正确方式/index.html">
 <meta property="og:site_name" content="致力于web前端开发,前端学习交流">
 <meta property="og:description" content="本文以前面vue1-0-x-仿照饿了么改写mvvm方式的基础上增加node.js 代码服务端自动部署方案,git仓库代码演示">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113180220.png">
 <meta property="og:image" content="http://odg9m8tq2.bkt.clouddn.com/dev.jpg">
 <meta property="og:image" content="http://odg9m8tq2.bkt.clouddn.com/start.jpg">
@@ -22,13 +24,13 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node.js 部署网站代码的正确方式">
 <meta name="twitter:description" content="本文以前面vue1-0-x-仿照饿了么改写mvvm方式的基础上增加node.js 代码服务端自动部署方案,git仓库代码演示">
-<meta name="twitter:image" content="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113180220.png">
-  
-  
+<meta name="twitter:image" content="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113180220.png">  
     <link rel="icon" href="//favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+     <link rel="stylesheet" href="/css/style.css">
+
+    <script data-ad-client="ca-pub-7911391573681505" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </head>
+</html>
 
 <body>
   <div id="container">
@@ -92,7 +94,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -265,25 +267,25 @@
         </div>
         
 
-        <blockquote><p>本文以前面<a href="/demo/vue-app-elme/index.html">vue1-0-x-仿照饿了么改写mvvm方式</a>的基础上增加node.js 代码服务端自动部署方案,<a href="https://github.com/jackieli123723/Node-Vue-Deploy.git" target="_blank" rel="external">git仓库代码演示</a></p>
+        <blockquote><p>本文以前面<a href="/demo/vue-app-elme/index.html">vue1-0-x-仿照饿了么改写mvvm方式</a>的基础上增加node.js 代码服务端自动部署方案,<a href="https://github.com/jackieli123723/Node-Vue-Deploy.git" target="_blank" rel="noopener">git仓库代码演示</a></p>
 </blockquote>
 <a id="more"></a>
-<h1 id="项目结构示意图"><a href="#项目结构示意图" class="headerlink" title="项目结构示意图"></a>项目结构示意图</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113180220.png" alt=""><br>在根目录下加入部署的脚本server.js，内容如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//server.js</span></div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"><span class="keyword">var</span> mime = <span class="built_in">require</span>(<span class="string">"mime"</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">send404</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">  response.writeHead(<span class="number">404</span>, &#123;<span class="string">"Content-type"</span> : <span class="string">"text/plain"</span>&#125;);</div><div class="line">  response.write(<span class="string">"Error 404: resource not found"</span>);</div><div class="line">  response.end();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendFile</span>(<span class="params">response, filePath, fileContents</span>) </span>&#123;</div><div class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-type"</span> : mime.lookup(path.basename(filePath))&#125;);</div><div class="line">  response.end(fileContents);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">serverWorking</span>(<span class="params">response, absPath</span>) </span>&#123;</div><div class="line">  fs.exists(absPath, <span class="function"><span class="keyword">function</span>(<span class="params">exists</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (exists) &#123;</div><div class="line">      fs.readFile(absPath, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">          send404(response)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          sendFile(response, absPath, data);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      send404(response);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> filePath = <span class="literal">false</span>;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (request.url == <span class="string">'/'</span>) &#123;</div><div class="line">    filePath = <span class="string">"dist/index.html"</span>;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    filePath = <span class="string">"dist"</span> + request.url;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> absPath = <span class="string">"./"</span> + filePath;</div><div class="line">  serverWorking(response, absPath);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> port_number = server.listen(process.env.PORT || <span class="number">5000</span>);</div></pre></td></tr></table></figure>
+<h1 id="项目结构示意图"><a href="#项目结构示意图" class="headerlink" title="项目结构示意图"></a>项目结构示意图</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113180220.png" alt><br>在根目录下加入部署的脚本server.js，内容如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"><span class="keyword">var</span> mime = <span class="built_in">require</span>(<span class="string">"mime"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">send404</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">  response.writeHead(<span class="number">404</span>, &#123;<span class="string">"Content-type"</span> : <span class="string">"text/plain"</span>&#125;);</span><br><span class="line">  response.write(<span class="string">"Error 404: resource not found"</span>);</span><br><span class="line">  response.end();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendFile</span>(<span class="params">response, filePath, fileContents</span>) </span>&#123;</span><br><span class="line">  response.writeHead(<span class="number">200</span>, &#123;<span class="string">"Content-type"</span> : mime.lookup(path.basename(filePath))&#125;);</span><br><span class="line">  response.end(fileContents);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">serverWorking</span>(<span class="params">response, absPath</span>) </span>&#123;</span><br><span class="line">  fs.exists(absPath, <span class="function"><span class="keyword">function</span>(<span class="params">exists</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (exists) &#123;</span><br><span class="line">      fs.readFile(absPath, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">          send404(response)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          sendFile(response, absPath, data);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      send404(response);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> filePath = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (request.url == <span class="string">'/'</span>) &#123;</span><br><span class="line">    filePath = <span class="string">"dist/index.html"</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    filePath = <span class="string">"dist"</span> + request.url;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> absPath = <span class="string">"./"</span> + filePath;</span><br><span class="line">  serverWorking(response, absPath);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> port_number = server.listen(process.env.PORT || <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
 <p>同时修改package.json 的npm 启动命令的依赖开发 增加start”: “rimraf dist &amp;&amp; node build/build.js &amp;&amp; node server.js” 和依赖   “mime”: “^1.3.4”</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//修改的地方如下</span></div><div class="line"></div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"dev"</span>: <span class="string">"node build/dev-server.js"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</div><div class="line">    <span class="string">"start"</span>: <span class="string">"rimraf dist &amp;&amp; node build/build.js &amp;&amp; node server.js"</span> <span class="comment">//删除部署重启</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"babel-runtime"</span>: <span class="string">"^6.0.0"</span>,</div><div class="line">    <span class="string">"vue"</span>: <span class="string">"^1.0.21"</span>,</div><div class="line">    <span class="string">"vue-resource"</span>: <span class="string">"^1.0.1"</span>,</div><div class="line">    <span class="string">"vue-router"</span>: <span class="string">"^0.7.13"</span>,</div><div class="line">    <span class="string">"better-scroll"</span>: <span class="string">"^0.1.7"</span>,</div><div class="line">    <span class="string">"mime"</span>: <span class="string">"^1.3.4"</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改的地方如下</span></span><br><span class="line"></span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"node build/dev-server.js"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"rimraf dist &amp;&amp; node build/build.js &amp;&amp; node server.js"</span> <span class="comment">//删除部署重启</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"babel-runtime"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="string">"vue"</span>: <span class="string">"^1.0.21"</span>,</span><br><span class="line">    <span class="string">"vue-resource"</span>: <span class="string">"^1.0.1"</span>,</span><br><span class="line">    <span class="string">"vue-router"</span>: <span class="string">"^0.7.13"</span>,</span><br><span class="line">    <span class="string">"better-scroll"</span>: <span class="string">"^0.1.7"</span>,</span><br><span class="line">    <span class="string">"mime"</span>: <span class="string">"^1.3.4"</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="node-网站部署"><a href="#node-网站部署" class="headerlink" title="node 网站部署"></a>node 网站部署</h1><p>npm install //安装</p>
 <p>npm run dev //开发</p>
 <p>npm run build //打包</p>
 <p>npm start //服务重启更新代码</p>
-<p>开发预览  <a href="http://localhost:8081/" target="_blank" rel="external">http://localhost:8081/</a></p>
-<p>打包后的正式发布代码预览<br>本地打开 <a href="http://localhost:5000/" target="_blank" rel="external">http://localhost:5000/</a></p>
-<h1 id="开发环境本地"><a href="#开发环境本地" class="headerlink" title="开发环境本地"></a>开发环境本地</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/dev.jpg" alt=""></p>
-<h1 id="打包后的正式发布代码预览"><a href="#打包后的正式发布代码预览" class="headerlink" title="打包后的正式发布代码预览"></a>打包后的正式发布代码预览</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/start.jpg" alt=""></p>
-<p>#node服务器部署<br>服务器部署<br><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113174052.png" alt=""></p>
-<p>域名访问<br><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113174112.png" alt=""></p>
+<p>开发预览  <a href="http://localhost:8081/" target="_blank" rel="noopener">http://localhost:8081/</a></p>
+<p>打包后的正式发布代码预览<br>本地打开 <a href="http://localhost:5000/" target="_blank" rel="noopener">http://localhost:5000/</a></p>
+<h1 id="开发环境本地"><a href="#开发环境本地" class="headerlink" title="开发环境本地"></a>开发环境本地</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/dev.jpg" alt></p>
+<h1 id="打包后的正式发布代码预览"><a href="#打包后的正式发布代码预览" class="headerlink" title="打包后的正式发布代码预览"></a>打包后的正式发布代码预览</h1><p><img src="http://odg9m8tq2.bkt.clouddn.com/start.jpg" alt></p>
+<p>#node服务器部署<br>服务器部署<br><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113174052.png" alt></p>
+<p>域名访问<br><img src="http://odg9m8tq2.bkt.clouddn.com/QQ%E6%88%AA%E5%9B%BE20170113174112.png" alt></p>
 <hr>
-<p><strong>版权声明：</strong> 本文章采用 知识共享署名 2.5 中国大陆许可协议 进行许可，欢迎转载，但转载请注明来自<a href="http://lilidong.cn" target="_blank" rel="external">李立冬博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.lilidong.cn/2017/01/13/node-js-部署网站代码的正确方式/" target="_blank" rel="external">http://www.lilidong.cn/2017/01/13/node-js-部署网站代码的正确方式/</a></p>
+<p><strong>版权声明：</strong> 本文章采用 知识共享署名 2.5 中国大陆许可协议 进行许可，欢迎转载，但转载请注明来自<a href="http://lilidong.cn" target="_blank" rel="noopener">李立冬博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.lilidong.cn/2017/01/13/node-js-部署网站代码的正确方式/" target="_blank" rel="noopener">http://www.lilidong.cn/2017/01/13/node-js-部署网站代码的正确方式/</a></p>
 
       
     </div>
@@ -293,18 +295,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/01/12/nodejs 爬虫实现爬取腾讯前端团队Alloyteam的所有文章/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/19/如何给自己的网站项目加上人机验证/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          nodejs 爬虫实现爬取腾讯前端团队Alloyteam的所有文章
+          如何给自己的网站项目加上人机验证
         
       </div>
     </a>
   
   
-    <a href="/2017/01/19/如何给自己的网站项目加上人机验证/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">如何给自己的网站项目加上人机验证</div>
+    <a href="/2017/01/12/nodejs 爬虫实现爬取腾讯前端团队Alloyteam的所有文章/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nodejs 爬虫实现爬取腾讯前端团队Alloyteam的所有文章</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -527,66 +529,77 @@ display:none;
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2018 Jackieli  蜀ICP备14004275号
-    	</div>
-      	<div class="footer-right">
-      	    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv" style="
+      <div class="footer-left">
+        &copy; 2020 Jackieli <a
+          href="http://www.beian.miit.gov.cn" style="color:#666" target="_blank">蜀ICP备14004275号</a>
+      </div>
+      <div class="footer-right">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv" style="
                 color: #006b98;"></span>次</span>
-      	</div>
-        <script type="text/javascript">
-(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      </div>
+      <script type="text/javascript">
+        (function (w, d, t, u, n, s, e) {
+          w['SwiftypeObject'] = n;
+          w[n] = w[n] || function () {
+            (w[n].q = w[n].q || []).push(arguments);
+          };
+          s = d.createElement(t);
+          e = d.getElementsByTagName(t)[0];
+          s.async = 1;
+          s.src = u;
+          e.parentNode.insertBefore(s, e);
+        })(window, document, 'script', '//s.swiftypecdn.com/install/v2/st.js', '_st');
 
-_st('install','yFNLu7csagE1NiKNMGxY','2.0.0');
-</script>
+        _st('install', 'yFNLu7csagE1NiKNMGxY', '2.0.0');
+      </script>
 
 
 
 
-<style>
-.st-ui-search-input,.st-default-search-input {
-    display: inline-block;
-    width: 190px;
-    height: 16px;
-    padding: 7px 11px 7px 28px;
-    border: 1px solid #bbb;
-    border: 1px solid rgba(0,0,0,0.25);
-    font-weight: 400;
-    color: #3A444F;
-    font-size: 14px;
-    line-height: 16px;
-    box-sizing: content-box;
-    background: #fff 8px 8px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
-    background-clip: padding-box;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
-     position:fixed;
-    left:38px;
-    top:60px;
-    border-radius:16px;
-}
+      <style>
+        .st-ui-search-input,
+        .st-default-search-input {
+          display: inline-block;
+          width: 190px;
+          height: 16px;
+          padding: 7px 11px 7px 28px;
+          border: 1px solid #bbb;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          font-weight: 400;
+          color: #3A444F;
+          font-size: 14px;
+          line-height: 16px;
+          box-sizing: content-box;
+          background: #fff 8px 8px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
+          background-clip: padding-box;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+          position: fixed;
+          left: 38px;
+          top: 60px;
+          border-radius: 16px;
+        }
 
-.st-ui-search-input:focus,.st-default-search-input:focus {
-    outline: none;
-    border-color: #3A444F;
-    border-color: rgba(0,0,0,0.5)
-}
+        .st-ui-search-input:focus,
+        .st-default-search-input:focus {
+          outline: none;
+          border-color: #3A444F;
+          border-color: rgba(0, 0, 0, 0.5)
+        }
 
-.st-ui-search-input::-ms-clear,.st-default-search-input::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0
-}
-</style>
+        .st-ui-search-input::-ms-clear,
+        .st-default-search-input::-ms-clear {
+          display: none;
+          width: 0;
+          height: 0
+        }
+      </style>
 
     </div>
   </div>

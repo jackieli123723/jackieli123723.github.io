@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <title>demo</title>
-    <meta charset="UTF-8" />
-    <meta name="KEYWORDS" content="demo" />
-    <meta name="DESCRIPTION" content="demo" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <meta content="yes" name="apple-mobile-web-app-capable" />
-    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <meta name="KEYWORDS" content="demo">
+    <meta name="DESCRIPTION" content="demo">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
     <style>
     * {
@@ -399,8 +399,8 @@
                            {{searchItem.name}}
                       </span>
                 </div>
-                <input type="search" v-model="searchKey1" v-on:keyup="getData($event)" v-on:keydown='keyGo($event)' v-on:blur="none()" v-on:focus='getHistory()' id="infinitySearch" class="SearchInput" stype="word" searchtype="0" start="" end="" url="https://www.baidu.com/s?ie=UTF-8&amp;tn=null&amp;wd=" surl="" placeholder="百 度" />
-                <button id="searchButton" for="infinitySearch" v-on:click='go()'></button>
+                <input type="search" v-model="searchKey1" v-on:keyup="getData($event)" v-on:keydown="keyGo($event)" v-on:blur="none()" v-on:focus="getHistory()" id="infinitySearch" class="SearchInput" stype="word" searchtype="0" start end url="https://www.baidu.com/s?ie=UTF-8&amp;tn=null&amp;wd=" surl placeholder="百 度">
+                <button id="searchButton" for="infinitySearch" v-on:click="go()"></button>
                 <div id="searchChange">
                     <div class="search-logo"></div>
                 </div>
@@ -414,7 +414,7 @@
     </div>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/vue/1.0.7/vue.js"></script>
-    <Script>
+    <script>
     let vue = new Vue({
         el: 'body',
         data: {

@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible" />
+    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible">
     <title>分页搜索--西门互联</title>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/2.3.0/css/bootstrap.min.css">
 </head>
@@ -36,14 +36,14 @@
 			}
 
     </style>
-    <div id="app" v-cloak >
-	<br/>
+    <div id="app" v-cloak>
+	<br>
     <div class="container-fluid">
 	
 			<div class="row-fluid">
 				<div class="span6">
 					<form class="form-search">
-						<input class="input-medium search-query" placeholder="新闻标题检索" v-model="search" type="text" />
+						<input class="input-medium search-query" placeholder="新闻标题检索" v-model="search" type="text">
 					</form>
 				</div>
 				<div class="span6">
@@ -85,7 +85,7 @@
 					
 							  <li v-for="i in showBunNum">
 								 <a v-if="currentPage === i+1" class="active">{{ i+1 }}</a>
-								 <a v-else  @click="pagination(i+1)">{{ i+1 }}</a>
+								 <a v-else @click="pagination(i+1)">{{ i+1 }}</a>
 							  </li>
   
 							

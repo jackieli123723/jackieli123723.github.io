@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <title>VueJs Components Tutorial - coligo.io</title>
 </head>
@@ -528,27 +528,27 @@ a {
      <hello></hello>
 	 
     <h1 v-text="title"></h1>
-	 <br/>
-    <input id='add-input' type="text" v-model='newItem' @keyup.enter='addNew' placeholder='enter输入'/>
+	 <br>
+    <input id="add-input" type="text" v-model="newItem" @keyup.enter="addNew" placeholder="enter输入">
     
 	
   <transition-group name="list" tag="ul" class="reminders">
-	 <li v-for='(item,index) in items'  v-bind:key="item">
-		<h3 @mouseenter='itemEnter(item)' @mouseleave='itemLeave(item)'>
+	 <li v-for="(item,index) in items" v-bind:key="item">
+		<h3 @mouseenter="itemEnter(item)" @mouseleave="itemLeave(item)">
 		  <!-- <input type='checkbox' @click='itemCheck(item)'> -->
-		  <div class="box"  v-bind:class="{ 'checked': item.checked }" @click="chooseCheck(item)">
+		  <div class="box" v-bind:class="{ 'checked': item.checked }" @click="chooseCheck(item)">
 			<i class="checkbox-icon"></i>
 		  </div>
-		  <p class='item-label' v-bind:class="{ 'line-through': item.checked }">{{ index + 1 }}.{{ item.label }} </p>
-		  <p class='item-status done' v-if='item.checked'>已完成</p>
+		  <p class="item-label" v-bind:class="{ 'line-through': item.checked }">{{ index + 1 }}.{{ item.label }} </p>
+		  <p class="item-status done" v-if="item.checked">已完成</p>
 		  <p class="item-status " v-else>未完成</p>
-		  <p class='item-delete' v-if='item.showDelete' @click='openDialog(index)' >&#215;</p>
+		  <p class="item-delete" v-if="item.showDelete" @click="openDialog(index)">&#215;</p>
 		</h3>
 	</li>
   </transition-group>
   
  
-	 <div class="dialog" v-if="show" @click='close()'>
+	 <div class="dialog" v-if="show" @click="close()">
 	  <div class="del-confirm-box">
 		<div class="del-confirm-text">
 		  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAYAAAABtRhCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ZGIxNTRiMi1hOGIwLTE2NGEtYWVmZi0wNmExNzEyNGNmMzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0I5Mjg1MjQzOUMwMTFFNjhDNERBODFGMjdDNUIwODEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0I5Mjg1MjMzOUMwMTFFNjhDNERBODFGMjdDNUIwODEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmJkMmMxNWYzLTY5MmItYzk0Ni04MmQ3LTViNjQ1N2I3ODc0MiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1ZGIxNTRiMi1hOGIwLTE2NGEtYWVmZi0wNmExNzEyNGNmMzgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4kuRKiAAABMUlEQVR42mJkbH/PgAOwAXE3EMcCsSADcQBk2GIgLgXiX9gUsODR3AXEeQykAUGonh9AXI5NARMezbFQ2gaIGYnEtlA9KbgMZcQTpP9hakj0JV59TNC46gfit1DF/5E0MaCJEYOx6XsKtYMNFIftQFzAQFsgBbXjH8iH8WTEFakYFrfxoDgkN64YyIlbJgY6A5CFz8lMHOQkphdM0Dzzgg6eA6XUZFAq3QbEkhTkO2LzpcyAxSEucAgp/A9RII6zaEMP0v9UZMPNHVRBOmrhqIWjFo5aOEQtxNfyPopU8B6lQBxnbfERiPmgTbrnVPKQBNSsL0DMix6ke6D0HKhCSgGohp8LZe/C5kMNID4OxAJUjrYPQGwJxDfQfQgSsADidUD8mQoWfYaaZQGzDAQAAgwAUmZ2hxyY8d4AAAAASUVORK5CYII=">
@@ -556,15 +556,15 @@ a {
 		  <span class="forver">此条信息将会被永久删除</span>
 		</div>
 		<div class="del-confirm-btn">
-		  <span class="del-confirm-sure" @click='deleteClick(nowIndex)'>删除</span>
-		  <span class="del-confirm-cancel" @click='close()'>取消</span>
+		  <span class="del-confirm-sure" @click="deleteClick(nowIndex)">删除</span>
+		  <span class="del-confirm-cancel" @click="close()">取消</span>
 		</div>
 	  </div>
 	</div>
-    <div class="mask" v-if="show" @click='close()'></div>
+    <div class="mask" v-if="show" @click="close()"></div>
 
 	  <transition name="fade">
-		<div class="notification" v-if="showFlag" >
+		<div class="notification" v-if="showFlag">
 		<div class="content">
 		  删除成功
 		</div>
@@ -572,7 +572,7 @@ a {
 	  </transition>
 
    <div class="bt">
-    <div class="box"  v-bind:class="{ 'checked': changecheck }" @click='change()' >
+    <div class="box" v-bind:class="{ 'checked': changecheck }" @click="change()">
               <i class="checkbox-icon"></i>
            </div>
      <span class="all">{{!changecheck ? "全选" : "反选" }}</span>

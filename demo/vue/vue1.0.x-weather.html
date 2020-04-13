@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
 	 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
-    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible" />
+    <meta content="initial-dpr=2,maximum-dpr=3" name="flexible">
     <title>vue.js(1.0.x) 天气预报---author:	Jackieli</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
@@ -44,9 +44,9 @@
         <div class="alert alert-success" role="alert">vue.js(1.0.x) 天气预报---author:  Jackieli</div>
         <div class="navbar-form ">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="城市全拼音enter输入" v-model='city' @keyup.enter='addNew'>
+                <input type="text" class="form-control" placeholder="城市全拼音enter输入" v-model="city" @keyup.enter="addNew">
             </div>
-            <button type="submit" class="btn btn-default" @click='addNew'>切换</button>
+            <button type="submit" class="btn btn-default" @click="addNew">切换</button>
         </div>
         <div class="panel panel-default">
             <!-- Default panel contents -->

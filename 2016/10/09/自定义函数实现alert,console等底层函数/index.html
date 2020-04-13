@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>自定义函数实现alert,console等底层函数在，主要运用js的指针改变来实现 | 致力于web前端开发,前端学习交流</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数">
-<meta name="keywords" content="javascript,call&&apply">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="baidu_union_verify" content="1ae10e07065aae065a83e970ed7158f2">
+    <title>自定义函数实现alert,console等底层函数在，主要运用js的指针改变来实现 | 致力于web前端开发,前端学习交流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数">
+<meta name="keywords" content="javascript,call&amp;&amp;apply">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义函数实现alert,console等底层函数在，主要运用js的指针改变来实现">
 <meta property="og:url" content="https://jackieli123723.github.io/2016/10/09/自定义函数实现alert,console等底层函数/index.html">
 <meta property="og:site_name" content="致力于web前端开发,前端学习交流">
 <meta property="og:description" content="javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数">
+<meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2016-10-10T04:52:26.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义函数实现alert,console等底层函数在，主要运用js的指针改变来实现">
-<meta name="twitter:description" content="javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数">
-  
-  
+<meta name="twitter:description" content="javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数">  
     <link rel="icon" href="//favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+     <link rel="stylesheet" href="/css/style.css">
+
+    <script data-ad-client="ca-pub-7911391573681505" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  </head>
+</html>
 
 <body>
   <div id="container">
@@ -86,7 +88,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -256,11 +258,11 @@
         <blockquote><p>javascript底层的alert和console等函数的自定义封装，可以实现自定义功能的调用，组件风格更好的代码维护，有两种方式一种是定义一个对象外挂方法，还有一种就是this指针指向改变调用函数</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"alert-old"</span>&gt;</span>alert原生<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"alert-new"</span>&gt;</span>alert代理方式<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> oAlert = <span class="built_in">document</span>.getElementById(<span class="string">"alert-old"</span>),</div><div class="line">            nAlert = <span class="built_in">document</span>.getElementById(<span class="string">"alert-new"</span>);</div><div class="line"></div><div class="line">        oAlert.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            alert(<span class="string">'alert原生'</span>)</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'alert原生'</span>)</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">logApply</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, <span class="built_in">arguments</span>);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">logCall</span>(<span class="params">content</span>) </span>&#123; <span class="comment">//此处必须传参数否则打印的是个数组，call和apply的区别</span></div><div class="line">            <span class="built_in">console</span>.log.call(<span class="built_in">console</span>, content);<span class="comment">//同上其中 call() 是改变 this 的指向问题，这里是让 this 指向 console</span></div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> util = &#123;&#125;; <span class="comment">//定义对象实现方法调用</span></div><div class="line">        util.alert = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</div><div class="line">            <span class="built_in">window</span>.alert(content);</div><div class="line">        &#125;;</div><div class="line">        util.log = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(content);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        nAlert.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            util.alert(<span class="string">'alert代理方式'</span>)</div><div class="line">            util.log(<span class="string">"alert代理方式"</span>)</div><div class="line">            logCall(<span class="string">"alert代理方式"</span>)</div><div class="line">            logApply(<span class="string">"alert代理方式"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"alert-old"</span>&gt;</span>alert原生<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"alert-new"</span>&gt;</span>alert代理方式<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> oAlert = <span class="built_in">document</span>.getElementById(<span class="string">"alert-old"</span>),</span><br><span class="line">            nAlert = <span class="built_in">document</span>.getElementById(<span class="string">"alert-new"</span>);</span><br><span class="line"></span><br><span class="line">        oAlert.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            alert(<span class="string">'alert原生'</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'alert原生'</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">logApply</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, <span class="built_in">arguments</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">logCall</span>(<span class="params">content</span>) </span>&#123; <span class="comment">//此处必须传参数否则打印的是个数组，call和apply的区别</span></span><br><span class="line">            <span class="built_in">console</span>.log.call(<span class="built_in">console</span>, content);<span class="comment">//同上其中 call() 是改变 this 的指向问题，这里是让 this 指向 console</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> util = &#123;&#125;; <span class="comment">//定义对象实现方法调用</span></span><br><span class="line">        util.alert = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">window</span>.alert(content);</span><br><span class="line">        &#125;;</span><br><span class="line">        util.log = <span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(content);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        nAlert.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            util.alert(<span class="string">'alert代理方式'</span>)</span><br><span class="line">            util.log(<span class="string">"alert代理方式"</span>)</span><br><span class="line">            logCall(<span class="string">"alert代理方式"</span>)</span><br><span class="line">            logApply(<span class="string">"alert代理方式"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>ps:这个是自己在学习vue的过程中模块化思想中的提炼</p>
 <hr>
-<p><strong>版权声明：</strong> 本文章采用 知识共享署名 2.5 中国大陆许可协议 进行许可，欢迎转载，但转载请注明来自<a href="http://lilidong.cn" target="_blank" rel="external">李立冬博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.lilidong.cn/2016/10/09/自定义函数实现alert,console等底层函数/" target="_blank" rel="external">http://www.lilidong.cn/2016/10/09/自定义函数实现alert,console等底层函数/</a></p>
+<p><strong>版权声明：</strong> 本文章采用 知识共享署名 2.5 中国大陆许可协议 进行许可，欢迎转载，但转载请注明来自<a href="http://lilidong.cn" target="_blank" rel="noopener">李立冬博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.lilidong.cn/2016/10/09/自定义函数实现alert,console等底层函数/" target="_blank" rel="noopener">http://www.lilidong.cn/2016/10/09/自定义函数实现alert,console等底层函数/</a></p>
 
       
     </div>
@@ -270,18 +272,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/09/20/vuejs-localStorage实现工作计划to-do-list/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          vuejs+localStorage实现工作计划to-do-list
+          Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染
         
       </div>
     </a>
   
   
-    <a href="/2016/10/20/Vue2-0-新手完全填坑攻略——从环境搭建到服务器渲染/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue2.0 新手完全填坑攻略——从环境搭建到服务器渲染</div>
+    <a href="/2016/09/20/vuejs-localStorage实现工作计划to-do-list/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vuejs+localStorage实现工作计划to-do-list</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -504,66 +506,77 @@ display:none;
       <footer id="footer">
   <div class="outer">
     <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2018 Jackieli  蜀ICP备14004275号
-    	</div>
-      	<div class="footer-right">
-      	    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv" style="
+      <div class="footer-left">
+        &copy; 2020 Jackieli <a
+          href="http://www.beian.miit.gov.cn" style="color:#666" target="_blank">蜀ICP备14004275号</a>
+      </div>
+      <div class="footer-right">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv" style="
                 color: #006b98;"></span>次</span>
-      	</div>
-        <script type="text/javascript">
-(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+      </div>
+      <script type="text/javascript">
+        (function (w, d, t, u, n, s, e) {
+          w['SwiftypeObject'] = n;
+          w[n] = w[n] || function () {
+            (w[n].q = w[n].q || []).push(arguments);
+          };
+          s = d.createElement(t);
+          e = d.getElementsByTagName(t)[0];
+          s.async = 1;
+          s.src = u;
+          e.parentNode.insertBefore(s, e);
+        })(window, document, 'script', '//s.swiftypecdn.com/install/v2/st.js', '_st');
 
-_st('install','yFNLu7csagE1NiKNMGxY','2.0.0');
-</script>
+        _st('install', 'yFNLu7csagE1NiKNMGxY', '2.0.0');
+      </script>
 
 
 
 
-<style>
-.st-ui-search-input,.st-default-search-input {
-    display: inline-block;
-    width: 190px;
-    height: 16px;
-    padding: 7px 11px 7px 28px;
-    border: 1px solid #bbb;
-    border: 1px solid rgba(0,0,0,0.25);
-    font-weight: 400;
-    color: #3A444F;
-    font-size: 14px;
-    line-height: 16px;
-    box-sizing: content-box;
-    background: #fff 8px 8px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
-    background-clip: padding-box;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
-     position:fixed;
-    left:38px;
-    top:60px;
-    border-radius:16px;
-}
+      <style>
+        .st-ui-search-input,
+        .st-default-search-input {
+          display: inline-block;
+          width: 190px;
+          height: 16px;
+          padding: 7px 11px 7px 28px;
+          border: 1px solid #bbb;
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          font-weight: 400;
+          color: #3A444F;
+          font-size: 14px;
+          line-height: 16px;
+          box-sizing: content-box;
+          background: #fff 8px 8px no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6%2BR8AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA%2FN0AAINkAABw6AAA7GgAADA%2BAAAQkOTsmeoAAAESSURBVHjajNCxS9VRGMbxz71E4OwgoXPQxVEpXCI47%2BZqGP0LCoJO7UVD3QZzb3SwcHB7F3Uw3Zpd%2FAPCcJKG7Dj4u%2FK7Pwp94HDg5Xyf5z1Pr9YKImKANTzFXxzjU2ae6qhXaxURr%2FAFl9hHDy%2FwEK8z89sYVEp5gh84wMvMvGiSJ%2FEV85jNzLMR1McqfmN5BEBmnmMJFSvtpH7jdJiZv7q7Z%2BZPfMdcF6rN%2FT%2F1m2LGBkd4HhFT3dcRMY2FpskxaLNpayciHrWAGeziD7b%2BVfkithuTk8bkGa4wgWFmbrSTZOYeBvjc%2BucQj%2FEe6xHx4Taq1nrnKaW8K6XUUsrHWuvNevdRRLzFGwzvDbXAB9cDAHvhedDruuxSAAAAAElFTkSuQmCC);
+          background-clip: padding-box;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          -moz-box-shadow: none;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+          position: fixed;
+          left: 38px;
+          top: 60px;
+          border-radius: 16px;
+        }
 
-.st-ui-search-input:focus,.st-default-search-input:focus {
-    outline: none;
-    border-color: #3A444F;
-    border-color: rgba(0,0,0,0.5)
-}
+        .st-ui-search-input:focus,
+        .st-default-search-input:focus {
+          outline: none;
+          border-color: #3A444F;
+          border-color: rgba(0, 0, 0, 0.5)
+        }
 
-.st-ui-search-input::-ms-clear,.st-default-search-input::-ms-clear {
-    display: none;
-    width: 0;
-    height: 0
-}
-</style>
+        .st-ui-search-input::-ms-clear,
+        .st-default-search-input::-ms-clear {
+          display: none;
+          width: 0;
+          height: 0
+        }
+      </style>
 
     </div>
   </div>
